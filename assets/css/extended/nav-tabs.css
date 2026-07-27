@@ -4,8 +4,15 @@
    ============================================================ */
 
 :root {
-  --site-frame: 72rem; /* wide shell for desktop */
-  --site-prose: 40rem; /* ~65–75ch reading measure */
+  --site-frame: 72rem; /* wide shell for chrome / lists */
+  /*
+   * Reading measure (ui-ux-pro-max UX guidelines):
+   * - Line length: 65–75 characters
+   * - Container width for text: max 65–75ch (not full viewport)
+   * Use ch so measure tracks the actual typeface.
+   * Pick upper end (72ch) for a wider Chinese/English reading feel.
+   */
+  --site-prose: 72ch;
   --site-gutter: clamp(1.25rem, 3.5vw, 3rem);
   --site-block: clamp(2rem, 4.5vw, 3.5rem);
   --bp-wide: 900px;
