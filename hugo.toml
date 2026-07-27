@@ -1,6 +1,6 @@
 baseURL = 'https://notguigao-afk.github.io/'
 languageCode = 'zh-cn'
-title = '我的个人博客'
+title = '/dev/null'
 theme = 'PaperMod'
 
 # Top tab navigation — each tab is a page, no scroll sections on home
