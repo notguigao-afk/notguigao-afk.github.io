@@ -1,19 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>我的个人博客</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content on 我的个人博客</description>
-    <generator>Hugo</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Mon, 27 Jul 2026 10:46:04 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hello World</title>
-      <link>http://localhost:1313/posts/hello-world/</link>
-      <pubDate>Mon, 27 Jul 2026 10:46:04 +0800</pubDate>
-      <guid>http://localhost:1313/posts/hello-world/</guid>
-      <description></description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>我的个人博客</title><link>https://notguigao-afk.github.io/</link><description>Recent content on 我的个人博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Mon, 27 Jul 2026 10:46:04 +0800</lastBuildDate><atom:link href="https://notguigao-afk.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Hello World</title><link>https://notguigao-afk.github.io/posts/hello-world/</link><pubDate>Mon, 27 Jul 2026 10:46:04 +0800</pubDate><guid>https://notguigao-afk.github.io/posts/hello-world/</guid><description>&lt;p&gt;先写一篇，占个位子。往后有学到的、想留下的，都放进「拾遗」；生活里的念头，再记到「随笔」。&lt;/p&gt;</description></item><item><title>关于</title><link>https://notguigao-afk.github.io/about/</link><pubDate>Mon, 27 Jul 2026 00:00:00 +0000</pubDate><guid>https://notguigao-afk.github.io/about/</guid><description>&lt;p&gt;这里有两类文字：&lt;strong&gt;随笔&lt;/strong&gt;写生活与思考，&lt;strong&gt;拾遗&lt;/strong&gt;记学习与经验。&lt;/p&gt;
+&lt;p&gt;写得慢一点，也写得真一点。&lt;/p&gt;
+&lt;p&gt;顶部用 Tab 切换即可：首页是一句常记在心上的话；分类里是具体的文章。&lt;/p&gt;</description></item></channel></rss>

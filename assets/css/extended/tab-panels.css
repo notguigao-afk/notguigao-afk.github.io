@@ -1,0 +1,165 @@
+/* ============================================================
+   Tab panels — 随笔 / 拾遗 / 关于 (no long-scroll home)
+   ============================================================ */
+
+.tab-panel {
+  --tp-fg: var(--imp-ink, var(--primary));
+  --tp-muted: var(--imp-ink-muted, var(--secondary));
+  --tp-border: var(--imp-border, var(--border));
+  --tp-surface: var(--imp-surface, var(--entry));
+  --tp-font-display: var(--imp-font-display, Georgia, serif);
+  --tp-font-body: var(--imp-font-body, system-ui, sans-serif);
+  --tp-ease: var(--imp-ease-out, cubic-bezier(0.23, 1, 0.32, 1));
+
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: clamp(1.75rem, 4vw, 2.75rem) 0 clamp(3rem, 6vw, 4rem);
+  color: var(--tp-fg);
+}
+
+.tab-panel__header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.tab-panel__title {
+  margin: 0 0 0.5rem;
+  font-family: var(--tp-font-display);
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.tab-panel__lede {
+  margin: 0;
+  font-family: var(--tp-font-body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--tp-muted);
+}
+
+.tab-panel__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--tp-border);
+}
+
+.tab-panel__item {
+  border-bottom: 1px solid var(--tp-border);
+}
+
+.tab-panel__link {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+  padding: 1.05rem 0.2rem;
+  min-height: 44px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  transition: background-color 160ms var(--tp-ease), transform 140ms var(--tp-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tab-panel__link:hover {
+    background: color-mix(in srgb, var(--tp-surface) 65%, transparent);
+    transform: translateX(2px);
+  }
+}
+
+.tab-panel__link:focus-visible {
+  outline: 2px solid var(--imp-sage, #9bb7a5);
+  outline-offset: 3px;
+}
+
+.tab-panel__link:active {
+  transform: scale(0.99);
+}
+
+.tab-panel__date {
+  font-family: var(--tp-font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--tp-muted);
+}
+
+.tab-panel__item-title {
+  font-family: var(--tp-font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.tab-panel__summary {
+  font-family: var(--tp-font-body);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--tp-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tab-panel__empty {
+  margin: 0;
+  padding: 1.5rem 1.1rem;
+  text-align: center;
+  font-family: var(--tp-font-body);
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--tp-muted);
+  background: var(--tp-surface);
+  border: 1px dashed var(--tp-border);
+  border-radius: 0.85rem;
+}
+
+.tab-panel--about .tab-panel__prose {
+  font-family: var(--tp-font-body);
+  font-size: 1.08rem;
+  line-height: 1.75;
+  color: var(--tp-muted);
+  text-align: left;
+}
+
+.tab-panel--about .tab-panel__prose p {
+  margin: 0 0 1rem;
+}
+
+.tab-panel--about .tab-panel__prose p:last-child {
+  margin-bottom: 0;
+}
+
+/* Home = single panel, fill viewport under sticky tabs (no scroll stack) */
+.home-landing--panel {
+  min-height: calc(100vh - var(--header-height, 60px) - var(--footer-height, 80px));
+  display: flex;
+  flex-direction: column;
+}
+
+.home-hero--panel {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-height: min(70vh, 640px);
+  padding-block: clamp(2rem, 5vw, 3.5rem);
+}
+
+.home-hero--panel .home-hero__scroll {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-panel__link {
+    transition: none;
+  }
+
+  .tab-panel__link:hover,
+  .tab-panel__link:active {
+    transform: none;
+  }
+}

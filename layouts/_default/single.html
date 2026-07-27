@@ -1,0 +1,44 @@
+{{- define "main" }}
+{{- if eq .Section "about" | or (eq .File.ContentBaseName "about") | or (eq .Title "关于") }}
+<article class="tab-panel tab-panel--about">
+  <header class="tab-panel__header">
+    <h1 class="tab-panel__title">{{ .Title }}</h1>
+  </header>
+  <div class="tab-panel__prose post-content md-content">
+    {{ .Content }}
+  </div>
+</article>
+{{- else }}
+{{- /* Fall through: use theme single by not defining? We override all singles — need theme behavior for posts */ -}}
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+    {{- if not (.Param "hideMeta") }}
+    <div class="post-meta">
+      {{- partial "post_meta.html" . -}}
+    </div>
+    {{- end }}
+  </header>
+  <div class="post-content md-content">
+    {{- if not (.Param "disableAnchoredHeadings") }}
+      {{- partial "anchored_headings.html" .Content -}}
+    {{- else }}
+      {{ .Content }}
+    {{- end }}
+  </div>
+  <footer class="post-footer">
+    {{- partial "post_nav_links.html" . }}
+    {{- if (and site.Params.ShowShareButtons (ne .Params.disableShare true)) }}
+      {{- partial "share_icons.html" . -}}
+    {{- end }}
+    {{- if (.Param "tags") }}
+    <ul class="post-tags">
+      {{- range ($.GetTerms "tags") }}
+      <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+      {{- end }}
+    </ul>
+    {{- end }}
+  </footer>
+</article>
+{{- end }}
+{{- end }}

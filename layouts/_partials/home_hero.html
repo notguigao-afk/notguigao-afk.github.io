@@ -1,20 +1,11 @@
 {{- $hero := site.Params.homeHero | default dict -}}
-{{- $legacy := site.Params.homeInfoParams | default dict -}}
 {{- $lines := $hero.quoteLines | default $hero.QuoteLines | default slice -}}
 {{- $tagline := $hero.tagline | default $hero.Tagline | default "" -}}
-{{- if not $lines -}}
-  {{- with $hero.title | default $legacy.Title -}}
-    {{- $lines = $lines | append . -}}
-  {{- end -}}
-  {{- with $hero.subtitle | default $legacy.Content -}}
-    {{- $lines = $lines | append . -}}
-  {{- end -}}
-{{- end -}}
 {{- if not $lines -}}
   {{- $lines = slice site.Title -}}
 {{- end -}}
 
-<section class="home-hero" aria-labelledby="home-hero-title">
+<section class="home-hero home-hero--panel" aria-labelledby="home-hero-title">
   <div class="home-hero__canvas" aria-hidden="true">
     <span class="home-hero__wash home-hero__wash--1"></span>
     <span class="home-hero__wash home-hero__wash--2"></span>
@@ -33,12 +24,5 @@
     {{- if $tagline }}
     <p class="home-hero__tagline">{{ $tagline | markdownify }}</p>
     {{- end }}
-
-    <a class="home-hero__scroll" href="#recent" aria-label="看看最近文章">
-      <span class="home-hero__scroll-label">往下看</span>
-      <svg class="home-hero__scroll-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <polyline points="6 9 12 15 18 9"></polyline>
-      </svg>
-    </a>
   </div>
 </section>

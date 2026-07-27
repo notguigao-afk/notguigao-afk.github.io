@@ -63,13 +63,20 @@
           {{- $tabURL := .url -}}
           {{- $tabPath := strings.TrimSuffix "/" (urls.Parse $tabURL).Path -}}
           {{- $curPath := strings.TrimSuffix "/" $path -}}
-          {{- $isAboutTab := or (in $tabURL "#about") (eq $tabName "关于") -}}
+          {{- $isAboutTab := or (in $tabURL "#about") (eq $tabName "关于") (in $tabPath "/about") (eq $tabPath "about") -}}
           {{- $isHomeTab := and (not $isAboutTab) (or (eq $tabPath "") (eq $tabPath "/")) -}}
           {{- $active := false -}}
           {{- if and $isHomeTab $currentPage.IsHome -}}
             {{- $active = true -}}
+          {{- else if $isAboutTab -}}
+            {{- if or (eq $currentPage.Title "关于") (eq $curPath "/about") (eq $curPath "about") (strings.HasSuffix $curPath "/about") -}}
+              {{- $active = true -}}
+            {{- end -}}
           {{- else if and (not $isHomeTab) (not $isAboutTab) -}}
-            {{- if or (eq $curPath $tabPath) (strings.HasPrefix $curPath (printf "%s/" $tabPath)) -}}
+            {{- /* Term/list pages: match title (avoids Chinese URL encode mismatch) */ -}}
+            {{- if or (eq $currentPage.Title $tabName) (eq $currentPage.LinkTitle $tabName) -}}
+              {{- $active = true -}}
+            {{- else if or (eq $curPath $tabPath) (strings.HasPrefix $curPath (printf "%s/" $tabPath)) -}}
               {{- $active = true -}}
             {{- else if $currentPage.IsPage -}}
               {{- with $currentPage.Params.categories -}}

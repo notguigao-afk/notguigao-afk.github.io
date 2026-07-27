@@ -1,0 +1,41 @@
+{{- /* Shared post list for category / section tab panels */ -}}
+{{- $pages := .Pages -}}
+{{- $desc := .Description | default "" -}}
+{{- if not $desc -}}
+  {{- with index site.Data.topics -}}
+    {{- range . -}}
+      {{- if eq (.name | default .Name) $.Title -}}
+        {{- $desc = .description | default .Description -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+<div class="tab-panel">
+  <header class="tab-panel__header">
+    <h1 class="tab-panel__title">{{ .Title }}</h1>
+    {{- if $desc }}
+    <p class="tab-panel__lede">{{ $desc | markdownify }}</p>
+    {{- end }}
+  </header>
+
+  {{- if $pages }}
+  <ul class="tab-panel__list">
+    {{- range $pages.ByDate.Reverse }}
+    <li class="tab-panel__item">
+      <a class="tab-panel__link" href="{{ .RelPermalink }}">
+        <time class="tab-panel__date" datetime="{{ .Date.Format "2006-01-02" }}">
+          {{- .Date.Format "2006年1月2日" -}}
+        </time>
+        <span class="tab-panel__item-title">{{ .Title }}</span>
+        {{- with .Summary }}
+        <span class="tab-panel__summary">{{ . | plainify | htmlUnescape | truncate 100 }}</span>
+        {{- end }}
+      </a>
+    </li>
+    {{- end }}
+  </ul>
+  {{- else }}
+  <p class="tab-panel__empty">还没有文章。写一篇并加上分类「{{ .Title }}」就会出现在这里。</p>
+  {{- end }}
+</div>
