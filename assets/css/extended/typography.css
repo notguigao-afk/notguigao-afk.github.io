@@ -49,11 +49,13 @@
 
   --type-leading-tight: 1.2;
   --type-leading-snug: 1.35;
-  --type-leading-body: 1.75;
-  --type-leading-loose: 1.9;
+  /* Body: 1.5–1.75 per ui-ux-pro-max; long-form sits at the upper end */
+  --type-leading-body: 1.7;
+  --type-leading-loose: 1.75;
 
   --type-ink: var(--imp-ink, var(--primary));
   --type-muted: var(--imp-ink-muted, var(--secondary));
+  /* Sage tinted ink — ~8.6:1 on canvas (AA/AAA for body links) */
   --type-link: color-mix(in srgb, var(--imp-sage, #9bb7a5) 28%, var(--type-ink));
   --type-ease: var(--imp-ease-out, cubic-bezier(0.23, 1, 0.32, 1));
 }
@@ -217,10 +219,21 @@ a:hover {
 .post-content {
   font-family: var(--type-body);
   font-size: var(--type-base);
-  line-height: var(--type-leading-loose);
+  line-height: var(--type-leading-loose); /* 1.75 — skill ceiling for body */
   letter-spacing: 0.02em;
   color: var(--type-ink);
   text-wrap: pretty;
+}
+
+/* Keep figures inside the reading measure (container-width / image scaling) */
+.md-content img,
+.post-content img,
+.md-content figure,
+.post-content figure,
+.md-content video,
+.post-content video {
+  max-width: 100%;
+  height: auto;
 }
 
 .md-content h1,
@@ -495,6 +508,6 @@ select {
   .md-content,
   .post-content {
     font-size: 1.125rem;
-    line-height: 1.92;
+    line-height: var(--type-leading-loose); /* stay ≤ 1.75 */
   }
 }
