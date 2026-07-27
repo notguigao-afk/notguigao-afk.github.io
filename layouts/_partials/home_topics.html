@@ -12,7 +12,6 @@
       "name" $name
       "description" ""
       "accent" ""
-      "url" ""
       "weight" 100
     ) -}}
   {{- end -}}
@@ -22,8 +21,8 @@
 <section class="home-topics" id="topics" aria-labelledby="home-topics-heading">
   <div class="home-topics__inner">
     <header class="home-topics__header">
-      <h2 id="home-topics-heading" class="home-topics__heading">分类</h2>
-      <p class="home-topics__lede">随笔写生活与思考，拾遗记学习与经验。</p>
+      <h2 id="home-topics-heading" class="home-section__heading">分类</h2>
+      <p class="home-section__lede">随笔写生活与思考，拾遗记学习与经验。</p>
     </header>
 
     <ul class="home-topics__list home-topics__list--two">
@@ -31,52 +30,66 @@
         {{- $name := $topic.name | default $topic.Name | default "" -}}
         {{- $desc := $topic.description | default $topic.Description | default "" -}}
         {{- $accent := $topic.accent | default $topic.Accent | default (index $palette (mod $i (len $palette))) -}}
-        {{- $url := "" -}}
+        {{- $catURL := "" -}}
         {{- $count := 0 -}}
-        {{- $resolved := false -}}
+        {{- $latest := false -}}
+        {{- $pages := false -}}
 
         {{- with index site.Taxonomies.categories $name -}}
+          {{- $pages = . -}}
           {{- $count = len . -}}
-          {{- $url = .Page.RelPermalink -}}
-          {{- $resolved = true -}}
+          {{- $catURL = .Page.RelPermalink -}}
+          {{- $latest = index . 0 -}}
         {{- end -}}
-        {{- if not $resolved -}}
+        {{- if not $pages -}}
           {{- with index site.Taxonomies.tags $name -}}
+            {{- $pages = . -}}
             {{- $count = len . -}}
-            {{- $url = .Page.RelPermalink -}}
-            {{- $resolved = true -}}
+            {{- $catURL = .Page.RelPermalink -}}
+            {{- $latest = index . 0 -}}
           {{- end -}}
         {{- end -}}
 
         <li class="home-topics__item">
-          {{- if $url }}
-          <a class="home-topics__chip" href="{{ $url }}" style="--chip-accent: {{ $accent }}">
-          {{- else }}
-          <span class="home-topics__chip home-topics__chip--empty" style="--chip-accent: {{ $accent }}" title="还没有文章；写的时候在 front matter 里写上这个分类名即可">
-          {{- end }}
+          <article class="home-topics__chip" style="--chip-accent: {{ $accent }}">
             <span class="home-topics__chip-swatch" aria-hidden="true"></span>
-            <span class="home-topics__chip-body">
-              <span class="home-topics__chip-name">{{ $name }}</span>
-              {{- if $desc }}
-              <span class="home-topics__chip-desc">{{ $desc }}</span>
+            <header class="home-topics__chip-body">
+              {{- if $catURL }}
+              <h3 class="home-topics__chip-name">
+                <a class="home-topics__chip-title-link" href="{{ $catURL }}">{{ $name }}</a>
+              </h3>
+              {{- else }}
+              <h3 class="home-topics__chip-name">{{ $name }}</h3>
               {{- end }}
-            </span>
-            <span class="home-topics__chip-meta">
-              {{- if $resolved }}
-              <span class="home-topics__chip-count">{{ $count }} 篇</span>
+              {{- if $desc }}
+              <p class="home-topics__chip-desc">{{ $desc }}</p>
+              {{- end }}
+            </header>
+
+            {{- if $latest }}
+            <p class="home-topics__latest">
+              <span class="home-topics__latest-label">最近</span>
+              <a class="home-topics__latest-link" href="{{ $latest.RelPermalink }}">{{ $latest.Title }}</a>
+            </p>
+            {{- else }}
+            <p class="home-topics__latest home-topics__latest--empty">还没写，先占个位子。</p>
+            {{- end }}
+
+            <footer class="home-topics__chip-meta">
+              {{- if $catURL }}
+              <a class="home-topics__chip-count" href="{{ $catURL }}">{{ $count }} 篇</a>
+              <a class="home-topics__chip-more" href="{{ $catURL }}" aria-label="查看全部分类：{{ $name }}">
+                全部
+                <svg class="home-topics__chip-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
               {{- else }}
               <span class="home-topics__chip-count home-topics__chip-count--pending">尚无</span>
               {{- end }}
-              <svg class="home-topics__chip-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
-          {{- if $url }}
-          </a>
-          {{- else }}
-          </span>
-          {{- end }}
+            </footer>
+          </article>
         </li>
       {{- end }}
     </ul>

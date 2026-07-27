@@ -1,0 +1,13 @@
+{{- $about := site.Params.homeAbout | default dict -}}
+{{- $title := $about.title | default $about.Title | default "关于" -}}
+{{- $body := $about.body | default $about.Body | default "" -}}
+{{- if $body }}
+<section class="home-about" id="about" aria-labelledby="home-about-heading">
+  <div class="home-about__inner">
+    <h2 id="home-about-heading" class="home-section__heading">{{ $title }}</h2>
+    <div class="home-about__body">
+      {{ $body | markdownify }}
+    </div>
+  </div>
+</section>
+{{- end }}

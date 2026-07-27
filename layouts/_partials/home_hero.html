@@ -1,8 +1,8 @@
 {{- $hero := site.Params.homeHero | default dict -}}
 {{- $legacy := site.Params.homeInfoParams | default dict -}}
 {{- $lines := $hero.quoteLines | default $hero.QuoteLines | default slice -}}
+{{- $tagline := $hero.tagline | default $hero.Tagline | default "" -}}
 {{- if not $lines -}}
-  {{- /* Backward compat: title + subtitle as equal lines */ -}}
   {{- with $hero.title | default $legacy.Title -}}
     {{- $lines = $lines | append . -}}
   {{- end -}}
@@ -25,13 +25,17 @@
 
   <div class="home-hero__inner">
     <h1 id="home-hero-title" class="home-hero__quote">
-      {{- range $i, $line := $lines }}
+      {{- range $line := $lines }}
       <span class="home-hero__quote-line">{{ $line | markdownify }}</span>
       {{- end }}
     </h1>
 
-    <a class="home-hero__scroll" href="#topics" aria-label="浏览分类">
-      <span class="home-hero__scroll-label">浏览分类</span>
+    {{- if $tagline }}
+    <p class="home-hero__tagline">{{ $tagline | markdownify }}</p>
+    {{- end }}
+
+    <a class="home-hero__scroll" href="#recent" aria-label="看看最近文章">
+      <span class="home-hero__scroll-label">往下看</span>
       <svg class="home-hero__scroll-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <polyline points="6 9 12 15 18 9"></polyline>
       </svg>
