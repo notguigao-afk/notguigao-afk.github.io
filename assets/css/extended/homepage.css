@@ -102,11 +102,12 @@ body:has(.home-landing) .footer {
 .home-hero {
   position: relative;
   isolation: isolate;
-  min-height: min(62vh, 580px);
+  min-height: min(70vh, 720px);
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: clamp(2.75rem, 7vw, 5rem) 0 clamp(3rem, 6vw, 4rem);
+  width: 100%;
+  padding: clamp(2.75rem, 7vw, 5.5rem) 0 clamp(3rem, 6vw, 4.5rem);
   color: var(--color-foreground);
   overflow: hidden;
   text-align: left;
@@ -129,34 +130,34 @@ body:has(.home-landing) .footer {
 }
 
 .home-hero__wash--1 {
-  width: min(70vw, 640px);
-  height: min(70vw, 640px);
-  top: -12%;
-  left: -8%;
+  width: min(55vw, 720px);
+  height: min(55vw, 720px);
+  top: -14%;
+  left: -6%;
   background: radial-gradient(circle at 40% 40%, var(--imp-gold), transparent 68%);
 }
 
 .home-hero__wash--2 {
-  width: min(65vw, 560px);
-  height: min(65vw, 560px);
-  top: 18%;
-  right: -12%;
+  width: min(48vw, 640px);
+  height: min(48vw, 640px);
+  top: 10%;
+  right: -8%;
   background: radial-gradient(circle at 50% 50%, var(--imp-lilac), transparent 70%);
 }
 
 .home-hero__wash--3 {
-  width: min(55vw, 480px);
-  height: min(55vw, 480px);
-  bottom: -8%;
-  left: 22%;
+  width: min(42vw, 560px);
+  height: min(42vw, 560px);
+  bottom: -10%;
+  left: 28%;
   background: radial-gradient(circle at 50% 50%, var(--imp-sage), transparent 72%);
 }
 
 .home-hero__wash--4 {
-  width: min(40vw, 360px);
-  height: min(40vw, 360px);
-  top: 42%;
-  left: 48%;
+  width: min(32vw, 420px);
+  height: min(32vw, 420px);
+  top: 38%;
+  left: 55%;
   background: radial-gradient(circle at 50% 50%, var(--imp-rose), transparent 70%);
   opacity: 0.55;
 }
@@ -184,13 +185,13 @@ html[data-theme="auto"] .home-hero__grain {
   }
 }
 
-/* Open page surface — no floating app card */
+/* Full-bleed canvas + framed content on --site-frame */
 .home-hero__inner {
   position: relative;
-  width: min(100%, var(--site-measure, 40rem));
-  max-width: var(--site-measure, 40rem);
+  width: min(100%, var(--site-frame, 72rem));
+  max-width: var(--site-frame, 72rem);
   margin-inline: auto;
-  padding: 0.25rem var(--site-gutter, 1.5rem);
+  padding: 0.25rem 0;
   border-radius: 0;
   background: transparent;
   border: none;
@@ -215,7 +216,7 @@ html[data-theme="dark"] .home-hero__inner {
   }
 }
 
-/* Parallel quote lines — vertical stack, equal weight */
+/* Parallel quote lines — equal weight */
 .home-hero__quote {
   margin: 0;
   display: flex;
@@ -223,18 +224,18 @@ html[data-theme="dark"] .home-hero__inner {
   align-items: flex-start;
   gap: 0.95rem;
   font-family: var(--font-display);
-  font-size: clamp(1.55rem, 3.8vw, 2.35rem);
+  font-size: clamp(1.55rem, 3.2vw, 2.65rem);
   font-weight: 600;
   font-style: italic;
-  line-height: 1.4;
-  letter-spacing: -0.015em;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
   color: var(--color-foreground);
   font-optical-sizing: auto;
 }
 
 .home-hero__quote-line {
   display: block;
-  max-width: 18em;
+  max-width: 22em;
 }
 
 .home-hero__quote-line + .home-hero__quote-line {
@@ -248,10 +249,50 @@ html[data-theme="dark"] .home-hero__inner {
   margin: 1.5rem 0 0;
   max-width: 28ch;
   font-family: var(--font-body);
-  font-size: clamp(1.02rem, 1.8vw, 1.125rem);
+  font-size: clamp(1.02rem, 1.5vw, 1.2rem);
   font-weight: 400;
   line-height: 1.7;
   color: var(--color-muted-foreground);
+}
+
+/* Wide: asymmetric hero — quote dominates left, tagline anchors right */
+@media (min-width: 900px) {
+  .home-hero {
+    min-height: min(78vh, 820px);
+  }
+
+  .home-hero__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(12rem, 0.65fr);
+    column-gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: end;
+  }
+
+  .home-hero__quote {
+    grid-column: 1;
+    gap: 1.1rem;
+    font-size: clamp(2.1rem, 3.4vw, 3.15rem);
+  }
+
+  .home-hero__quote-line {
+    max-width: none;
+  }
+
+  .home-hero__tagline {
+    grid-column: 2;
+    margin: 0;
+    max-width: none;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--imp-border) 80%, transparent);
+    font-size: clamp(1.05rem, 1.2vw, 1.2rem);
+    line-height: 1.65;
+  }
+}
+
+@media (min-width: 1200px) {
+  .home-hero__quote {
+    font-size: clamp(2.4rem, 3.2vw, 3.4rem);
+  }
 }
 
 .home-hero__scroll {
