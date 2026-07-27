@@ -579,72 +579,49 @@ html[data-theme="dark"] .about-ambient__grain {
   display: none;
 }
 
-/* ---------- Article layout (type from typography.css) ---------- */
+/* ---------- Article: centered reading column (no left-stuck + right void) ---------- */
 
 .site-prose {
-  width: min(100%, var(--site-frame, 72rem));
-  max-width: var(--site-frame, 72rem);
+  /* One measure for the whole article — title, body, footer aligned */
+  width: min(100%, var(--site-prose, 42rem));
+  max-width: var(--site-prose, 42rem);
   margin: 0 auto;
   padding: var(--site-block, 2.5rem) 0 calc(var(--site-block, 2.5rem) * 1.5);
 }
 
 .site-prose .post-header {
-  margin-bottom: 2rem;
-  padding-bottom: 1.25rem;
+  display: block;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.15rem;
   border-bottom: 1px solid var(--imp-border, var(--border));
 }
 
 .site-prose .post-title {
-  max-width: 22em;
+  max-width: none;
+  margin: 0 0 0.55rem;
 }
 
 .site-prose .post-meta {
   margin: 0;
+  text-align: left;
+  justify-self: unset;
 }
 
 .site-prose .post-content {
-  max-width: var(--site-prose, 40rem);
+  width: 100%;
+  max-width: none;
+  margin: 0;
 }
 
 .site-prose .post-footer {
-  margin-top: 3rem;
-  max-width: var(--site-prose, 40rem);
-  padding-top: 1.5rem;
+  margin-top: 2.75rem;
+  width: 100%;
+  max-width: none;
+  padding-top: 1.35rem;
   border-top: 1px solid var(--imp-border, var(--border));
   font-family: var(--type-body, inherit);
   font-size: var(--type-meta, 0.9375rem);
   color: var(--type-muted, var(--imp-ink-muted, var(--secondary)));
-}
-
-@media (min-width: 900px) {
-  .site-prose .post-header {
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-    column-gap: 3rem;
-    align-items: end;
-  }
-
-  .site-prose .post-title {
-    max-width: none;
-    grid-column: 1;
-  }
-
-  .site-prose .post-meta {
-    grid-column: 2;
-    justify-self: end;
-    text-align: right;
-  }
-
-  .site-prose .post-content {
-    width: min(100%, var(--site-prose, 40rem));
-    max-width: var(--site-prose, 40rem);
-  }
-}
-
-@media (min-width: 1200px) {
-  .site-prose .post-content {
-    margin-inline-end: auto;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
