@@ -383,7 +383,7 @@ html[data-theme="dark"] .about-ambient__grain {
 
 .about-prose > p:first-of-type {
   margin: 0 0 2.25rem;
-  max-width: var(--site-prose, 40rem);
+  max-width: var(--site-prose, 72ch);
   font-size: clamp(1.15rem, 1.8vw, 1.35rem);
   font-weight: 500;
   line-height: 1.7;
@@ -449,7 +449,7 @@ html[data-theme="dark"] .about-ambient__grain {
 
 .about-prose > p:nth-of-type(3) {
   margin: 0 0 2.5rem;
-  max-width: var(--site-prose, 40rem);
+  max-width: var(--site-prose, 72ch);
   font-size: 1.05rem;
   line-height: 1.8;
   color: var(--tp-muted);
