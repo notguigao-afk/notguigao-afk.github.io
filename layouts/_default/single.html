@@ -1,16 +1,23 @@
 {{- define "main" }}
 {{- if eq .Section "about" | or (eq .File.ContentBaseName "about") | or (eq .Title "关于") }}
 <article class="tab-panel tab-panel--about">
-  <header class="tab-panel__header">
-    <h1 class="tab-panel__title">{{ .Title }}</h1>
-  </header>
-  <div class="tab-panel__prose post-content md-content">
-    {{ .Content }}
+  <div class="about-ambient" aria-hidden="true">
+    <span class="about-ambient__wash about-ambient__wash--1"></span>
+    <span class="about-ambient__wash about-ambient__wash--2"></span>
+    <span class="about-ambient__wash about-ambient__wash--3"></span>
+  </div>
+  <div class="about-shell">
+    <header class="tab-panel__header about-header">
+      <p class="about-eyebrow">About</p>
+      <h1 class="tab-panel__title about-title">{{ .Title }}</h1>
+    </header>
+    <div class="tab-panel__prose about-prose post-content md-content">
+      {{ .Content }}
+    </div>
   </div>
 </article>
 {{- else }}
-{{- /* Fall through: use theme single by not defining? We override all singles — need theme behavior for posts */ -}}
-<article class="post-single">
+<article class="post-single site-prose">
   <header class="post-header">
     <h1 class="post-title">{{ .Title }}</h1>
     {{- if not (.Param "hideMeta") }}
