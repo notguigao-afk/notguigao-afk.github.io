@@ -1,0 +1,91 @@
+{{- $topics := site.Data.topics | default slice -}}
+{{- $palette := slice "#9BB7A5" "#C4B7D5" "#D4A574" "#E8B4B8" "#8BA4B8" -}}
+
+{{- /* Fallback: site taxonomies when data/topics.yaml is empty */ -}}
+{{- if not $topics -}}
+  {{- $terms := site.Taxonomies.categories -}}
+  {{- if not $terms -}}
+    {{- $terms = site.Taxonomies.tags -}}
+  {{- end -}}
+  {{- $list := slice -}}
+  {{- range $name, $pages := $terms -}}
+    {{- $list = $list | append (dict
+      "name" $name
+      "description" ""
+      "accent" ""
+      "url" ""
+      "weight" 100
+      "term" $name
+    ) -}}
+  {{- end -}}
+  {{- $topics = $list -}}
+{{- end -}}
+
+<section class="home-topics" id="topics" aria-labelledby="home-topics-heading">
+  <div class="home-topics__inner">
+    <header class="home-topics__header">
+      <p class="home-topics__label">主题导航</p>
+      <h2 id="home-topics-heading" class="home-topics__heading">从这里走进内容</h2>
+      <p class="home-topics__lede">技术为主，也留一点个人的光。按主题挑选你想读的。</p>
+    </header>
+
+    <ul class="home-topics__list">
+      {{- range $i, $topic := sort $topics "weight" "asc" }}
+        {{- $name := $topic.name | default $topic.Name | default "" -}}
+        {{- $desc := $topic.description | default $topic.Description | default "" -}}
+        {{- $accent := $topic.accent | default $topic.Accent | default (index $palette (mod $i (len $palette))) -}}
+        {{- $url := $topic.url | default $topic.URL | default "" -}}
+        {{- $count := 0 -}}
+        {{- $resolved := false -}}
+
+        {{- /* Only link when a live taxonomy term exists (avoids 404) */ -}}
+        {{- with index site.Taxonomies.categories $name -}}
+          {{- $count = len . -}}
+          {{- $url = .Page.RelPermalink -}}
+          {{- $resolved = true -}}
+        {{- end -}}
+        {{- if not $resolved -}}
+          {{- with index site.Taxonomies.tags $name -}}
+            {{- $count = len . -}}
+            {{- $url = .Page.RelPermalink -}}
+            {{- $resolved = true -}}
+          {{- end -}}
+        {{- end -}}
+        {{- if not $resolved -}}
+          {{- $url = "" -}}
+        {{- end -}}
+
+        <li class="home-topics__item">
+          {{- if $url }}
+          <a class="home-topics__chip" href="{{ $url }}" style="--chip-accent: {{ $accent }}">
+          {{- else }}
+          <span class="home-topics__chip home-topics__chip--empty" style="--chip-accent: {{ $accent }}" title="暂无文章，写文时加上对应分类即可">
+          {{- end }}
+            <span class="home-topics__chip-swatch" aria-hidden="true"></span>
+            <span class="home-topics__chip-body">
+              <span class="home-topics__chip-name">{{ $name }}</span>
+              {{- if $desc }}
+              <span class="home-topics__chip-desc">{{ $desc }}</span>
+              {{- end }}
+            </span>
+            <span class="home-topics__chip-meta">
+              {{- if $resolved }}
+              <span class="home-topics__chip-count">{{ $count }} 篇</span>
+              {{- else }}
+              <span class="home-topics__chip-count home-topics__chip-count--pending">待添加</span>
+              {{- end }}
+              <svg class="home-topics__chip-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          {{- if $url }}
+          </a>
+          {{- else }}
+          </span>
+          {{- end }}
+        </li>
+      {{- end }}
+    </ul>
+  </div>
+</section>

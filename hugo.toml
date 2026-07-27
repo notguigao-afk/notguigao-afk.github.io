@@ -4,10 +4,11 @@ title = '我的个人博客'
 theme = 'PaperMod'
 
 [params]
-  # 开启首页大图/个人简介模式
-  [params.homeInfoParams]
-    Title = "👋 你好，我是 [你的名字]"
-    Content = "欢迎来到我的个人博客，这里记录我的技术与生活。"
+  # Landing hero (homepage only)
+  [params.homeHero]
+    eyebrow = "笔记 · 工程 · 生活"
+    title = "在光线里写代码"
+    subtitle = "技术笔记为主，也记录一点生活里的光。"
 
   # 开启代码块复制按钮
   ShowCodeCopyButtons = true

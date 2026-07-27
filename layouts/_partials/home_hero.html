@@ -1,0 +1,41 @@
+{{- $hero := site.Params.homeHero | default dict -}}
+{{- $legacy := site.Params.homeInfoParams | default dict -}}
+{{- $eyebrow := $hero.eyebrow | default "" -}}
+{{- $title := $hero.title | default $legacy.Title | default site.Title -}}
+{{- $subtitle := $hero.subtitle | default $legacy.Content | default "" -}}
+{{- $bio := $hero.bio | default "" -}}
+
+<section class="home-hero" aria-labelledby="home-hero-title">
+  <div class="home-hero__canvas" aria-hidden="true">
+    <span class="home-hero__wash home-hero__wash--1"></span>
+    <span class="home-hero__wash home-hero__wash--2"></span>
+    <span class="home-hero__wash home-hero__wash--3"></span>
+    <span class="home-hero__wash home-hero__wash--4"></span>
+    <span class="home-hero__grain"></span>
+  </div>
+
+  <div class="home-hero__inner">
+    {{- if $eyebrow }}
+    <p class="home-hero__eyebrow">{{ $eyebrow }}</p>
+    {{- end }}
+
+    <h1 id="home-hero-title" class="home-hero__title">{{ $title | markdownify }}</h1>
+
+    {{- if $subtitle }}
+    <p class="home-hero__subtitle">{{ $subtitle | markdownify }}</p>
+    {{- end }}
+
+    {{- if $bio }}
+    <div class="home-hero__bio">
+      {{ $bio | markdownify }}
+    </div>
+    {{- end }}
+
+    <a class="home-hero__scroll" href="#topics" aria-label="滚动到主题分类">
+      <span class="home-hero__scroll-label">探索主题</span>
+      <svg class="home-hero__scroll-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </a>
+  </div>
+</section>

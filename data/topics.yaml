@@ -1,0 +1,29 @@
+# Homepage topic strip — order by weight (lower first).
+# url: taxonomy path; leave empty to resolve by matching category/tag name.
+- id: engineering
+  name: 工程
+  description: 构建、调试与系统笔记
+  weight: 1
+  accent: "#9BB7A5"
+  url: "/categories/%E5%B7%A5%E7%A8%8B/"
+
+- id: essays
+  name: 随笔
+  description: 更慢一点的想法
+  weight: 2
+  accent: "#C4B7D5"
+  url: "/categories/%E9%9A%8F%E7%AC%94/"
+
+- id: projects
+  name: 项目
+  description: 做过的东西与复盘
+  weight: 3
+  accent: "#D4A574"
+  url: "/categories/%E9%A1%B9%E7%9B%AE/"
+
+- id: notes
+  name: 摘录
+  description: 阅读与灵感碎片
+  weight: 4
+  accent: "#E8B4B8"
+  url: "/categories/%E6%91%98%E5%BD%95/"
