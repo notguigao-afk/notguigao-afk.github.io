@@ -1,0 +1,26 @@
+{{- define "main" }}
+{{- /* Section lists (e.g. /posts/) — same newest-first tab panel as categories */ -}}
+{{- if eq .Kind "section" }}
+  {{- partial "tab_panel_list.html" . }}
+{{- else }}
+  {{- /* Fall back to theme list for other kinds if needed */ -}}
+  {{- $pages := .Pages.ByDate.Reverse -}}
+  <header class="page-header">
+    <h1>{{ .Title }}</h1>
+  </header>
+  {{- if $pages }}
+  <ul class="tab-panel__list">
+    {{- range $pages }}
+    <li class="tab-panel__item">
+      <a class="tab-panel__link" href="{{ .RelPermalink }}">
+        <time class="tab-panel__date" datetime="{{ .Date.Format "2006-01-02" }}">
+          {{- .Date.Format "2006年1月2日" -}}
+        </time>
+        <span class="tab-panel__item-title">{{ .Title }}</span>
+      </a>
+    </li>
+    {{- end }}
+  </ul>
+  {{- end }}
+{{- end }}
+{{- end }}

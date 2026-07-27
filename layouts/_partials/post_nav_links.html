@@ -1,0 +1,32 @@
+{{- /* Prev/Next among posts only. Newest-first by Date.
+     Manual index so we don't rely on Pages.Next/Prev quirks. */ -}}
+{{- $pages := where site.RegularPages "Section" "posts" -}}
+{{- $pages = sort $pages "Date" "desc" -}}
+{{- $idx := -1 -}}
+{{- range $i, $p := $pages -}}
+  {{- if eq $p.RelPermalink $.RelPermalink -}}
+    {{- $idx = $i -}}
+  {{- end -}}
+{{- end -}}
+{{- if and (ge $idx 0) (gt (len $pages) 1) }}
+<nav class="paginav">
+  {{- /* index-1 = newer (earlier in desc list) */ -}}
+  {{- if gt $idx 0 -}}
+    {{- with index $pages (sub $idx 1) }}
+  <a class="prev" href="{{ .Permalink }}">
+    <span class="title">« 更新</span>
+    <span>{{- .LinkTitle -}}</span>
+  </a>
+    {{- end }}
+  {{- end }}
+  {{- /* index+1 = older (later in desc list) */ -}}
+  {{- if lt $idx (sub (len $pages) 1) -}}
+    {{- with index $pages (add $idx 1) }}
+  <a class="next" href="{{ .Permalink }}">
+    <span class="title">更早 »</span>
+    <span>{{- .LinkTitle -}}</span>
+  </a>
+    {{- end }}
+  {{- end }}
+</nav>
+{{- end }}

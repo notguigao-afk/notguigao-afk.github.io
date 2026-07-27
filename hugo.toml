@@ -1,4 +1,6 @@
 baseURL = 'https://notguigao-afk.github.io/'
+# Prefer zh so dates/meta render consistently (PaperMod uses site language)
+defaultContentLanguage = 'zh-cn'
 languageCode = 'zh-cn'
 title = '/dev/null'
 theme = 'PaperMod'
@@ -25,11 +27,13 @@ theme = 'PaperMod'
   weight = 4
 
 [params]
+  mainSections = ['posts']
+  DateFormat = '2006年1月2日'
+  ShowCodeCopyButtons = true
+
   [params.homeHero]
     quoteLines = [
       "Live as if you were to die tomorrow.",
       "Learn as if you were to live forever."
     ]
     tagline = "记下生活，也留下学过的。"
-
-  ShowCodeCopyButtons = true

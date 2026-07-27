@@ -1,5 +1,6 @@
 {{- /* Shared post list for category / section tab panels */ -}}
-{{- $pages := .Pages -}}
+{{- /* Newest first by article date (front matter `date`) */ -}}
+{{- $pages := sort .Pages "Date" "desc" -}}
 {{- $desc := .Description | default "" -}}
 {{- if not $desc -}}
   {{- with index site.Data.topics -}}
@@ -21,7 +22,7 @@
 
   {{- if $pages }}
   <ul class="tab-panel__list">
-    {{- range $pages.ByDate.Reverse }}
+    {{- range $pages }}
     <li class="tab-panel__item">
       <a class="tab-panel__link" href="{{ .RelPermalink }}">
         <time class="tab-panel__date" datetime="{{ .Date.Format "2006-01-02" }}">
