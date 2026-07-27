@@ -16,10 +16,12 @@
   --imp-surface: #fffcf8;
   --imp-border: #e7e0d6;
 
-  --imp-font-display: "Fraunces", "Newsreader", "Source Serif 4", Georgia, "Songti SC",
-    "Noto Serif SC", serif;
-  --imp-font-body: "Source Sans 3", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC",
-    system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Claude.ai spirit: Georgia for Latin; CJK falls through to Noto Serif SC / 宋体 */
+  --imp-font-display: ui-serif, Georgia, Cambria, "Times New Roman", "Noto Serif SC",
+    "Songti SC", "STSong", "Source Han Serif SC", Times, serif;
+  --imp-font-body: ui-serif, Georgia, Cambria, "Times New Roman", "Noto Serif SC",
+    "Songti SC", "STSong", "Source Han Serif SC", Times, serif;
+
 
   --imp-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --imp-dur-fast: 160ms;

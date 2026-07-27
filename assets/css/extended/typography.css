@@ -1,31 +1,36 @@
 /* ============================================================
-   Site-wide typography
-   Display: Fraunces (+ CJK serif fallback)
-   Body/UI: Source Sans 3 (+ CJK sans fallback)
-   Applies to every page — not only hero / about
+   Site-wide typography — Claude-like reading serif
+   Latin: Georgia (Claude’s public fallback; Tiempos is proprietary)
+   CJK: Noto Serif SC → Songti SC / STSong
    ============================================================ */
 
 /* Tokens live in homepage.css :root; hard fallbacks here for load order */
 :root {
   --type-display: var(
     --imp-font-display,
-    "Fraunces",
-    "Newsreader",
+    ui-serif,
     Georgia,
-    "Songti SC",
+    Cambria,
+    "Times New Roman",
     "Noto Serif SC",
+    "Songti SC",
+    "STSong",
+    "Source Han Serif SC",
+    Times,
     serif
   );
   --type-body: var(
     --imp-font-body,
-    "Source Sans 3",
-    "PingFang SC",
-    "Hiragino Sans GB",
-    "Noto Sans SC",
-    system-ui,
-    -apple-system,
-    "Segoe UI",
-    sans-serif
+    ui-serif,
+    Georgia,
+    Cambria,
+    "Times New Roman",
+    "Noto Serif SC",
+    "Songti SC",
+    "STSong",
+    "Source Han Serif SC",
+    Times,
+    serif
   );
   --type-mono: ui-monospace, "SF Mono", "Cascadia Code", "Segoe UI Mono", Menlo, Consolas,
     monospace;
@@ -64,7 +69,8 @@ body {
   font-size: var(--type-base);
   font-weight: 400;
   line-height: var(--type-leading-body);
-  letter-spacing: 0.005em;
+  /* Serif Chinese reads better with slightly open tracking */
+  letter-spacing: 0.02em;
   color: var(--type-ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -212,7 +218,7 @@ a:hover {
   font-family: var(--type-body);
   font-size: var(--type-base);
   line-height: var(--type-leading-loose);
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
   color: var(--type-ink);
   text-wrap: pretty;
 }

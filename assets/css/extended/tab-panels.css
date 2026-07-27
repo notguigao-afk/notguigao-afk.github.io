@@ -8,8 +8,8 @@
   --tp-muted: var(--type-muted, var(--imp-ink-muted, var(--secondary)));
   --tp-border: var(--imp-border, var(--border));
   --tp-surface: var(--imp-surface, var(--entry));
-  --tp-font-display: var(--type-display, var(--imp-font-display, Georgia, "Songti SC", serif));
-  --tp-font-body: var(--type-body, var(--imp-font-body, "Source Sans 3", system-ui, sans-serif));
+  --tp-font-display: var(--type-display, var(--imp-font-display, Georgia, "Noto Serif SC", serif));
+  --tp-font-body: var(--type-body, var(--imp-font-body, Georgia, "Noto Serif SC", serif));
   --tp-ease: var(--type-ease, var(--imp-ease-out, cubic-bezier(0.23, 1, 0.32, 1)));
   --tp-gold: var(--imp-gold, #d4a574);
   --tp-lilac: var(--imp-lilac, #c4b7d5);

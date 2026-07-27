@@ -71,13 +71,12 @@ html[data-theme="dark"] .site-header {
 }
 
 .site-header__brand-link {
-  font-family: var(--type-display, var(--imp-font-display, "Fraunces", Georgia, "Songti SC", serif));
+  font-family: var(--type-display, var(--imp-font-display, Georgia, "Noto Serif SC", serif));
   font-size: 1.2rem;
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   color: var(--type-ink, var(--imp-ink, var(--primary)));
   text-decoration: none;
-  font-optical-sizing: auto;
 }
 
 .site-header__brand-link:hover {
@@ -112,10 +111,10 @@ html[data-theme="dark"] .site-header {
   margin-bottom: -1px;
   border-bottom: 2px solid transparent;
   border-radius: 0;
-  font-family: var(--type-body, var(--imp-font-body, "Source Sans 3", "PingFang SC", system-ui, sans-serif));
+  font-family: var(--type-body, var(--imp-font-body, Georgia, "Noto Serif SC", serif));
   font-size: var(--type-meta, 0.9375rem);
   font-weight: 500;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   color: var(--type-muted, var(--imp-ink-muted, var(--secondary)));
   text-decoration: none;
   background: transparent;
