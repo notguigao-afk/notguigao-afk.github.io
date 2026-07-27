@@ -6,9 +6,9 @@ theme = 'PaperMod'
 [params]
   # Landing hero (homepage only)
   [params.homeHero]
-    eyebrow = "笔记 · 工程 · 生活"
-    title = "在光线里写代码"
-    subtitle = "技术笔记为主，也记录一点生活里的光。"
+    eyebrow = ""
+    title = "Live as if you were to die tomorrow."
+    subtitle = "Learn as if you were to live forever."
 
   # 开启代码块复制按钮
   ShowCodeCopyButtons = true

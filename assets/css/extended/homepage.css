@@ -103,10 +103,12 @@ body:has(.home-landing) .footer {
   min-height: min(92vh, 920px);
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: clamp(3rem, 8vw, 6rem) clamp(1.25rem, 4vw, 3rem)
     clamp(4rem, 10vw, 7rem);
   color: var(--color-foreground);
   overflow: hidden;
+  text-align: center;
 }
 
 .home-hero__canvas {
@@ -183,14 +185,17 @@ html[data-theme="auto"] .home-hero__grain {
 
 .home-hero__inner {
   position: relative;
-  max-width: 40rem;
-  padding: clamp(1.25rem, 3vw, 2rem) clamp(1.25rem, 3vw, 2.25rem);
+  width: min(100%, 42rem);
+  max-width: 42rem;
+  margin-inline: auto;
+  padding: clamp(1.5rem, 3.5vw, 2.5rem) clamp(1.25rem, 3.5vw, 2.5rem);
   border-radius: 1.25rem;
   background: color-mix(in srgb, var(--imp-surface) 78%, transparent);
   border: 1px solid color-mix(in srgb, var(--imp-border) 80%, transparent);
   box-shadow: 0 1px 0 color-mix(in srgb, #fff 40%, transparent) inset,
     0 24px 48px -28px color-mix(in srgb, var(--imp-ink) 18%, transparent);
   animation: home-hero-in var(--imp-dur) var(--imp-ease-out) both;
+  text-align: center;
 }
 
 html[data-theme="dark"] .home-hero__inner {
@@ -231,13 +236,13 @@ html[data-theme="dark"] .home-hero__inner {
 }
 
 .home-hero__subtitle {
-  margin: 0;
+  margin: 0 auto;
   font-family: var(--font-body);
-  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
   font-weight: 400;
   line-height: 1.65;
   color: var(--color-muted-foreground);
-  max-width: 34ch;
+  max-width: 36ch;
 }
 
 .home-hero__bio {
@@ -255,6 +260,7 @@ html[data-theme="dark"] .home-hero__inner {
 .home-hero__scroll {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.4rem;
   margin-top: 1.75rem;
   min-height: 44px;
@@ -335,7 +341,8 @@ html[data-theme="dark"] .home-hero__inner {
 
 .home-topics__header {
   max-width: 36rem;
-  margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
+  margin: 0 auto clamp(1.75rem, 4vw, 2.5rem);
+  text-align: center;
 }
 
 .home-topics__label {
