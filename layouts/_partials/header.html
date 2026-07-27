@@ -1,0 +1,95 @@
+{{- $currentPage := . -}}
+{{- $path := $currentPage.RelPermalink -}}
+<header class="header site-header">
+  <nav class="header-nav site-header__nav" aria-label="主导航">
+    <div class="site-header__bar">
+      <div class="logo site-header__brand">
+        {{- $label_text := (site.Params.label.text | default site.Title) }}
+        {{- if site.Title }}
+        <a class="site-header__brand-link" href="{{ "" | absLangURL }}" accesskey="h" title="{{ $label_text }} (Alt + H)">
+          {{- $label_text -}}
+        </a>
+        {{- end }}
+
+        {{- if not site.Params.disableThemeToggle }}
+        <div class="logo-switches">
+          <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="切换主题">
+            <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+        </div>
+        {{- end }}
+      </div>
+
+      {{- /* Build tab items: menu.main if set, else defaults from topics + home/about */ -}}
+      {{- $tabs := slice -}}
+      {{- if site.Menus.main -}}
+        {{- range site.Menus.main -}}
+          {{- $tabs = $tabs | append (dict "name" .Name "url" (.URL | absLangURL) "title" (.Title | default .Name)) -}}
+        {{- end -}}
+      {{- else -}}
+        {{- $tabs = $tabs | append (dict "name" "首页" "url" ("/" | absLangURL) "title" "首页") -}}
+        {{- range sort (site.Data.topics | default slice) "weight" "asc" -}}
+          {{- $name := .name | default .Name -}}
+          {{- $url := "" -}}
+          {{- with index site.Taxonomies.categories $name -}}
+            {{- $url = .Page.Permalink -}}
+          {{- end -}}
+          {{- if not $url -}}
+            {{- $url = printf "/categories/%s/" ($name | urlize) | absLangURL -}}
+          {{- end -}}
+          {{- $tabs = $tabs | append (dict "name" $name "url" $url "title" $name) -}}
+        {{- end -}}
+        {{- $tabs = $tabs | append (dict "name" "关于" "url" ("/#about" | absLangURL) "title" "关于") -}}
+      {{- end -}}
+
+      <ul class="site-tabs" role="list">
+        {{- range $tabs }}
+          {{- $tabName := .name -}}
+          {{- $tabURL := .url -}}
+          {{- $tabPath := strings.TrimSuffix "/" (urls.Parse $tabURL).Path -}}
+          {{- $curPath := strings.TrimSuffix "/" $path -}}
+          {{- $isAboutTab := or (in $tabURL "#about") (eq $tabName "关于") -}}
+          {{- $isHomeTab := and (not $isAboutTab) (or (eq $tabPath "") (eq $tabPath "/")) -}}
+          {{- $active := false -}}
+          {{- if and $isHomeTab $currentPage.IsHome -}}
+            {{- $active = true -}}
+          {{- else if and (not $isHomeTab) (not $isAboutTab) -}}
+            {{- if or (eq $curPath $tabPath) (strings.HasPrefix $curPath (printf "%s/" $tabPath)) -}}
+              {{- $active = true -}}
+            {{- else if $currentPage.IsPage -}}
+              {{- with $currentPage.Params.categories -}}
+                {{- if in . $tabName -}}
+                  {{- $active = true -}}
+                {{- end -}}
+              {{- end -}}
+            {{- end -}}
+          {{- end -}}
+
+          <li class="site-tabs__item">
+            <a class="site-tabs__link{{- if $active }} is-active{{ end }}"
+              href="{{ $tabURL }}"
+              title="{{ .title }}"
+              {{- if $active }} aria-current="page"{{ end }}>
+              <span class="site-tabs__label">{{ $tabName }}</span>
+            </a>
+          </li>
+        {{- end }}
+      </ul>
+    </div>
+  </nav>
+</header>

@@ -3,6 +3,27 @@ languageCode = 'zh-cn'
 title = '我的个人博客'
 theme = 'PaperMod'
 
+# Top tab navigation
+[[menu.main]]
+  name = '首页'
+  url = '/'
+  weight = 1
+
+[[menu.main]]
+  name = '随笔'
+  url = '/categories/随笔/'
+  weight = 2
+
+[[menu.main]]
+  name = '拾遗'
+  url = '/categories/拾遗/'
+  weight = 3
+
+[[menu.main]]
+  name = '关于'
+  url = '/#about'
+  weight = 4
+
 [params]
   # Landing hero — English quote (parallel lines, not translated)
   [params.homeHero]
