@@ -102,15 +102,14 @@ body:has(.home-landing) .footer {
 .home-hero {
   position: relative;
   isolation: isolate;
-  min-height: min(60vh, 560px);
+  min-height: min(62vh, 580px);
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: clamp(2.5rem, 6vw, 4rem) clamp(1.25rem, 4vw, 3rem)
-    clamp(2.5rem, 6vw, 3.5rem);
+  justify-content: flex-start;
+  padding: clamp(2.75rem, 7vw, 5rem) 0 clamp(3rem, 6vw, 4rem);
   color: var(--color-foreground);
   overflow: hidden;
-  text-align: center;
+  text-align: left;
 }
 
 .home-hero__canvas {
@@ -185,30 +184,30 @@ html[data-theme="auto"] .home-hero__grain {
   }
 }
 
+/* Open page surface — no floating app card */
 .home-hero__inner {
   position: relative;
-  width: min(100%, 42rem);
-  max-width: 42rem;
+  width: min(100%, var(--site-measure, 40rem));
+  max-width: var(--site-measure, 40rem);
   margin-inline: auto;
-  padding: clamp(1.5rem, 3.5vw, 2.5rem) clamp(1.25rem, 3.5vw, 2.5rem);
-  border-radius: 1.25rem;
-  background: color-mix(in srgb, var(--imp-surface) 78%, transparent);
-  border: 1px solid color-mix(in srgb, var(--imp-border) 80%, transparent);
-  box-shadow: 0 1px 0 color-mix(in srgb, #fff 40%, transparent) inset,
-    0 24px 48px -28px color-mix(in srgb, var(--imp-ink) 18%, transparent);
+  padding: 0.25rem var(--site-gutter, 1.5rem);
+  border-radius: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
   animation: home-hero-in var(--imp-dur) var(--imp-ease-out) both;
-  text-align: center;
+  text-align: left;
 }
 
 html[data-theme="dark"] .home-hero__inner {
-  background: color-mix(in srgb, var(--imp-surface) 88%, transparent);
-  box-shadow: 0 24px 48px -28px rgba(0, 0, 0, 0.45);
+  background: transparent;
+  box-shadow: none;
 }
 
 @keyframes home-hero-in {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -216,18 +215,18 @@ html[data-theme="dark"] .home-hero__inner {
   }
 }
 
-/* Parallel quote lines — equal weight, no title/subtitle hierarchy */
+/* Parallel quote lines — vertical stack, equal weight */
 .home-hero__quote {
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.85rem;
+  align-items: flex-start;
+  gap: 0.95rem;
   font-family: var(--font-display);
-  font-size: clamp(1.45rem, 3.6vw, 2.15rem);
+  font-size: clamp(1.55rem, 3.8vw, 2.35rem);
   font-weight: 600;
   font-style: italic;
-  line-height: 1.35;
+  line-height: 1.4;
   letter-spacing: -0.015em;
   color: var(--color-foreground);
   font-optical-sizing: auto;
@@ -235,7 +234,7 @@ html[data-theme="dark"] .home-hero__inner {
 
 .home-hero__quote-line {
   display: block;
-  max-width: 22em;
+  max-width: 18em;
 }
 
 .home-hero__quote-line + .home-hero__quote-line {
@@ -246,23 +245,22 @@ html[data-theme="dark"] .home-hero__inner {
 }
 
 .home-hero__tagline {
-  margin: 1.15rem auto 0;
+  margin: 1.5rem 0 0;
   max-width: 28ch;
   font-family: var(--font-body);
-  font-size: clamp(1rem, 2vw, 1.125rem);
+  font-size: clamp(1.02rem, 1.8vw, 1.125rem);
   font-weight: 400;
-  line-height: 1.65;
+  line-height: 1.7;
   color: var(--color-muted-foreground);
 }
 
 .home-hero__scroll {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.4rem;
   margin-top: 1.75rem;
-  min-height: 44px;
-  padding: 0.35rem 0.15rem;
+  padding: 0.35rem 0;
   font-family: var(--font-body);
   font-size: 0.9375rem;
   font-weight: 600;
@@ -284,7 +282,7 @@ html[data-theme="dark"] .home-hero__inner {
 }
 
 .home-hero__scroll:active {
-  transform: scale(0.97);
+  opacity: 0.8;
 }
 
 .home-hero__scroll-icon {
