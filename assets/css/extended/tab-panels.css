@@ -234,10 +234,17 @@ body:has(.home-landing) .footer {
   }
 }
 
-/* ---------- About: essay that opens into a wide triptych ---------- */
+/* ---------- About: same ambient language as home hero ---------- */
+/* Soft washes only — no hard color bars / card borders (not PaperMod) */
 
 .tab-panel--about {
-  max-width: var(--site-frame, 72rem);
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  /* Break out of .main horizontal padding so washes are full-bleed */
+  margin-inline: calc(var(--site-gutter, 1.5rem) * -1);
+  width: calc(100% + var(--site-gutter, 1.5rem) * 2);
 }
 
 .about-ambient {
@@ -246,44 +253,78 @@ body:has(.home-landing) .footer {
   z-index: -1;
   pointer-events: none;
   overflow: hidden;
-  opacity: 0.9;
+  background: var(--imp-canvas, var(--theme));
 }
 
 .about-ambient__wash {
   position: absolute;
   border-radius: 50%;
-  filter: blur(64px);
-  opacity: 0.48;
+  filter: blur(52px);
+  opacity: 0.7;
+  pointer-events: none;
 }
 
 .about-ambient__wash--1 {
-  width: min(40vw, 420px);
-  height: min(40vw, 420px);
-  top: -6%;
-  left: 0;
-  background: radial-gradient(circle at 40% 40%, var(--tp-gold), transparent 70%);
+  width: min(55vw, 720px);
+  height: min(55vw, 720px);
+  top: -14%;
+  left: -6%;
+  background: radial-gradient(circle at 40% 40%, var(--tp-gold), transparent 68%);
 }
 
 .about-ambient__wash--2 {
-  width: min(36vw, 380px);
-  height: min(36vw, 380px);
+  width: min(48vw, 640px);
+  height: min(48vw, 640px);
   top: 8%;
-  right: 5%;
-  background: radial-gradient(circle at 50% 50%, var(--tp-lilac), transparent 72%);
+  right: -8%;
+  background: radial-gradient(circle at 50% 50%, var(--tp-lilac), transparent 70%);
 }
 
 .about-ambient__wash--3 {
-  width: min(32vw, 320px);
-  height: min(32vw, 320px);
-  top: 42%;
-  left: 38%;
-  background: radial-gradient(circle at 50% 50%, var(--tp-sage), transparent 74%);
-  opacity: 0.38;
+  width: min(42vw, 560px);
+  height: min(42vw, 560px);
+  bottom: 6%;
+  left: 22%;
+  background: radial-gradient(circle at 50% 50%, var(--tp-sage), transparent 72%);
+}
+
+.about-ambient__wash--4 {
+  width: min(32vw, 420px);
+  height: min(32vw, 420px);
+  top: 48%;
+  left: 52%;
+  background: radial-gradient(circle at 50% 50%, var(--tp-rose), transparent 70%);
+  opacity: 0.52;
+}
+
+.about-ambient__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.045;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  mix-blend-mode: multiply;
+}
+
+html[data-theme="dark"] .about-ambient__grain {
+  opacity: 0.07;
+  mix-blend-mode: soft-light;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-theme="auto"] .about-ambient__grain {
+    opacity: 0.07;
+    mix-blend-mode: soft-light;
+  }
 }
 
 .about-shell {
   position: relative;
-  padding: 0;
+  width: min(100% - var(--site-gutter, 1.5rem) * 2, var(--site-frame, 72rem));
+  max-width: var(--site-frame, 72rem);
+  margin: 0 auto;
+  padding: var(--site-block, 2.5rem) 0 calc(var(--site-block, 2.5rem) * 1.5);
   background: transparent;
   border: none;
   box-shadow: none;
@@ -291,8 +332,8 @@ body:has(.home-landing) .footer {
 
 .about-header {
   margin-bottom: 2rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid var(--tp-border);
+  padding: 0;
+  border: none;
 }
 
 .about-eyebrow {
@@ -306,8 +347,14 @@ body:has(.home-landing) .footer {
 }
 
 .about-title {
+  margin: 0;
+  font-family: var(--tp-font-display);
   font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
   letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--tp-fg);
+  font-optical-sizing: auto;
 }
 
 .about-prose {
@@ -327,6 +374,7 @@ body:has(.home-landing) .footer {
   font-size: inherit;
   line-height: inherit;
   word-break: break-word;
+  background: transparent;
 }
 
 .about-prose > * {
@@ -334,7 +382,7 @@ body:has(.home-landing) .footer {
 }
 
 .about-prose > p:first-of-type {
-  margin: 0 0 2rem;
+  margin: 0 0 2.25rem;
   max-width: var(--site-prose, 40rem);
   font-size: clamp(1.15rem, 1.8vw, 1.35rem);
   font-weight: 500;
@@ -342,42 +390,31 @@ body:has(.home-landing) .footer {
   color: var(--tp-fg);
 }
 
-/* Three forces */
+/* Three forces — open air, no bars / dividers */
 .about-prose > ul:first-of-type {
   list-style: none;
-  margin: 0 0 2.25rem;
+  margin: 0 0 2.5rem;
   padding: 0;
-  display: block;
-  border-top: 1px solid var(--tp-border);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border: none;
 }
 
 .about-prose > ul:first-of-type > li {
   margin: 0;
-  padding: 1.35rem 0 1.35rem 1rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--tp-border) 90%, transparent);
-  border-left: 3px solid transparent;
+  padding: 0;
+  border: none;
   background: transparent;
-  line-height: 1.75;
+  line-height: 1.8;
   color: var(--tp-muted);
-}
-
-.about-prose > ul:first-of-type > li:nth-child(1) {
-  border-left-color: var(--tp-gold);
-}
-
-.about-prose > ul:first-of-type > li:nth-child(2) {
-  border-left-color: var(--tp-lilac);
-}
-
-.about-prose > ul:first-of-type > li:nth-child(3) {
-  border-left-color: var(--tp-sage);
 }
 
 .about-prose > ul:first-of-type > li strong {
   display: block;
   margin-bottom: 0.45rem;
   font-family: var(--tp-font-display);
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   font-weight: 600;
   font-style: italic;
   letter-spacing: -0.01em;
@@ -385,16 +422,17 @@ body:has(.home-landing) .footer {
   font-optical-sizing: auto;
 }
 
+/* Soft ink tint only — no solid color blocks */
 .about-prose > ul:first-of-type > li:nth-child(1) strong {
-  color: color-mix(in srgb, var(--tp-gold) 50%, var(--tp-fg));
+  color: color-mix(in srgb, var(--tp-gold) 42%, var(--tp-fg));
 }
 
 .about-prose > ul:first-of-type > li:nth-child(2) strong {
-  color: color-mix(in srgb, var(--tp-lilac) 45%, var(--tp-fg));
+  color: color-mix(in srgb, var(--tp-lilac) 40%, var(--tp-fg));
 }
 
 .about-prose > ul:first-of-type > li:nth-child(3) strong {
-  color: color-mix(in srgb, var(--tp-sage) 40%, var(--tp-fg));
+  color: color-mix(in srgb, var(--tp-sage) 38%, var(--tp-fg));
 }
 
 .about-prose > p:nth-of-type(2) {
@@ -410,29 +448,32 @@ body:has(.home-landing) .footer {
 }
 
 .about-prose > p:nth-of-type(3) {
-  margin: 0 0 2.25rem;
+  margin: 0 0 2.5rem;
   max-width: var(--site-prose, 40rem);
   font-size: 1.05rem;
   line-height: 1.8;
   color: var(--tp-muted);
 }
 
+/* Categories — plain text pairs, no list chrome */
 .about-prose > ul:last-of-type {
   list-style: none;
   margin: 0 0 2.25rem;
   padding: 0;
-  display: block;
-  border-top: 1px solid var(--tp-border);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: none;
 }
 
 .about-prose > ul:last-of-type > li {
   margin: 0;
-  padding: 1.1rem 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--tp-border) 90%, transparent);
+  padding: 0;
+  border: none;
   background: transparent;
   line-height: 1.65;
   color: var(--tp-muted);
-  font-size: 1rem;
+  font-size: 1.02rem;
 }
 
 .about-prose > ul:last-of-type > li strong {
@@ -454,13 +495,13 @@ body:has(.home-landing) .footer {
   color: var(--tp-fg);
 }
 
-/* Wide about: 12-ish modular grid — triptych forces + paired lanes */
 @media (min-width: 900px) {
   .about-header {
     display: grid;
     grid-template-columns: minmax(10rem, 0.28fr) minmax(0, 1fr);
     column-gap: 2.5rem;
     align-items: end;
+    margin-bottom: 2.5rem;
   }
 
   .about-eyebrow {
@@ -478,32 +519,16 @@ body:has(.home-landing) .footer {
     font-size: clamp(1.2rem, 1.5vw, 1.4rem);
   }
 
-  /* Three-body triptych across the frame */
+  /* Triptych columns — space only, no top bars */
   .about-prose > ul:first-of-type {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: 2rem;
-    border-top: none;
-    padding-top: 0.25rem;
+    column-gap: clamp(1.75rem, 3vw, 2.75rem);
+    row-gap: 0;
   }
 
   .about-prose > ul:first-of-type > li {
-    padding: 1.25rem 0 0;
-    border-bottom: none;
-    border-left: none;
-    border-top: 3px solid transparent;
-  }
-
-  .about-prose > ul:first-of-type > li:nth-child(1) {
-    border-top-color: var(--tp-gold);
-  }
-
-  .about-prose > ul:first-of-type > li:nth-child(2) {
-    border-top-color: var(--tp-lilac);
-  }
-
-  .about-prose > ul:first-of-type > li:nth-child(3) {
-    border-top-color: var(--tp-sage);
+    padding: 0;
   }
 
   .about-prose > p:nth-of-type(2),
@@ -516,11 +541,7 @@ body:has(.home-landing) .footer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 3rem;
-    border-top: 1px solid var(--tp-border);
-  }
-
-  .about-prose > ul:last-of-type > li {
-    padding: 1.25rem 0;
+    row-gap: 0;
   }
 
   .about-prose > ul:last-of-type > li strong {
@@ -530,17 +551,13 @@ body:has(.home-landing) .footer {
 }
 
 @media (min-width: 1200px) {
-  .about-prose > ul:first-of-type {
-    column-gap: 2.75rem;
-  }
-
   .about-prose > ul:first-of-type > li {
     font-size: 1.05rem;
-    line-height: 1.8;
+    line-height: 1.85;
   }
 
   .about-prose > ul:first-of-type > li strong {
-    font-size: 1.15rem;
+    font-size: 1.18rem;
   }
 }
 
