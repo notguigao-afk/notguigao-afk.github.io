@@ -71,12 +71,13 @@ html[data-theme="dark"] .site-header {
 }
 
 .site-header__brand-link {
-  font-family: var(--imp-font-display, "Fraunces", Georgia, "Songti SC", serif);
+  font-family: var(--type-display, var(--imp-font-display, "Fraunces", Georgia, "Songti SC", serif));
   font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: -0.02em;
-  color: var(--imp-ink, var(--primary));
+  color: var(--type-ink, var(--imp-ink, var(--primary)));
   text-decoration: none;
+  font-optical-sizing: auto;
 }
 
 .site-header__brand-link:hover {
@@ -111,17 +112,17 @@ html[data-theme="dark"] .site-header {
   margin-bottom: -1px;
   border-bottom: 2px solid transparent;
   border-radius: 0;
-  font-family: var(--imp-font-body, "Source Sans 3", "PingFang SC", system-ui, sans-serif);
-  font-size: 0.95rem;
+  font-family: var(--type-body, var(--imp-font-body, "Source Sans 3", "PingFang SC", system-ui, sans-serif));
+  font-size: var(--type-meta, 0.9375rem);
   font-weight: 500;
   letter-spacing: 0.02em;
-  color: var(--imp-ink-muted, var(--secondary));
+  color: var(--type-muted, var(--imp-ink-muted, var(--secondary)));
   text-decoration: none;
   background: transparent;
   box-shadow: none;
   cursor: pointer;
-  transition: color 160ms var(--imp-ease-out, ease),
-    border-color 160ms var(--imp-ease-out, ease);
+  transition: color 160ms var(--type-ease, var(--imp-ease-out, ease)),
+    border-color 160ms var(--type-ease, var(--imp-ease-out, ease));
 }
 
 .site-tabs__link:hover {

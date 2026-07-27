@@ -1,0 +1,494 @@
+/* ============================================================
+   Site-wide typography
+   Display: Fraunces (+ CJK serif fallback)
+   Body/UI: Source Sans 3 (+ CJK sans fallback)
+   Applies to every page — not only hero / about
+   ============================================================ */
+
+/* Tokens live in homepage.css :root; hard fallbacks here for load order */
+:root {
+  --type-display: var(
+    --imp-font-display,
+    "Fraunces",
+    "Newsreader",
+    Georgia,
+    "Songti SC",
+    "Noto Serif SC",
+    serif
+  );
+  --type-body: var(
+    --imp-font-body,
+    "Source Sans 3",
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Noto Sans SC",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif
+  );
+  --type-mono: ui-monospace, "SF Mono", "Cascadia Code", "Segoe UI Mono", Menlo, Consolas,
+    monospace;
+
+  /* Scale (rem) — modular, readable on wide screens */
+  --type-xs: 0.8125rem; /* 13 */
+  --type-sm: 0.875rem; /* 14 */
+  --type-meta: 0.9375rem; /* 15 */
+  --type-base: 1.0625rem; /* 17 */
+  --type-md: 1.125rem; /* 18 */
+  --type-lg: 1.25rem; /* 20 */
+  --type-xl: clamp(1.35rem, 1.8vw, 1.55rem);
+  --type-2xl: clamp(1.65rem, 2.4vw, 2rem);
+  --type-3xl: clamp(1.9rem, 3.2vw, 2.55rem);
+  --type-4xl: clamp(2.2rem, 4vw, 3.15rem);
+
+  --type-leading-tight: 1.2;
+  --type-leading-snug: 1.35;
+  --type-leading-body: 1.75;
+  --type-leading-loose: 1.9;
+
+  --type-ink: var(--imp-ink, var(--primary));
+  --type-muted: var(--imp-ink-muted, var(--secondary));
+  --type-link: color-mix(in srgb, var(--imp-sage, #9bb7a5) 28%, var(--type-ink));
+  --type-ease: var(--imp-ease-out, cubic-bezier(0.23, 1, 0.32, 1));
+}
+
+/* ---------- Document base (overrides PaperMod reset) ---------- */
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: var(--type-body);
+  font-size: var(--type-base);
+  font-weight: 400;
+  line-height: var(--type-leading-body);
+  letter-spacing: 0.005em;
+  color: var(--type-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Global heading face — weight/size refined per level */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.post-title,
+.page-header h1,
+.entry-header h2,
+.entry-header h3,
+.archive-year-header,
+.archive-month-header {
+  font-family: var(--type-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: var(--type-leading-tight);
+  color: var(--type-ink);
+  font-optical-sizing: auto;
+  text-wrap: balance;
+}
+
+h1,
+.page-header h1 {
+  font-size: var(--type-3xl);
+  letter-spacing: -0.025em;
+}
+
+h2 {
+  font-size: var(--type-2xl);
+  margin-block: 1.6em 0.65em;
+}
+
+h3 {
+  font-size: var(--type-xl);
+  margin-block: 1.4em 0.55em;
+}
+
+h4 {
+  font-size: var(--type-lg);
+  letter-spacing: -0.01em;
+  margin-block: 1.25em 0.45em;
+}
+
+h5,
+h6 {
+  font-family: var(--type-body);
+  font-size: var(--type-meta);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+/* ---------- Links, selection, misc chrome ---------- */
+
+a {
+  color: var(--type-link);
+  text-underline-offset: 0.18em;
+  transition: color 160ms var(--type-ease);
+}
+
+a:hover {
+  color: var(--type-ink);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--imp-sage, #9bb7a5) 35%, transparent);
+  color: var(--type-ink);
+}
+
+/* ---------- PaperMod list / archive / entry ---------- */
+
+.page-header {
+  margin-bottom: 1.75rem;
+}
+
+.page-header h1 {
+  margin: 0 0 0.5rem;
+}
+
+.entry-header h2 {
+  font-size: var(--type-xl);
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+.entry-content {
+  font-family: var(--type-body);
+  font-size: var(--type-meta);
+  line-height: var(--type-leading-body);
+  color: var(--type-muted);
+}
+
+.entry-footer,
+.post-meta,
+.breadcrumbs {
+  font-family: var(--type-body);
+  font-size: var(--type-sm);
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  color: var(--type-muted);
+  line-height: 1.5;
+}
+
+.breadcrumbs a {
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.archive-year-header {
+  font-size: var(--type-2xl);
+}
+
+.archive-month-header {
+  font-size: var(--type-lg);
+  font-weight: 500;
+}
+
+/* ---------- Single post title (PaperMod + our site-prose) ---------- */
+
+.post-title {
+  font-size: var(--type-3xl);
+  letter-spacing: -0.025em;
+  line-height: var(--type-leading-tight);
+  margin: 0 0 0.65rem;
+}
+
+.post-description {
+  font-family: var(--type-body);
+  font-size: var(--type-md);
+  line-height: var(--type-leading-body);
+  color: var(--type-muted);
+}
+
+/* ---------- Markdown / article body (all .md-content / .post-content) ---------- */
+
+.md-content,
+.post-content {
+  font-family: var(--type-body);
+  font-size: var(--type-base);
+  line-height: var(--type-leading-loose);
+  letter-spacing: 0.01em;
+  color: var(--type-ink);
+  text-wrap: pretty;
+}
+
+.md-content h1,
+.post-content h1 {
+  font-family: var(--type-display);
+  font-size: var(--type-3xl);
+  font-weight: 600;
+  margin: 1.6em 0 0.7em;
+  letter-spacing: -0.025em;
+  line-height: var(--type-leading-tight);
+}
+
+.md-content h2,
+.post-content h2 {
+  font-family: var(--type-display);
+  font-size: var(--type-2xl);
+  font-weight: 600;
+  margin: 1.75em 0 0.65em;
+  letter-spacing: -0.02em;
+  line-height: var(--type-leading-snug);
+}
+
+.md-content h3,
+.post-content h3 {
+  font-family: var(--type-display);
+  font-size: var(--type-xl);
+  font-weight: 600;
+  margin: 1.5em 0 0.55em;
+  letter-spacing: -0.015em;
+}
+
+.md-content h4,
+.post-content h4 {
+  font-family: var(--type-display);
+  font-size: var(--type-lg);
+  font-weight: 600;
+  margin: 1.35em 0 0.45em;
+}
+
+.md-content h5,
+.post-content h5,
+.md-content h6,
+.post-content h6 {
+  font-family: var(--type-body);
+  font-size: var(--type-meta);
+  font-weight: 600;
+  margin: 1.25em 0 0.4em;
+  letter-spacing: 0.01em;
+}
+
+.md-content p,
+.post-content p {
+  margin: 0 0 1.15em;
+}
+
+.md-content a:not(.anchor),
+.post-content a:not(.anchor) {
+  color: var(--type-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.md-content a:not(.anchor):hover,
+.post-content a:not(.anchor):hover {
+  color: var(--type-ink);
+}
+
+.md-content strong,
+.post-content strong {
+  font-weight: 600;
+  color: var(--type-ink);
+}
+
+.md-content em,
+.post-content em {
+  font-style: italic;
+}
+
+.md-content ul,
+.md-content ol,
+.post-content ul,
+.post-content ol {
+  margin: 0 0 1.15em;
+  padding-inline-start: 1.35rem;
+}
+
+.md-content li,
+.post-content li {
+  margin-top: 0.4rem;
+  line-height: var(--type-leading-body);
+}
+
+.md-content li::marker,
+.post-content li::marker {
+  color: var(--type-muted);
+}
+
+.md-content blockquote,
+.post-content blockquote {
+  margin: 1.5em 0;
+  padding: 0.15em 0 0.15em 1.1rem;
+  border-inline-start: 3px solid color-mix(in srgb, var(--imp-sage, #9bb7a5) 65%, var(--imp-border, #e7e0d6));
+  font-family: var(--type-display);
+  font-size: 1.05em;
+  font-style: italic;
+  font-weight: 500;
+  line-height: var(--type-leading-body);
+  letter-spacing: -0.01em;
+  color: color-mix(in srgb, var(--type-ink) 88%, var(--type-muted));
+}
+
+.md-content blockquote p:last-child,
+.post-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.md-content hr,
+.post-content hr {
+  margin: 2.25em auto;
+  border: 0;
+  border-top: 1px solid var(--imp-border, var(--border));
+  max-width: 8rem;
+}
+
+.md-content code,
+.post-content code {
+  font-family: var(--type-mono);
+  font-size: 0.88em;
+  font-weight: 500;
+  letter-spacing: 0;
+  padding: 0.12em 0.35em;
+  border-radius: 0.3em;
+  background: color-mix(in srgb, var(--imp-surface, var(--code-bg)) 88%, var(--imp-mist, #e8eef2));
+  color: var(--type-ink);
+}
+
+.md-content pre,
+.post-content pre {
+  font-family: var(--type-mono);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  letter-spacing: 0;
+  margin: 1.35em 0;
+  padding: 1rem 1.15rem;
+  border-radius: 0.55rem;
+  overflow-x: auto;
+  border: 1px solid var(--imp-border, var(--border));
+}
+
+.md-content pre code,
+.post-content pre code {
+  padding: 0;
+  background: transparent;
+  font-size: inherit;
+  border-radius: 0;
+}
+
+.md-content figcaption,
+.post-content figcaption,
+.md-content .caption {
+  font-family: var(--type-body);
+  font-size: var(--type-sm);
+  line-height: 1.5;
+  color: var(--type-muted);
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.md-content table,
+.post-content table {
+  font-size: var(--type-meta);
+  line-height: 1.5;
+}
+
+.md-content th,
+.post-content th {
+  font-family: var(--type-body);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Tags, share, pagination ---------- */
+
+.post-tags {
+  font-family: var(--type-body);
+}
+
+.post-tags a {
+  font-size: var(--type-sm);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.pagination a {
+  font-family: var(--type-body);
+  font-size: var(--type-sm);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Footer ---------- */
+
+.footer,
+.top-link {
+  font-family: var(--type-body);
+  font-size: var(--type-sm);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: var(--type-muted);
+}
+
+.footer a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+}
+
+.footer a:hover {
+  color: var(--type-ink);
+}
+
+/* Align footer with wide frame when custom pages load */
+.footer {
+  max-width: min(100%, var(--site-frame, 72rem));
+  width: 100%;
+}
+
+/* ---------- Terms / taxonomy chips ---------- */
+
+.terms-tags a {
+  font-family: var(--type-body);
+  font-size: var(--type-sm);
+  font-weight: 500;
+}
+
+/* ---------- 404 ---------- */
+
+.not-found h1 {
+  font-family: var(--type-display);
+  font-optical-sizing: auto;
+}
+
+/* ---------- Form controls (search etc.) ---------- */
+
+input,
+button,
+textarea,
+select {
+  font-family: var(--type-body);
+}
+
+#searchInput,
+.search-input {
+  font-family: var(--type-body);
+  font-size: var(--type-base);
+}
+
+/* ---------- Widen base measure on large screens slightly ---------- */
+
+@media (min-width: 900px) {
+  body {
+    font-size: 1.075rem;
+  }
+
+  .md-content,
+  .post-content {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .md-content,
+  .post-content {
+    font-size: 1.125rem;
+    line-height: 1.92;
+  }
+}
