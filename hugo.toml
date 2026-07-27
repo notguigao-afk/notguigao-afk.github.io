@@ -4,11 +4,11 @@ title = '我的个人博客'
 theme = 'PaperMod'
 
 [params]
-  # Landing hero (homepage only)
+  # Landing hero — parallel English quote lines (not title/subtitle)
   [params.homeHero]
-    eyebrow = ""
-    title = "Live as if you were to die tomorrow."
-    subtitle = "Learn as if you were to live forever."
+    quoteLines = [
+      "Live as if you were to die tomorrow.",
+      "Learn as if you were to live forever."
+    ]
 
-  # 开启代码块复制按钮
   ShowCodeCopyButtons = true
