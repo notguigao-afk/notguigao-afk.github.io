@@ -1,7 +1,7 @@
 +++
 date = '2025-02-14T20:00:00+08:00'
 draft = false
-title = '没赶上'
+title = 'Life Goes On'
 categories = ['随笔']
 tags = ['生死', '朋友']
 +++
