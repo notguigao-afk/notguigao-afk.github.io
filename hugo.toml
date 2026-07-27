@@ -1,0 +1,13 @@
+baseURL = 'https://notgugiao-afk.github.io/'
+languageCode = 'zh-cn'
+title = '我的个人博客'
+theme = 'PaperMod'
+
+[params]
+  # 开启首页大图/个人简介模式
+  [params.homeInfoParams]
+    Title = "👋 你好，我是 [你的名字]"
+    Content = "欢迎来到我的个人博客，这里记录我的技术与生活。"
+
+  # 开启代码块复制按钮
+  ShowCodeCopyButtons = true
