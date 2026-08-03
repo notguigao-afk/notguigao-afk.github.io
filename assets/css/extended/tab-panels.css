@@ -341,61 +341,39 @@ html[data-theme="dark"] .about-ambient__grain {
 }
 
 /*
- * About layout: one centered reading column.
- * Same width for header + every block → even side margins, no left pile-up.
+ * About: full site-frame width (same as 随笔 lists), not a phone-width column.
+ * Long lines use a readable measure; songs/map use the full frame.
  */
 .about-shell {
-  --about-column: min(100%, 40rem);
-  --about-gap-section: clamp(2rem, 3.5vw, 2.75rem);
+  --about-gap-section: clamp(2.25rem, 4vw, 3rem);
+  --about-prose-measure: min(100%, 48rem);
   position: relative;
   width: min(100% - var(--site-gutter, 1.5rem) * 2, var(--site-frame, 72rem));
   max-width: var(--site-frame, 72rem);
   margin: 0 auto;
-  padding: clamp(2.5rem, 5vw, 3.5rem) 0 calc(var(--site-block, 2.5rem) * 1.55);
+  padding: clamp(2.25rem, 4.5vw, 3.25rem) 0 calc(var(--site-block, 2.5rem) * 1.5);
   background: transparent;
   border: none;
   box-shadow: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-.about-header {
-  width: 100%;
-  max-width: var(--about-column);
-  margin: 0 0 var(--about-gap-section);
-  padding: 0 0 1.25rem;
-  border: none;
-  border-bottom: 1px solid color-mix(in srgb, var(--tp-border) 88%, transparent);
-  text-align: center;
-}
-
-.about-eyebrow {
-  margin: 0 0 0.45rem;
-  font-family: var(--tp-font-body);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--tp-muted);
-}
-
-.about-title {
-  margin: 0;
-  font-family: var(--tp-font-display);
-  font-size: clamp(2.1rem, 4vw, 2.85rem);
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1.12;
-  color: var(--tp-fg);
-  font-optical-sizing: auto;
-  text-wrap: balance;
+/* Visible title removed; keep for a11y / document outline */
+.about-title-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .about-prose {
   width: 100%;
-  max-width: var(--about-column);
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
   font-family: var(--tp-font-body);
   font-size: 1.0625rem;
   font-weight: 400;
@@ -408,12 +386,13 @@ html[data-theme="dark"] .about-ambient__grain {
 
 .tab-panel--about .about-prose.post-content,
 .tab-panel--about .about-prose.md-content {
-  margin: 0 auto;
+  margin: 0;
   font-size: inherit;
   line-height: inherit;
   word-break: break-word;
   background: transparent;
-  max-width: var(--about-column);
+  max-width: none;
+  width: 100%;
 }
 
 .about-prose > * {
@@ -422,11 +401,12 @@ html[data-theme="dark"] .about-ambient__grain {
   width: 100%;
 }
 
-/* 1 · Lead */
+/* 1 · Lead — readable measure, still full-frame left edge (aligned with shell) */
 .about-lead {
+  max-width: var(--about-prose-measure);
   margin: 0 0 var(--about-gap-section) !important;
   font-family: var(--tp-font-display);
-  font-size: clamp(1.28rem, 2vw, 1.5rem);
+  font-size: clamp(1.35rem, 2.2vw, 1.65rem);
   font-weight: 500;
   line-height: 1.55;
   letter-spacing: -0.015em;
@@ -434,20 +414,21 @@ html[data-theme="dark"] .about-ambient__grain {
   font-optical-sizing: auto;
 }
 
-/* 2 · Songs — stacked in the same column (balanced, readable) */
+/* 2 · Songs — full frame width triptych on desktop */
 .about-songs {
   list-style: none;
   margin: 0 0 var(--about-gap-section) !important;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 1.35rem;
+  gap: 1.5rem;
   border: none;
+  width: 100%;
 }
 
 .about-songs > li {
   margin: 0;
-  padding: 0.15rem 0 0.15rem 1.05rem;
+  padding: 0.2rem 0 0.2rem 1.1rem;
   border: none;
   border-inline-start: 2px solid color-mix(in srgb, var(--tp-sage) 45%, var(--tp-border));
   background: transparent;
@@ -468,9 +449,9 @@ html[data-theme="dark"] .about-ambient__grain {
 
 .about-songs__title {
   display: block;
-  margin: 0 0 0.45rem;
+  margin: 0 0 0.5rem;
   font-family: var(--tp-font-display);
-  font-size: 1.12rem;
+  font-size: 1.15rem;
   font-weight: 600;
   font-style: italic;
   letter-spacing: -0.012em;
@@ -494,7 +475,7 @@ html[data-theme="dark"] .about-ambient__grain {
 .about-songs__body {
   display: block;
   font-family: var(--tp-font-body);
-  font-size: 1.02rem;
+  font-size: 1.04rem;
   font-weight: 400;
   font-style: normal;
   line-height: 1.8;
@@ -504,9 +485,10 @@ html[data-theme="dark"] .about-ambient__grain {
 
 /* 3 · Bridge + pause */
 .about-bridge {
+  max-width: var(--about-prose-measure);
   margin: 0 0 1rem !important;
   font-family: var(--tp-font-display);
-  font-size: clamp(1.12rem, 1.5vw, 1.28rem);
+  font-size: clamp(1.15rem, 1.6vw, 1.32rem);
   font-weight: 500;
   font-style: italic;
   line-height: 1.6;
@@ -516,15 +498,16 @@ html[data-theme="dark"] .about-ambient__grain {
 }
 
 .about-pause {
+  max-width: var(--about-prose-measure);
   margin: 0 0 var(--about-gap-section) !important;
   font-size: 1.05rem;
   line-height: 1.8;
   color: var(--tp-muted);
 }
 
-/* 4 · Map */
+/* 4 · Map — full frame */
 .about-map-label {
-  margin: 0 0 0.75rem !important;
+  margin: 0 0 0.85rem !important;
   font-family: var(--tp-font-body);
   font-size: 0.72rem;
   font-weight: 600;
@@ -541,21 +524,22 @@ html[data-theme="dark"] .about-ambient__grain {
   flex-direction: column;
   gap: 0;
   border: none;
+  width: 100%;
 }
 
 .about-map > li {
   display: grid;
-  grid-template-columns: 6.75rem minmax(0, 1fr);
-  column-gap: 1.15rem;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  column-gap: 1.25rem;
   align-items: baseline;
   margin: 0;
-  padding: 0.9rem 0;
+  padding: 0.95rem 0;
   border: none;
   border-top: 1px solid color-mix(in srgb, var(--tp-border) 90%, transparent);
   background: transparent;
   line-height: 1.55;
   color: var(--tp-muted);
-  font-size: 1rem;
+  font-size: 1.02rem;
 }
 
 .about-map > li:last-child {
@@ -565,7 +549,7 @@ html[data-theme="dark"] .about-ambient__grain {
 .about-map > li strong {
   margin: 0;
   font-family: var(--tp-font-display);
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--tp-fg);
@@ -576,11 +560,12 @@ html[data-theme="dark"] .about-ambient__grain {
   letter-spacing: 0.01em;
 }
 
-/* 5 · Close — full column width, not a short left stub */
+/* 5 · Close */
 .about-close {
+  max-width: var(--about-prose-measure);
   margin: 0 !important;
   font-family: var(--tp-font-display);
-  font-size: 1.15rem;
+  font-size: 1.18rem;
   font-weight: 500;
   line-height: 1.65;
   letter-spacing: -0.01em;
@@ -588,13 +573,13 @@ html[data-theme="dark"] .about-ambient__grain {
   font-optical-sizing: auto;
 }
 
-/* 6 · Colophon — same column, right-aligned text (not floating off-column) */
+/* 6 · Colophon */
 .about-prose > .about-colophon {
   margin: var(--about-gap-section) 0 0 !important;
   margin-inline-start: 0 !important;
   max-width: none;
   width: 100%;
-  padding: 1.35rem 0 0;
+  padding: 1.4rem 0 0;
   border-top: 1px solid color-mix(in srgb, var(--tp-border) 85%, transparent);
   text-align: end;
 }
@@ -660,14 +645,10 @@ html[data-theme="dark"] .about-ambient__grain {
   font-family: inherit;
 }
 
-@media (max-width: 599px) {
+@media (max-width: 699px) {
   .about-map > li {
     grid-template-columns: 1fr;
     row-gap: 0.25rem;
-  }
-
-  .about-header {
-    text-align: left;
   }
 
   .about-prose > .about-colophon {
@@ -675,39 +656,73 @@ html[data-theme="dark"] .about-ambient__grain {
   }
 }
 
-@media (min-width: 900px) {
-  .about-shell {
-    --about-column: min(100%, 42rem);
-    padding-block: clamp(3rem, 5.5vw, 4rem) calc(var(--site-block, 2.5rem) * 1.65);
+@media (min-width: 800px) {
+  .about-songs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: clamp(1.5rem, 2.5vw, 2.5rem);
+    row-gap: 0;
+    align-items: start;
   }
 
-  .about-songs {
-    gap: 1.5rem;
+  .about-songs > li {
+    padding-top: 0.1rem;
   }
 
   .about-songs__title {
-    font-size: 1.15rem;
+    font-size: 1.18rem;
   }
 
   .about-songs__body {
-    font-size: 1.04rem;
+    font-size: 1.03rem;
     line-height: 1.85;
   }
 
+  .about-map {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: clamp(1.5rem, 2.5vw, 2.5rem);
+    row-gap: 0;
+    border-top: 1px solid color-mix(in srgb, var(--tp-border) 90%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--tp-border) 90%, transparent);
+  }
+
   .about-map > li {
-    grid-template-columns: 7.25rem minmax(0, 1fr);
-    column-gap: 1.35rem;
+    display: block;
+    padding: 1.15rem 0;
+    border-top: none;
+    border-bottom: none;
+  }
+
+  .about-map > li:last-child {
+    border-bottom: none;
+  }
+
+  .about-map > li strong {
+    display: block;
+    margin: 0 0 0.4rem;
+    font-size: 1.12rem;
+  }
+
+  .about-map > li span {
+    display: block;
+    line-height: 1.65;
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1100px) {
   .about-shell {
-    --about-column: min(100%, 44rem);
+    --about-prose-measure: min(100%, 52rem);
+    padding-block: clamp(2.75rem, 5vw, 3.75rem) calc(var(--site-block, 2.5rem) * 1.55);
   }
 
   .about-lead {
-    font-size: 1.55rem;
+    font-size: 1.7rem;
     line-height: 1.5;
+  }
+
+  .about-songs__body {
+    font-size: 1.06rem;
   }
 }
 
