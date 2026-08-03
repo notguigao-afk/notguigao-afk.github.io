@@ -347,17 +347,17 @@ html[data-theme="dark"] .about-ambient__grain {
 }
 
 .about-header {
-  margin-bottom: 2rem;
+  margin-bottom: clamp(2rem, 4vw, 2.75rem);
   padding: 0;
   border: none;
 }
 
 .about-eyebrow {
-  margin: 0 0 0.45rem;
+  margin: 0 0 0.4rem;
   font-family: var(--tp-font-body);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--tp-muted);
 }
@@ -365,23 +365,28 @@ html[data-theme="dark"] .about-ambient__grain {
 .about-title {
   margin: 0;
   font-family: var(--tp-font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.1rem, 4.2vw, 3.1rem);
   font-weight: 600;
   letter-spacing: -0.03em;
-  line-height: 1.15;
+  line-height: 1.12;
   color: var(--tp-fg);
   font-optical-sizing: auto;
+  text-wrap: balance;
 }
 
+/* Reading column: ui-ux-pro-max measure, editorial hierarchy */
 .about-prose {
+  --about-measure: min(100%, 40rem);
+  --about-gap-section: clamp(2.25rem, 4.5vw, 3.25rem);
   font-family: var(--tp-font-body);
-  font-size: clamp(1.05rem, 1.2vw, 1.125rem);
+  font-size: 1.0625rem;
   font-weight: 400;
-  line-height: var(--type-leading-loose, 1.75);
-  letter-spacing: 0.01em;
+  line-height: 1.75;
+  letter-spacing: 0.015em;
   color: var(--tp-fg);
   text-align: left;
   text-wrap: pretty;
+  max-width: min(100%, 56rem);
 }
 
 .tab-panel--about .about-prose.post-content,
@@ -397,130 +402,184 @@ html[data-theme="dark"] .about-ambient__grain {
   margin: 0;
 }
 
-.about-prose > p:first-of-type {
-  margin: 0 0 2.25rem;
-  max-width: var(--site-prose, 75ch);
-  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
-  font-weight: 500;
-  line-height: 1.7;
-  color: var(--tp-fg);
-}
-
-/* Three forces — open air, no bars / dividers */
-.about-prose > ul:first-of-type {
-  list-style: none;
-  margin: 0 0 2.5rem;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  border: none;
-}
-
-.about-prose > ul:first-of-type > li {
-  margin: 0;
-  padding: 0;
-  border: none;
-  background: transparent;
-  line-height: 1.8;
-  color: var(--tp-muted);
-}
-
-.about-prose > ul:first-of-type > li strong {
-  display: block;
-  margin-bottom: 0.45rem;
+/* 1 · Lead — apple-design: weight + size for hierarchy */
+.about-lead {
+  max-width: var(--about-measure);
+  margin: 0 0 var(--about-gap-section) !important;
   font-family: var(--tp-font-display);
-  font-size: 1.08rem;
-  font-weight: 600;
-  font-style: italic;
-  letter-spacing: -0.01em;
+  font-size: clamp(1.28rem, 2.2vw, 1.55rem);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: -0.015em;
   color: var(--tp-fg);
   font-optical-sizing: auto;
 }
 
-/* Soft water tints — one family, slight depth variation */
-.about-prose > ul:first-of-type > li:nth-child(1) strong {
-  color: color-mix(in srgb, var(--tp-sage) 36%, var(--tp-fg));
+/* 2 · Three songs — open triptych, turquoise family accents only */
+.about-songs {
+  list-style: none;
+  margin: 0 0 var(--about-gap-section) !important;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.65rem;
+  border: none;
 }
 
-.about-prose > ul:first-of-type > li:nth-child(2) strong {
-  color: color-mix(in srgb, var(--tp-lilac) 34%, var(--tp-fg));
+.about-songs > li {
+  margin: 0;
+  padding: 0 0 0 1rem;
+  border: none;
+  border-inline-start: 2px solid color-mix(in srgb, var(--tp-sage) 45%, var(--tp-border));
+  background: transparent;
+  line-height: 1.75;
 }
 
-.about-prose > ul:first-of-type > li:nth-child(3) strong {
-  color: color-mix(in srgb, var(--tp-rose) 32%, var(--tp-fg));
+.about-songs > li:nth-child(1) {
+  border-inline-start-color: color-mix(in srgb, var(--tp-sage) 55%, var(--tp-border));
 }
 
-.about-prose > p:nth-of-type(2) {
-  margin: 0 0 1rem;
-  max-width: 36em;
+.about-songs > li:nth-child(2) {
+  border-inline-start-color: color-mix(in srgb, var(--tp-lilac) 50%, var(--tp-border));
+}
+
+.about-songs > li:nth-child(3) {
+  border-inline-start-color: color-mix(in srgb, var(--tp-rose) 48%, var(--tp-border));
+}
+
+.about-songs__title {
+  display: block;
+  margin: 0 0 0.5rem;
   font-family: var(--tp-font-display);
-  font-size: clamp(1.12rem, 1.6vw, 1.3rem);
+  font-size: 1.12rem;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: -0.012em;
+  line-height: 1.3;
+  color: var(--tp-fg);
+  font-optical-sizing: auto;
+}
+
+.about-songs > li:nth-child(1) .about-songs__title {
+  color: color-mix(in srgb, var(--tp-sage) 28%, var(--tp-fg));
+}
+
+.about-songs > li:nth-child(2) .about-songs__title {
+  color: color-mix(in srgb, var(--tp-lilac) 26%, var(--tp-fg));
+}
+
+.about-songs > li:nth-child(3) .about-songs__title {
+  color: color-mix(in srgb, var(--tp-rose) 24%, var(--tp-fg));
+}
+
+.about-songs__body {
+  display: block;
+  font-family: var(--tp-font-body);
+  font-size: 1.02rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+  color: var(--tp-muted);
+}
+
+/* 3 · Bridge — pull-quote weight, still serif */
+.about-bridge {
+  max-width: min(100%, 36rem);
+  margin: 0 0 1.15rem !important;
+  font-family: var(--tp-font-display);
+  font-size: clamp(1.15rem, 1.7vw, 1.32rem);
   font-weight: 500;
   font-style: italic;
-  line-height: 1.65;
-  letter-spacing: -0.01em;
+  line-height: 1.6;
+  letter-spacing: -0.012em;
   color: var(--tp-fg);
+  font-optical-sizing: auto;
 }
 
-.about-prose > p:nth-of-type(3) {
-  margin: 0 0 2.5rem;
-  max-width: var(--site-prose, 75ch);
+.about-pause {
+  max-width: var(--about-measure);
+  margin: 0 0 var(--about-gap-section) !important;
   font-size: 1.05rem;
   line-height: 1.8;
   color: var(--tp-muted);
 }
 
-/* Categories — plain text pairs, no list chrome */
-.about-prose > ul:last-of-type {
+/* 4 · Site map — quiet index, not another essay */
+.about-map-label {
+  margin: 0 0 0.85rem !important;
+  font-family: var(--tp-font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tp-muted);
+}
+
+.about-map {
   list-style: none;
-  margin: 0 0 2.25rem;
+  margin: 0 0 var(--about-gap-section) !important;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0;
   border: none;
+  max-width: min(100%, 34rem);
 }
 
-.about-prose > ul:last-of-type > li {
+.about-map > li {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  column-gap: 1rem;
+  align-items: baseline;
   margin: 0;
-  padding: 0;
+  padding: 0.85rem 0;
   border: none;
+  border-top: 1px solid color-mix(in srgb, var(--tp-border) 90%, transparent);
   background: transparent;
-  line-height: 1.65;
+  line-height: 1.55;
   color: var(--tp-muted);
-  font-size: 1.02rem;
+  font-size: 1rem;
 }
 
-.about-prose > ul:last-of-type > li strong {
-  display: inline;
-  margin-right: 0.55rem;
+.about-map > li:last-child {
+  border-bottom: 1px solid color-mix(in srgb, var(--tp-border) 90%, transparent);
+}
+
+.about-map > li strong {
+  margin: 0;
   font-family: var(--tp-font-display);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  color: var(--tp-fg);
   letter-spacing: -0.01em;
-}
-
-/* Closing line (before colophon) */
-.about-prose > p:nth-of-type(4) {
-  margin: 0 0 2.5rem;
-  max-width: 28em;
-  font-size: 1.1rem;
-  font-weight: 500;
-  line-height: 1.75;
   color: var(--tp-fg);
 }
 
-/* ---------- Colophon: Grok / build note (not body prose) ---------- */
+.about-map > li span {
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
 
-/* Beat .about-prose > * { margin: 0 } */
+/* 5 · Close */
+.about-close {
+  max-width: 22em;
+  margin: 0 0 0.5rem !important;
+  font-family: var(--tp-font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  color: var(--tp-fg);
+  font-optical-sizing: auto;
+}
+
+/* 6 · Colophon — secondary meta, not body prose */
 .about-prose > .about-colophon {
-  margin: 3.25rem 0 0;
-  margin-inline-start: auto;
-  max-width: min(28rem, 100%);
-  padding: 1.35rem 0 0;
-  border-top: 1px solid color-mix(in srgb, var(--tp-border) 88%, transparent);
+  margin: clamp(2.75rem, 5vw, 3.75rem) 0 0 !important;
+  margin-inline-start: auto !important;
+  max-width: min(26rem, 100%);
+  padding: 1.25rem 0 0;
+  border-top: 1px solid color-mix(in srgb, var(--tp-border) 85%, transparent);
   text-align: end;
 }
 
@@ -534,7 +593,7 @@ html[data-theme="dark"] .about-ambient__grain {
 
 .about-colophon__brand {
   font-family: var(--tp-font-display);
-  font-size: clamp(1.02rem, 1.2vw, 1.12rem);
+  font-size: 1.05rem;
   font-weight: 500;
   letter-spacing: -0.01em;
   line-height: 1.45;
@@ -551,44 +610,48 @@ html[data-theme="dark"] .about-ambient__grain {
 .about-colophon__org,
 .about-colophon__via {
   font-weight: 500;
-  color: color-mix(in srgb, var(--tp-fg) 78%, var(--tp-muted));
+  color: color-mix(in srgb, var(--tp-fg) 72%, var(--tp-muted));
 }
 
 .about-colophon__dot {
   display: inline-block;
   margin-inline: 0.4em;
   font-weight: 400;
-  color: color-mix(in srgb, var(--tp-muted) 70%, transparent);
+  color: color-mix(in srgb, var(--tp-muted) 65%, transparent);
 }
 
 .about-colophon__lede {
-  margin-top: 0.55rem;
+  margin-top: 0.5rem;
   font-family: var(--tp-font-body);
-  font-size: 0.95rem;
+  font-size: 0.9375rem;
   font-weight: 400;
-  line-height: 1.7;
+  line-height: 1.65;
   letter-spacing: 0.01em;
   color: var(--tp-muted);
 }
 
 .about-colophon__meta {
-  margin-top: 0.85rem;
+  margin-top: 0.75rem;
   font-family: var(--tp-font-body);
   font-size: 0.78rem;
   font-weight: 500;
-  line-height: 1.65;
-  letter-spacing: 0.03em;
-  color: color-mix(in srgb, var(--tp-muted) 88%, transparent);
+  line-height: 1.6;
+  letter-spacing: 0.035em;
+  color: color-mix(in srgb, var(--tp-muted) 82%, transparent);
 }
 
-/* Soften markdown strong/em inheritance inside colophon */
 .about-prose .about-colophon strong {
   font-family: inherit;
 }
 
 @media (max-width: 599px) {
+  .about-map > li {
+    grid-template-columns: 1fr;
+    row-gap: 0.25rem;
+  }
+
   .about-prose > .about-colophon {
-    margin-inline-start: 0;
+    margin-inline-start: 0 !important;
     max-width: none;
     text-align: start;
   }
@@ -596,67 +659,53 @@ html[data-theme="dark"] .about-ambient__grain {
 
 @media (min-width: 900px) {
   .about-header {
-    display: grid;
-    grid-template-columns: minmax(10rem, 0.28fr) minmax(0, 1fr);
-    column-gap: 2.5rem;
-    align-items: end;
-    margin-bottom: 2.5rem;
+    margin-bottom: clamp(2.5rem, 4vw, 3.25rem);
   }
 
-  .about-eyebrow {
-    grid-column: 1;
-    margin: 0 0 0.35rem;
+  .about-shell {
+    padding-block: clamp(2.75rem, 5vw, 3.75rem) calc(var(--site-block, 2.5rem) * 1.6);
   }
 
-  .about-title {
-    grid-column: 1;
-  }
-
-  .about-prose > p:first-of-type {
-    max-width: none;
-    width: min(100%, 48rem);
-    font-size: clamp(1.2rem, 1.5vw, 1.4rem);
-  }
-
-  /* Triptych columns — space only, no top bars */
-  .about-prose > ul:first-of-type {
+  .about-songs {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: clamp(1.75rem, 3vw, 2.75rem);
+    column-gap: clamp(1.5rem, 2.5vw, 2.25rem);
     row-gap: 0;
+    align-items: start;
   }
 
-  .about-prose > ul:first-of-type > li {
-    padding: 0;
+  .about-songs > li {
+    padding: 0.15rem 0 0 1.05rem;
   }
 
-  .about-prose > p:nth-of-type(2),
-  .about-prose > p:nth-of-type(3) {
-    max-width: none;
-    width: min(100%, 52rem);
+  .about-songs__title {
+    font-size: 1.18rem;
   }
 
-  .about-prose > ul:last-of-type {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 3rem;
-    row-gap: 0;
+  .about-songs__body {
+    font-size: 1.02rem;
+    line-height: 1.85;
   }
 
-  .about-prose > ul:last-of-type > li strong {
-    display: block;
-    margin: 0 0 0.35rem;
+  .about-map {
+    max-width: min(100%, 38rem);
+  }
+
+  .about-map > li {
+    grid-template-columns: 7.25rem minmax(0, 1fr);
+    column-gap: 1.35rem;
+    padding: 0.95rem 0;
   }
 }
 
 @media (min-width: 1200px) {
-  .about-prose > ul:first-of-type > li {
-    font-size: 1.05rem;
-    line-height: 1.85;
+  .about-lead {
+    font-size: 1.6rem;
+    line-height: 1.5;
   }
 
-  .about-prose > ul:first-of-type > li strong {
-    font-size: 1.18rem;
+  .about-songs__body {
+    font-size: 1.05rem;
   }
 }
 
