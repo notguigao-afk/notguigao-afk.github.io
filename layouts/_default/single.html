@@ -24,9 +24,11 @@
     <p class="moments-eyebrow">
       <a href="{{ "/categories/不想上班/" | relURL }}">不想上班</a>
     </p>
+    {{- if not .Params.hideDate }}
     <time class="moments-date" datetime="{{ .Date.Format "2006-01-02" }}">
       {{- .Date.Format "2006年1月2日" -}}
     </time>
+    {{- end }}
     <h1 class="post-title">{{ .Title }}</h1>
   </header>
   <div class="post-content md-content moments-body">

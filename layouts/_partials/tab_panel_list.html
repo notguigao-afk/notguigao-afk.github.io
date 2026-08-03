@@ -25,10 +25,12 @@
     {{- if $isMoments }}
   <ul class="moments-stream">
     {{- range $pages }}
-    <li class="moments-stream__item">
+    <li class="moments-stream__item{{ if .Params.hideDate }} moments-stream__item--no-date{{ end }}">
+      {{- if not .Params.hideDate }}
       <time class="moments-stream__date" datetime="{{ .Date.Format "2006-01-02" }}">
         {{- .Date.Format "2006年1月2日" -}}
       </time>
+      {{- end }}
       <div class="moments-stream__note">
         <a class="moments-stream__title" href="{{ .RelPermalink }}">{{ .Title }}</a>
         <div class="moments-stream__body md-content">

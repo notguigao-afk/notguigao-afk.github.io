@@ -595,8 +595,8 @@ html[data-theme="dark"] .about-ambient__grain {
 /* ---------- 不想上班: note stream (not magazine index) ---------- */
 
 .tab-panel--moments {
-  width: min(100%, 40rem);
-  max-width: 40rem;
+  width: min(100%, 52rem);
+  max-width: 52rem;
 }
 
 .tab-panel--moments .tab-panel__header {
@@ -661,9 +661,9 @@ html[data-theme="dark"] .about-ambient__grain {
 
 .moments-stream__title {
   display: block;
-  margin: 0 0 0.45rem;
+  margin: 0 0 0.5rem;
   font-family: var(--tp-font-display);
-  font-size: 1.12rem;
+  font-size: clamp(1.2rem, 1.8vw, 1.4rem);
   font-weight: 600;
   letter-spacing: -0.015em;
   line-height: 1.4;
@@ -704,10 +704,14 @@ html[data-theme="dark"] .about-ambient__grain {
 
 @media (min-width: 700px) {
   .moments-stream__item {
-    grid-template-columns: 7.5rem minmax(0, 1fr);
-    column-gap: 1.25rem;
+    grid-template-columns: 8rem minmax(0, 1fr);
+    column-gap: 1.75rem;
     align-items: start;
-    padding: 1.6rem 0;
+    padding: 1.75rem 0;
+  }
+
+  .moments-stream__item--no-date {
+    grid-template-columns: 1fr;
   }
 
   .moments-stream__date {
@@ -717,8 +721,8 @@ html[data-theme="dark"] .about-ambient__grain {
 
 /* Single note page — lighter than essay layout */
 .site-prose--moments {
-  width: min(100%, 36rem);
-  max-width: 36rem;
+  width: min(100%, 48rem);
+  max-width: 48rem;
 }
 
 .site-prose--moments .moments-header {
@@ -757,7 +761,7 @@ html[data-theme="dark"] .about-ambient__grain {
 }
 
 .site-prose--moments .post-title {
-  font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+  font-size: clamp(1.55rem, 2.8vw, 1.95rem);
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.35;
@@ -765,7 +769,7 @@ html[data-theme="dark"] .about-ambient__grain {
 }
 
 .site-prose--moments .moments-body {
-  font-size: 1.12rem;
+  font-size: 1.15rem;
   line-height: 1.85;
   letter-spacing: 0.015em;
 }
