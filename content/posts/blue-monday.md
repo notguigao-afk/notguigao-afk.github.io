@@ -2,8 +2,8 @@
 date = '2025-03-17T21:00:00+08:00'
 draft = false
 title = 'Bye Bye Blue Monday'
-categories = ['随笔']
-tags = ['朋友', '心理']
+categories = ['essays']
+tags = ['friends', 'psychology']
 +++
 
 突然发现好多朋友心里都有过不去的坎，又是想开一家心理诊所的一天…

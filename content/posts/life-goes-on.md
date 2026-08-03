@@ -2,8 +2,8 @@
 date = '2025-02-14T20:00:00+08:00'
 draft = false
 title = 'Life Goes On'
-categories = ['随笔']
-tags = ['生死', '朋友']
+categories = ['essays']
+tags = ['life-death', 'friends']
 +++
 
 朋友 w 的母亲过世了，很突然。

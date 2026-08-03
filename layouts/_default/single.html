@@ -15,11 +15,11 @@
     </div>
   </div>
 </article>
-{{- else if in (.Params.categories | default slice) "不想上班" }}
+{{- else if in (.Params.categories | default slice) "moments" }}
 <article class="post-single site-prose site-prose--moments">
   <header class="post-header moments-header">
     <p class="moments-eyebrow">
-      <a href="{{ "/categories/不想上班/" | relURL }}">不想上班</a>
+      <a href="{{ "/categories/moments/" | relURL }}">不想上班</a>
     </p>
     {{- if not .Params.hideDate }}
     <time class="moments-date" datetime="{{ .Date.Format "2006-01-02" }}">
@@ -32,7 +32,7 @@
     {{ .Content }}
   </div>
   <footer class="post-footer moments-footer">
-    <a class="moments-back" href="{{ "/categories/不想上班/" | relURL }}">← 不想上班</a>
+    <a class="moments-back" href="{{ "/categories/moments/" | relURL }}">← 不想上班</a>
   </footer>
 </article>
 {{- else }}

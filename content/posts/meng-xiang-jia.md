@@ -2,8 +2,8 @@
 date = '2025-04-13T21:00:00+08:00'
 draft = false
 title = '梦想家'
-categories = ['随笔']
-tags = ['生死', '音乐', '朋友']
+categories = ['essays']
+tags = ['life-death', 'music', 'friends']
 +++
 
 得知方大同已经离开的消息时，我正在吃午饭，心里很不是滋味。

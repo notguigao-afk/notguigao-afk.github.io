@@ -45,12 +45,13 @@
         {{- $tabs = $tabs | append (dict "name" "首页" "url" ("/" | absLangURL) "title" "首页") -}}
         {{- range sort (site.Data.topics | default slice) "weight" "asc" -}}
           {{- $name := .name | default .Name -}}
+          {{- $id := .id | default ($name | urlize) -}}
           {{- $url := "" -}}
-          {{- with index site.Taxonomies.categories $name -}}
+          {{- with index site.Taxonomies.categories $id -}}
             {{- $url = .Page.Permalink -}}
           {{- end -}}
           {{- if not $url -}}
-            {{- $url = printf "/categories/%s/" ($name | urlize) | absLangURL -}}
+            {{- $url = printf "/categories/%s/" $id | absLangURL -}}
           {{- end -}}
           {{- $tabs = $tabs | append (dict "name" $name "url" $url "title" $name) -}}
         {{- end -}}
@@ -79,8 +80,9 @@
             {{- else if or (eq $curPath $tabPath) (strings.HasPrefix $curPath (printf "%s/" $tabPath)) -}}
               {{- $active = true -}}
             {{- else if $currentPage.IsPage -}}
-              {{- with $currentPage.Params.categories -}}
-                {{- if in . $tabName -}}
+              {{- /* English category slug in front matter; match against tab URL */ -}}
+              {{- range ($currentPage.Params.categories | default slice) -}}
+                {{- if strings.Contains $tabPath (printf "/categories/%s" .) -}}
                   {{- $active = true -}}
                 {{- end -}}
               {{- end -}}

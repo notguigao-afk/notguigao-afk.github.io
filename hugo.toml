@@ -13,17 +13,17 @@ theme = 'PaperMod'
 
 [[menu.main]]
   name = '随笔'
-  url = '/categories/随笔/'
+  url = '/categories/essays/'
   weight = 2
 
 [[menu.main]]
   name = '拾遗'
-  url = '/categories/拾遗/'
+  url = '/categories/gleanings/'
   weight = 3
 
 [[menu.main]]
   name = '不想上班'
-  url = '/categories/不想上班/'
+  url = '/categories/moments/'
   weight = 4
 
 [[menu.main]]

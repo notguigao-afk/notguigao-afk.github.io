@@ -2,7 +2,7 @@
 date = '2026-08-03T09:00:00+08:00'
 draft = false
 title = '每一个工作日醒来的早晨'
-categories = ['不想上班']
+categories = ['moments']
 hideDate = true
 +++
 

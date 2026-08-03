@@ -2,8 +2,8 @@
 date = '2024-12-26T21:00:00+08:00'
 draft = false
 title = '宇宙探索编辑部'
-categories = ['随笔']
-tags = ['电影', '科幻']
+categories = ['essays']
+tags = ['film', 'scifi']
 +++
 
 终于静下心来看完《宇宙探索编辑部》，第一时间脑海里出现的就是《苏菲的世界》里的这段话～很不错的片子。

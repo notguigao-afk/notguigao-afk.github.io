@@ -1,12 +1,18 @@
-# Homepage categories — keep names in sync with post front matter `categories`.
+# Homepage categories — `id` is URL slug / front matter value; `name` is UI label.
 - id: essays
   name: 随笔
   description: 生活与思考
   weight: 1
-  accent: "#C4B7D5"
+  accent: "#5a9e96"
 
 - id: gleanings
   name: 拾遗
   description: 学习与经验
   weight: 2
-  accent: "#9BB7A5"
+  accent: "#5eb0aa"
+
+- id: moments
+  name: 不想上班
+  description: 碎片念头。不写成随笔的那种。
+  weight: 3
+  accent: "#2f8f86"

@@ -11,7 +11,7 @@
     {{- end -}}
   {{- end -}}
 {{- end -}}
-{{- $isMoments := or (eq .Title "不想上班") (eq (.Data.Term | default "") "不想上班") -}}
+{{- $isMoments := or (eq .Title "不想上班") (eq (.Data.Term | default "") "moments") (eq (.Data.Term | default "") "不想上班") -}}
 
 <div class="tab-panel{{ if $isMoments }} tab-panel--moments{{ end }}">
   <header class="tab-panel__header">
