@@ -48,8 +48,8 @@ theme = 'PaperMod'
     favicon32x32 = "favicon-32x32.png"
     apple_touch_icon = "apple-touch-icon.png"
     safari_pinned_tab = "safari-pinned-tab.svg"
-    theme_color = "#f4f0e8"
-    msapplication_TileColor = "#1c1917"
+    theme_color = "#f2f5f3"
+    msapplication_TileColor = "#1a2624"
 
   [params.homeHero]
     quoteLines = [

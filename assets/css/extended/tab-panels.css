@@ -256,51 +256,62 @@ body:has(.home-landing) .footer {
   background: var(--imp-canvas, var(--theme));
 }
 
+/* Match home: faint warm paper + cool water mist only */
 .about-ambient__wash {
   position: absolute;
   border-radius: 50%;
-  filter: blur(52px);
-  opacity: 0.7;
+  filter: blur(64px);
+  opacity: 0.28;
   pointer-events: none;
 }
 
 .about-ambient__wash--1 {
-  width: min(55vw, 720px);
-  height: min(55vw, 720px);
-  top: -14%;
-  left: -6%;
-  background: radial-gradient(circle at 40% 40%, var(--tp-gold), transparent 68%);
+  width: min(70vw, 820px);
+  height: min(70vw, 820px);
+  top: -16%;
+  left: -10%;
+  background: radial-gradient(
+    circle at 40% 40%,
+    color-mix(in srgb, var(--tp-surface) 70%, #f7f3eb),
+    transparent 70%
+  );
+  opacity: 0.55;
 }
 
 .about-ambient__wash--2 {
-  width: min(48vw, 640px);
-  height: min(48vw, 640px);
-  top: 8%;
-  right: -8%;
-  background: radial-gradient(circle at 50% 50%, var(--tp-lilac), transparent 70%);
+  width: min(55vw, 680px);
+  height: min(55vw, 680px);
+  top: 10%;
+  right: -12%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    color-mix(in srgb, var(--imp-mist, #dff0ee) 55%, transparent),
+    transparent 72%
+  );
+  opacity: 0.32;
 }
 
 .about-ambient__wash--3 {
-  width: min(42vw, 560px);
-  height: min(42vw, 560px);
-  bottom: 6%;
-  left: 22%;
-  background: radial-gradient(circle at 50% 50%, var(--tp-sage), transparent 72%);
+  width: min(48vw, 560px);
+  height: min(48vw, 560px);
+  bottom: 4%;
+  left: 24%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    color-mix(in srgb, var(--tp-sage) 18%, transparent),
+    transparent 74%
+  );
+  opacity: 0.22;
 }
 
 .about-ambient__wash--4 {
-  width: min(32vw, 420px);
-  height: min(32vw, 420px);
-  top: 48%;
-  left: 52%;
-  background: radial-gradient(circle at 50% 50%, var(--tp-rose), transparent 70%);
-  opacity: 0.52;
+  display: none;
 }
 
 .about-ambient__grain {
   position: absolute;
   inset: 0;
-  opacity: 0.045;
+  opacity: 0.028;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 180px 180px;
@@ -308,13 +319,13 @@ body:has(.home-landing) .footer {
 }
 
 html[data-theme="dark"] .about-ambient__grain {
-  opacity: 0.07;
+  opacity: 0.045;
   mix-blend-mode: soft-light;
 }
 
 @media (prefers-color-scheme: dark) {
   html[data-theme="auto"] .about-ambient__grain {
-    opacity: 0.07;
+    opacity: 0.045;
     mix-blend-mode: soft-light;
   }
 }
@@ -422,17 +433,17 @@ html[data-theme="dark"] .about-ambient__grain {
   font-optical-sizing: auto;
 }
 
-/* Soft ink tint only — no solid color blocks */
+/* Soft water tints — one family, slight depth variation */
 .about-prose > ul:first-of-type > li:nth-child(1) strong {
-  color: color-mix(in srgb, var(--tp-gold) 42%, var(--tp-fg));
+  color: color-mix(in srgb, var(--tp-sage) 36%, var(--tp-fg));
 }
 
 .about-prose > ul:first-of-type > li:nth-child(2) strong {
-  color: color-mix(in srgb, var(--tp-lilac) 40%, var(--tp-fg));
+  color: color-mix(in srgb, var(--tp-lilac) 34%, var(--tp-fg));
 }
 
 .about-prose > ul:first-of-type > li:nth-child(3) strong {
-  color: color-mix(in srgb, var(--tp-sage) 38%, var(--tp-fg));
+  color: color-mix(in srgb, var(--tp-rose) 32%, var(--tp-fg));
 }
 
 .about-prose > p:nth-of-type(2) {

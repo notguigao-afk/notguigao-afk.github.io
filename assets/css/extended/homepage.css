@@ -1,20 +1,25 @@
 /* ============================================================
-   Homepage — Ambient Impressionism (landing only)
-   Tokens: primitive → semantic → component
+   Site color system — Water Lilies (Monet-inspired cyan / turquoise)
+   Warm paper ground + cool water accents. Tokens: primitive → semantic.
    ============================================================ */
 
 /* --- Primitive --- */
 :root {
-  --imp-canvas: #f4f0e8;
-  --imp-mist: #e8eef2;
-  --imp-lilac: #c4b7d5;
-  --imp-rose: #e8b4b8;
-  --imp-gold: #d4a574;
-  --imp-sage: #9bb7a5;
-  --imp-ink: #1c1917;
-  --imp-ink-muted: #57534e;
-  --imp-surface: #fffcf8;
-  --imp-border: #e7e0d6;
+  /* Paper: barely warm, like light on canvas */
+  --imp-canvas: #f2f5f3;
+  --imp-surface: #fafcfb;
+  --imp-border: #d4e0dc;
+
+  /* Water field */
+  --imp-mist: #dff0ee; /* pale cyan haze */
+  --imp-lilac: #8eb8b8; /* soft turquoise (legacy name, water blue) */
+  --imp-rose: #b7d4ce; /* shallow aqua */
+  --imp-gold: #c5d9c8; /* light on lily pads */
+  --imp-sage: #5a9e96; /* turquoise accent (links, focus, chips) */
+
+  /* Ink: deep teal-charcoal for fresher contrast on cool paper */
+  --imp-ink: #1a2624;
+  --imp-ink-muted: #4d5f5b;
 
   /* Claude.ai spirit: Georgia for Latin; CJK falls through to Noto Serif SC / 宋体 */
   --imp-font-display: ui-serif, Georgia, Cambria, "Times New Roman", "Noto Serif SC",
@@ -22,38 +27,52 @@
   --imp-font-body: ui-serif, Georgia, Cambria, "Times New Roman", "Noto Serif SC",
     "Songti SC", "STSong", "Source Han Serif SC", Times, serif;
 
-
   --imp-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --imp-dur-fast: 160ms;
   --imp-dur: 220ms;
+
+  /* Bridge PaperMod core vars → site palette (all pages) */
+  --theme: var(--imp-canvas);
+  --entry: var(--imp-surface);
+  --primary: var(--imp-ink);
+  --secondary: var(--imp-ink-muted);
+  --content: var(--imp-ink);
+  --border: var(--imp-border);
+  --code-bg: color-mix(in srgb, var(--imp-mist) 55%, var(--imp-surface));
+  --tertiary: color-mix(in srgb, var(--imp-border) 80%, var(--imp-mist));
 }
 
-/* Dark: softer night canvas, keep painterly washes muted */
+body {
+  background: var(--imp-canvas);
+  color: var(--imp-ink);
+}
+
+/* Dark: deep pond at dusk — cool, not brown */
 html[data-theme="dark"] {
-  --imp-canvas: #1a1816;
-  --imp-mist: #2a3038;
-  --imp-lilac: #5c4f6e;
-  --imp-rose: #6e4549;
-  --imp-gold: #8a6a45;
-  --imp-sage: #4d6b5a;
-  --imp-ink: #f5f0e8;
-  --imp-ink-muted: #a8a29e;
-  --imp-surface: #24201c;
-  --imp-border: #3d3832;
+  --imp-canvas: #121918;
+  --imp-mist: #1c2c2a;
+  --imp-lilac: #3d6b68;
+  --imp-rose: #2f524c;
+  --imp-gold: #3a5548;
+  --imp-sage: #6aafa6;
+  --imp-ink: #e8f2f0;
+  --imp-ink-muted: #9aada8;
+  --imp-surface: #1a2422;
+  --imp-border: #2c3d3a;
 }
 
 @media (prefers-color-scheme: dark) {
   html[data-theme="auto"] {
-    --imp-canvas: #1a1816;
-    --imp-mist: #2a3038;
-    --imp-lilac: #5c4f6e;
-    --imp-rose: #6e4549;
-    --imp-gold: #8a6a45;
-    --imp-sage: #4d6b5a;
-    --imp-ink: #f5f0e8;
-    --imp-ink-muted: #a8a29e;
-    --imp-surface: #24201c;
-    --imp-border: #3d3832;
+    --imp-canvas: #121918;
+    --imp-mist: #1c2c2a;
+    --imp-lilac: #3d6b68;
+    --imp-rose: #2f524c;
+    --imp-gold: #3a5548;
+    --imp-sage: #6aafa6;
+    --imp-ink: #e8f2f0;
+    --imp-ink-muted: #9aada8;
+    --imp-surface: #1a2422;
+    --imp-border: #2c3d3a;
   }
 }
 
@@ -122,52 +141,63 @@ body:has(.home-landing) .footer {
   background: var(--imp-canvas);
 }
 
+/* Barely-there paper + water mist — not a multicolor canvas */
 .home-hero__wash {
   position: absolute;
   border-radius: 50%;
-  filter: blur(48px);
-  opacity: 0.72;
+  filter: blur(64px);
+  opacity: 0.28;
   pointer-events: none;
   will-change: transform;
 }
 
 .home-hero__wash--1 {
-  width: min(55vw, 720px);
-  height: min(55vw, 720px);
-  top: -14%;
-  left: -6%;
-  background: radial-gradient(circle at 40% 40%, var(--imp-gold), transparent 68%);
+  width: min(70vw, 820px);
+  height: min(70vw, 820px);
+  top: -18%;
+  left: -10%;
+  background: radial-gradient(
+    circle at 40% 40%,
+    color-mix(in srgb, var(--imp-surface) 70%, #f7f3eb),
+    transparent 70%
+  );
+  opacity: 0.55;
 }
 
 .home-hero__wash--2 {
-  width: min(48vw, 640px);
-  height: min(48vw, 640px);
-  top: 10%;
-  right: -8%;
-  background: radial-gradient(circle at 50% 50%, var(--imp-lilac), transparent 70%);
+  width: min(55vw, 680px);
+  height: min(55vw, 680px);
+  top: 8%;
+  right: -12%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    color-mix(in srgb, var(--imp-mist) 55%, transparent),
+    transparent 72%
+  );
+  opacity: 0.32;
 }
 
 .home-hero__wash--3 {
-  width: min(42vw, 560px);
-  height: min(42vw, 560px);
-  bottom: -10%;
-  left: 28%;
-  background: radial-gradient(circle at 50% 50%, var(--imp-sage), transparent 72%);
+  width: min(48vw, 560px);
+  height: min(48vw, 560px);
+  bottom: -12%;
+  left: 22%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    color-mix(in srgb, var(--imp-sage) 18%, transparent),
+    transparent 74%
+  );
+  opacity: 0.22;
 }
 
 .home-hero__wash--4 {
-  width: min(32vw, 420px);
-  height: min(32vw, 420px);
-  top: 38%;
-  left: 55%;
-  background: radial-gradient(circle at 50% 50%, var(--imp-rose), transparent 70%);
-  opacity: 0.55;
+  display: none;
 }
 
 .home-hero__grain {
   position: absolute;
   inset: 0;
-  opacity: 0.045;
+  opacity: 0.028;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 180px 180px;
@@ -176,13 +206,13 @@ body:has(.home-landing) .footer {
 
 html[data-theme="dark"] .home-hero__grain,
 html[data-theme="auto"] .home-hero__grain {
-  opacity: 0.07;
+  opacity: 0.045;
   mix-blend-mode: soft-light;
 }
 
 @media (prefers-color-scheme: light) {
   html[data-theme="auto"] .home-hero__grain {
-    opacity: 0.045;
+    opacity: 0.028;
     mix-blend-mode: multiply;
   }
 }
