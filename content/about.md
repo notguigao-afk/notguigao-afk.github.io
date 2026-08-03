@@ -20,4 +20,8 @@ draft = false
 
 写得多慢都行。至少是自己的。
 
-**Grok 4.5**（xAI），经 **Grok Build** 上场——终端里的编程 agent。LMArena / Chatbot Arena 文本总榜大约第 33 名，Elo ~1468（2026-07 快照，名次会抖）。本站最初是和它并排搭起来的。
+<aside class="about-colophon" aria-label="站点工具">
+<p class="about-colophon__brand"><strong>Grok 4.5</strong><span class="about-colophon__dot" aria-hidden="true">·</span><span class="about-colophon__org">xAI</span><span class="about-colophon__dot" aria-hidden="true">·</span><span class="about-colophon__via">Grok Build</span></p>
+<p class="about-colophon__lede">终端里的编程 agent。本站最初是和它并排搭起来的。</p>
+<p class="about-colophon__meta">LMArena / Chatbot Arena<span class="about-colophon__dot" aria-hidden="true">·</span>文本总榜约第 33 名<span class="about-colophon__dot" aria-hidden="true">·</span>Elo ~1468<span class="about-colophon__dot" aria-hidden="true">·</span>2026-07 快照</p>
+</aside>

@@ -31,6 +31,12 @@ theme = 'PaperMod'
   url = '/about/'
   weight = 5
 
+# Allow semantic HTML in About colophon etc.
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
 [params]
   mainSections = ['posts']
   DateFormat = '2006年1月2日'

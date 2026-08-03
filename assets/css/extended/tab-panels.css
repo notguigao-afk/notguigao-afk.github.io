@@ -486,7 +486,7 @@ html[data-theme="dark"] .about-ambient__grain {
   letter-spacing: -0.01em;
 }
 
-/* Closing line (before colophon); fixed nth so extra notes don't steal the style */
+/* Closing line (before colophon) */
 .about-prose > p:nth-of-type(4) {
   margin: 0 0 2.5rem;
   max-width: 28em;
@@ -496,16 +496,86 @@ html[data-theme="dark"] .about-ambient__grain {
   color: var(--tp-fg);
 }
 
-/* Colophon — right-aligned model note */
-.about-prose > p:nth-of-type(n + 5) {
-  margin: 0;
+/* ---------- Colophon: Grok / build note (not body prose) ---------- */
+
+/* Beat .about-prose > * { margin: 0 } */
+.about-prose > .about-colophon {
+  margin: 3.25rem 0 0;
   margin-inline-start: auto;
-  max-width: min(26rem, 100%);
-  font-size: 0.9rem;
-  font-weight: 400;
-  line-height: 1.65;
-  color: var(--tp-muted);
+  max-width: min(28rem, 100%);
+  padding: 1.35rem 0 0;
+  border-top: 1px solid color-mix(in srgb, var(--tp-border) 88%, transparent);
   text-align: end;
+}
+
+.about-colophon {
+  display: block;
+}
+
+.about-colophon > * {
+  margin: 0;
+}
+
+.about-colophon__brand {
+  font-family: var(--tp-font-display);
+  font-size: clamp(1.02rem, 1.2vw, 1.12rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+  color: var(--tp-fg);
+  font-optical-sizing: auto;
+}
+
+.about-colophon__brand strong {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--tp-fg);
+}
+
+.about-colophon__org,
+.about-colophon__via {
+  font-weight: 500;
+  color: color-mix(in srgb, var(--tp-fg) 78%, var(--tp-muted));
+}
+
+.about-colophon__dot {
+  display: inline-block;
+  margin-inline: 0.4em;
+  font-weight: 400;
+  color: color-mix(in srgb, var(--tp-muted) 70%, transparent);
+}
+
+.about-colophon__lede {
+  margin-top: 0.55rem;
+  font-family: var(--tp-font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  color: var(--tp-muted);
+}
+
+.about-colophon__meta {
+  margin-top: 0.85rem;
+  font-family: var(--tp-font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.65;
+  letter-spacing: 0.03em;
+  color: color-mix(in srgb, var(--tp-muted) 88%, transparent);
+}
+
+/* Soften markdown strong/em inheritance inside colophon */
+.about-prose .about-colophon strong {
+  font-family: inherit;
+}
+
+@media (max-width: 599px) {
+  .about-prose > .about-colophon {
+    margin-inline-start: 0;
+    max-width: none;
+    text-align: start;
+  }
 }
 
 @media (min-width: 900px) {
