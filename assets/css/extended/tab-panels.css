@@ -592,6 +592,205 @@ html[data-theme="dark"] .about-ambient__grain {
   display: none;
 }
 
+/* ---------- 不想上班: note stream (not magazine index) ---------- */
+
+.tab-panel--moments {
+  width: min(100%, 40rem);
+  max-width: 40rem;
+}
+
+.tab-panel--moments .tab-panel__header {
+  border-bottom-style: dashed;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1rem;
+}
+
+.tab-panel--moments .tab-panel__title {
+  font-size: clamp(1.65rem, 3vw, 2.15rem);
+  letter-spacing: -0.02em;
+}
+
+.tab-panel--moments .tab-panel__lede {
+  font-size: 1rem;
+  line-height: 1.65;
+  font-style: italic;
+}
+
+@media (min-width: 900px) {
+  .tab-panel--moments .tab-panel__header {
+    display: block;
+  }
+
+  .tab-panel--moments .tab-panel__lede {
+    margin-top: 0.55rem;
+    max-width: none;
+  }
+}
+
+.moments-stream {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.moments-stream__item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.55rem;
+  padding: 1.35rem 0 1.5rem;
+  border-bottom: 1px dashed color-mix(in srgb, var(--tp-border) 92%, transparent);
+}
+
+.moments-stream__item:first-child {
+  border-top: 1px dashed color-mix(in srgb, var(--tp-border) 92%, transparent);
+}
+
+.moments-stream__date {
+  font-family: var(--tp-font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--tp-muted);
+}
+
+.moments-stream__note {
+  position: relative;
+  padding-inline-start: 0.95rem;
+  border-inline-start: 2px solid color-mix(in srgb, var(--tp-sage) 55%, var(--tp-border));
+}
+
+.moments-stream__title {
+  display: block;
+  margin: 0 0 0.45rem;
+  font-family: var(--tp-font-display);
+  font-size: 1.12rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.4;
+  color: var(--tp-fg);
+  text-decoration: none;
+  transition: color 160ms var(--tp-ease);
+}
+
+.moments-stream__title:hover {
+  color: color-mix(in srgb, var(--tp-fg) 78%, var(--tp-sage));
+}
+
+.moments-stream__title:focus-visible {
+  outline: 2px solid var(--tp-sage);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.moments-stream__body {
+  font-family: var(--tp-font-body);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  letter-spacing: 0.015em;
+  color: color-mix(in srgb, var(--tp-fg) 92%, var(--tp-muted));
+}
+
+.moments-stream__body > *:first-child {
+  margin-top: 0;
+}
+
+.moments-stream__body > *:last-child {
+  margin-bottom: 0;
+}
+
+.moments-stream__body p {
+  margin: 0 0 0.75em;
+}
+
+@media (min-width: 700px) {
+  .moments-stream__item {
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+    column-gap: 1.25rem;
+    align-items: start;
+    padding: 1.6rem 0;
+  }
+
+  .moments-stream__date {
+    padding-top: 0.2rem;
+  }
+}
+
+/* Single note page — lighter than essay layout */
+.site-prose--moments {
+  width: min(100%, 36rem);
+  max-width: 36rem;
+}
+
+.site-prose--moments .moments-header {
+  border-bottom-style: dashed;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.site-prose--moments .moments-eyebrow {
+  margin: 0 0 0.4rem;
+  font-family: var(--type-body, inherit);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: none;
+  color: var(--type-muted, var(--imp-ink-muted, var(--secondary)));
+}
+
+.site-prose--moments .moments-eyebrow a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-prose--moments .moments-eyebrow a:hover {
+  color: var(--type-ink, var(--primary));
+}
+
+.site-prose--moments .moments-date {
+  display: block;
+  margin: 0 0 0.65rem;
+  font-family: var(--type-body, inherit);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--type-muted, var(--imp-ink-muted, var(--secondary)));
+}
+
+.site-prose--moments .post-title {
+  font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.site-prose--moments .moments-body {
+  font-size: 1.12rem;
+  line-height: 1.85;
+  letter-spacing: 0.015em;
+}
+
+.site-prose--moments .moments-body p {
+  margin: 0 0 1em;
+}
+
+.site-prose--moments .moments-footer {
+  margin-top: 2.25rem;
+  padding-top: 1.1rem;
+  border-top-style: dashed;
+}
+
+.site-prose--moments .moments-back {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--type-muted, var(--imp-ink-muted, var(--secondary)));
+  text-decoration: none;
+}
+
+.site-prose--moments .moments-back:hover {
+  color: var(--type-ink, var(--primary));
+}
+
 /* ---------- Article: centered reading column (no left-stuck + right void) ---------- */
 
 .site-prose {

@@ -18,6 +18,24 @@
     </div>
   </div>
 </article>
+{{- else if in (.Params.categories | default slice) "不想上班" }}
+<article class="post-single site-prose site-prose--moments">
+  <header class="post-header moments-header">
+    <p class="moments-eyebrow">
+      <a href="{{ "/categories/不想上班/" | relURL }}">不想上班</a>
+    </p>
+    <time class="moments-date" datetime="{{ .Date.Format "2006-01-02" }}">
+      {{- .Date.Format "2006年1月2日" -}}
+    </time>
+    <h1 class="post-title">{{ .Title }}</h1>
+  </header>
+  <div class="post-content md-content moments-body">
+    {{ .Content }}
+  </div>
+  <footer class="post-footer moments-footer">
+    <a class="moments-back" href="{{ "/categories/不想上班/" | relURL }}">← 不想上班</a>
+  </footer>
+</article>
 {{- else }}
 <article class="post-single site-prose">
   <header class="post-header">

@@ -11,8 +11,9 @@
     {{- end -}}
   {{- end -}}
 {{- end -}}
+{{- $isMoments := or (eq .Title "不想上班") (eq (.Data.Term | default "") "不想上班") -}}
 
-<div class="tab-panel">
+<div class="tab-panel{{ if $isMoments }} tab-panel--moments{{ end }}">
   <header class="tab-panel__header">
     <h1 class="tab-panel__title">{{ .Title }}</h1>
     {{- if $desc }}
@@ -21,6 +22,23 @@
   </header>
 
   {{- if $pages }}
+    {{- if $isMoments }}
+  <ul class="moments-stream">
+    {{- range $pages }}
+    <li class="moments-stream__item">
+      <time class="moments-stream__date" datetime="{{ .Date.Format "2006-01-02" }}">
+        {{- .Date.Format "2006年1月2日" -}}
+      </time>
+      <div class="moments-stream__note">
+        <a class="moments-stream__title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <div class="moments-stream__body md-content">
+          {{ .Content }}
+        </div>
+      </div>
+    </li>
+    {{- end }}
+  </ul>
+    {{- else }}
   <ul class="tab-panel__list">
     {{- range $pages }}
     <li class="tab-panel__item">
@@ -36,6 +54,7 @@
     </li>
     {{- end }}
   </ul>
+    {{- end }}
   {{- else }}
   <p class="tab-panel__empty">还没有文章。写一篇并加上分类「{{ .Title }}」就会出现在这里。</p>
   {{- end }}
