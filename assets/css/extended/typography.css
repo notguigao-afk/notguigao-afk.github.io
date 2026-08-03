@@ -55,8 +55,8 @@
 
   --type-ink: var(--imp-ink, var(--primary));
   --type-muted: var(--imp-ink-muted, var(--secondary));
-  /* Turquoise-tinted ink links (Water Lilies accent) */
-  --type-link: color-mix(in srgb, var(--imp-sage, #5a9e96) 32%, var(--type-ink));
+  /* Turquoise links — clearer accent on cool paper */
+  --type-link: color-mix(in srgb, var(--imp-sage, #2f8f86) 42%, var(--type-ink));
   --type-ease: var(--imp-ease-out, cubic-bezier(0.23, 1, 0.32, 1));
 }
 

@@ -5,21 +5,21 @@
 
 /* --- Primitive --- */
 :root {
-  /* Paper: barely warm, like light on canvas */
-  --imp-canvas: #f2f5f3;
-  --imp-surface: #fafcfb;
-  --imp-border: #d4e0dc;
+  /* Paper: cool green-white, readable but clearly not gray SaaS */
+  --imp-canvas: #e8f2ef;
+  --imp-surface: #f4faf8;
+  --imp-border: #b8d4ce;
 
-  /* Water field */
-  --imp-mist: #dff0ee; /* pale cyan haze */
-  --imp-lilac: #8eb8b8; /* soft turquoise (legacy name, water blue) */
-  --imp-rose: #b7d4ce; /* shallow aqua */
-  --imp-gold: #c5d9c8; /* light on lily pads */
-  --imp-sage: #5a9e96; /* turquoise accent (links, focus, chips) */
+  /* Water field — Water Lilies cyan / turquoise, visible on paper */
+  --imp-mist: #c5e8e4; /* cyan haze */
+  --imp-lilac: #5eb0aa; /* mid turquoise (legacy name) */
+  --imp-rose: #8ec9c0; /* shallow aqua */
+  --imp-gold: #9ecfbc; /* light on lily pads */
+  --imp-sage: #2f8f86; /* accent: links, focus, chips */
 
-  /* Ink: deep teal-charcoal for fresher contrast on cool paper */
-  --imp-ink: #1a2624;
-  --imp-ink-muted: #4d5f5b;
+  /* Ink: deep pond teal */
+  --imp-ink: #142422;
+  --imp-ink-muted: #3d5a55;
 
   /* Claude.ai spirit: Georgia for Latin; CJK falls through to Noto Serif SC / 宋体 */
   --imp-font-display: ui-serif, Georgia, Cambria, "Times New Roman", "Noto Serif SC",
@@ -47,32 +47,32 @@ body {
   color: var(--imp-ink);
 }
 
-/* Dark: deep pond at dusk — cool, not brown */
+/* Dark: deep pond at dusk — cool teal, accents still readable */
 html[data-theme="dark"] {
-  --imp-canvas: #121918;
-  --imp-mist: #1c2c2a;
-  --imp-lilac: #3d6b68;
-  --imp-rose: #2f524c;
-  --imp-gold: #3a5548;
-  --imp-sage: #6aafa6;
-  --imp-ink: #e8f2f0;
-  --imp-ink-muted: #9aada8;
-  --imp-surface: #1a2422;
-  --imp-border: #2c3d3a;
+  --imp-canvas: #0e1716;
+  --imp-mist: #1a3330;
+  --imp-lilac: #3d8a84;
+  --imp-rose: #2f6b64;
+  --imp-gold: #3d7a68;
+  --imp-sage: #5ec4b8;
+  --imp-ink: #e6f5f2;
+  --imp-ink-muted: #8fb5ae;
+  --imp-surface: #152422;
+  --imp-border: #2a4a45;
 }
 
 @media (prefers-color-scheme: dark) {
   html[data-theme="auto"] {
-    --imp-canvas: #121918;
-    --imp-mist: #1c2c2a;
-    --imp-lilac: #3d6b68;
-    --imp-rose: #2f524c;
-    --imp-gold: #3a5548;
-    --imp-sage: #6aafa6;
-    --imp-ink: #e8f2f0;
-    --imp-ink-muted: #9aada8;
-    --imp-surface: #1a2422;
-    --imp-border: #2c3d3a;
+    --imp-canvas: #0e1716;
+    --imp-mist: #1a3330;
+    --imp-lilac: #3d8a84;
+    --imp-rose: #2f6b64;
+    --imp-gold: #3d7a68;
+    --imp-sage: #5ec4b8;
+    --imp-ink: #e6f5f2;
+    --imp-ink-muted: #8fb5ae;
+    --imp-surface: #152422;
+    --imp-border: #2a4a45;
   }
 }
 
@@ -141,63 +141,68 @@ body:has(.home-landing) .footer {
   background: var(--imp-canvas);
 }
 
-/* Barely-there paper + water mist — not a multicolor canvas */
+/* Soft water light — same family (cyan/turquoise), enough presence to feel */
 .home-hero__wash {
   position: absolute;
   border-radius: 50%;
-  filter: blur(64px);
-  opacity: 0.28;
+  filter: blur(56px);
   pointer-events: none;
   will-change: transform;
 }
 
 .home-hero__wash--1 {
-  width: min(70vw, 820px);
-  height: min(70vw, 820px);
-  top: -18%;
-  left: -10%;
+  width: min(68vw, 800px);
+  height: min(68vw, 800px);
+  top: -16%;
+  left: -8%;
   background: radial-gradient(
     circle at 40% 40%,
-    color-mix(in srgb, var(--imp-surface) 70%, #f7f3eb),
+    color-mix(in srgb, var(--imp-surface) 55%, #f5f0e6),
     transparent 70%
   );
-  opacity: 0.55;
+  opacity: 0.7;
 }
 
 .home-hero__wash--2 {
-  width: min(55vw, 680px);
-  height: min(55vw, 680px);
-  top: 8%;
-  right: -12%;
-  background: radial-gradient(
-    circle at 50% 50%,
-    color-mix(in srgb, var(--imp-mist) 55%, transparent),
-    transparent 72%
-  );
-  opacity: 0.32;
+  width: min(58vw, 720px);
+  height: min(58vw, 720px);
+  top: 4%;
+  right: -10%;
+  background: radial-gradient(circle at 50% 50%, var(--imp-mist), transparent 70%);
+  opacity: 0.58;
 }
 
 .home-hero__wash--3 {
-  width: min(48vw, 560px);
-  height: min(48vw, 560px);
-  bottom: -12%;
-  left: 22%;
+  width: min(50vw, 600px);
+  height: min(50vw, 600px);
+  bottom: -10%;
+  left: 18%;
   background: radial-gradient(
     circle at 50% 50%,
-    color-mix(in srgb, var(--imp-sage) 18%, transparent),
-    transparent 74%
+    color-mix(in srgb, var(--imp-lilac) 55%, var(--imp-mist)),
+    transparent 72%
   );
-  opacity: 0.22;
+  opacity: 0.42;
 }
 
 .home-hero__wash--4 {
-  display: none;
+  width: min(36vw, 440px);
+  height: min(36vw, 440px);
+  top: 36%;
+  left: 52%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    color-mix(in srgb, var(--imp-sage) 40%, var(--imp-rose)),
+    transparent 72%
+  );
+  opacity: 0.28;
+  display: block;
 }
 
 .home-hero__grain {
   position: absolute;
   inset: 0;
-  opacity: 0.028;
+  opacity: 0.04;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 180px 180px;
@@ -206,13 +211,13 @@ body:has(.home-landing) .footer {
 
 html[data-theme="dark"] .home-hero__grain,
 html[data-theme="auto"] .home-hero__grain {
-  opacity: 0.045;
+  opacity: 0.06;
   mix-blend-mode: soft-light;
 }
 
 @media (prefers-color-scheme: light) {
   html[data-theme="auto"] .home-hero__grain {
-    opacity: 0.028;
+    opacity: 0.04;
     mix-blend-mode: multiply;
   }
 }
