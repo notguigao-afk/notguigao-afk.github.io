@@ -1,0 +1,41 @@
+{{- /* Homepage wayfinding — three topic chips from data/topics.yaml */ -}}
+{{- $topics := site.Data.topics | default slice -}}
+{{- if $topics -}}
+<section class="home-entry" aria-labelledby="home-entry-label">
+  <div class="home-entry__inner">
+    <p id="home-entry-label" class="home-entry__label">从这里</p>
+    <ul class="home-entry__list" role="list">
+      {{- range sort $topics "weight" "asc" -}}
+        {{- $id := .id | default (.name | urlize) -}}
+        {{- $name := .name | default .Name -}}
+        {{- $desc := .description | default .Description | default "" -}}
+        {{- $accent := .accent | default "#2f8f86" -}}
+        {{- $url := printf "/categories/%s/" $id | relURL -}}
+        {{- $count := 0 -}}
+        {{- with index site.Taxonomies.categories $id -}}
+          {{- $count = len . -}}
+          {{- with .Page -}}
+            {{- $url = .RelPermalink -}}
+          {{- end -}}
+        {{- end -}}
+      <li>
+        <a class="home-entry__chip" href="{{ $url }}" style="--chip-accent: {{ $accent }}">
+          <span class="home-entry__swatch" aria-hidden="true"></span>
+          <h2 class="home-entry__name">{{ $name }}</h2>
+          {{- if $desc }}
+          <p class="home-entry__desc">{{ $desc }}</p>
+          {{- end }}
+          <span class="home-entry__meta">
+            {{- if gt $count 0 -}}
+              {{ $count }} 篇
+            {{- else -}}
+              暂无文章
+            {{- end -}}
+          </span>
+        </a>
+      </li>
+      {{- end -}}
+    </ul>
+  </div>
+</section>
+{{- end -}}

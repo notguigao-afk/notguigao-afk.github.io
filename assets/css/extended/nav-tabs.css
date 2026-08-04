@@ -74,6 +74,50 @@ html[data-theme="dark"] .site-header {
   min-height: 1.75rem;
 }
 
+/* Theme toggle — 44×44 touch target (ui-ux-pro-max) */
+.site-header .theme-toggle,
+.site-header__brand .theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0.4rem;
+  background: transparent;
+  color: var(--imp-ink-muted, var(--secondary));
+  cursor: pointer;
+  transition: color 160ms var(--imp-ease-out, ease),
+    background-color 160ms var(--imp-ease-out, ease),
+    transform 160ms var(--imp-ease-out, ease);
+}
+
+.site-header .theme-toggle:hover {
+  color: var(--imp-ink, var(--primary));
+  background: color-mix(in srgb, var(--imp-surface, var(--entry)) 70%, transparent);
+}
+
+.site-header .theme-toggle:focus-visible {
+  outline: 2px solid var(--imp-sage, #2f8f86);
+  outline-offset: 3px;
+}
+
+.site-header .theme-toggle:active {
+  transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header .theme-toggle {
+    transition: none;
+  }
+
+  .site-header .theme-toggle:active {
+    transform: none;
+  }
+}
+
 .site-header__brand-link {
   font-family: var(--type-display, var(--imp-font-display, Georgia, "Noto Serif SC", serif));
   font-size: 1.2rem;
@@ -84,11 +128,11 @@ html[data-theme="dark"] .site-header {
 }
 
 .site-header__brand-link:hover {
-  color: color-mix(in srgb, var(--imp-ink, var(--primary)) 78%, var(--imp-sage, #9bb7a5));
+  color: color-mix(in srgb, var(--imp-ink, var(--primary)) 78%, var(--imp-sage, #2f8f86));
 }
 
 .site-header__brand-link:focus-visible {
-  outline: 2px solid var(--imp-sage, #9bb7a5);
+  outline: 2px solid var(--imp-sage, #2f8f86);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -111,6 +155,7 @@ html[data-theme="dark"] .site-header {
 .site-tabs__link {
   display: inline-flex;
   align-items: center;
+  min-height: 44px;
   padding: 0.55rem 0.7rem 0.7rem;
   margin-bottom: -1px;
   border-bottom: 2px solid transparent;
@@ -125,7 +170,12 @@ html[data-theme="dark"] .site-header {
   box-shadow: none;
   cursor: pointer;
   transition: color 160ms var(--type-ease, var(--imp-ease-out, ease)),
-    border-color 160ms var(--type-ease, var(--imp-ease-out, ease));
+    border-color 160ms var(--type-ease, var(--imp-ease-out, ease)),
+    opacity 160ms var(--type-ease, var(--imp-ease-out, ease));
+}
+
+.site-tabs__link:active {
+  opacity: 0.75;
 }
 
 .site-tabs__link:hover {
@@ -134,7 +184,7 @@ html[data-theme="dark"] .site-header {
 }
 
 .site-tabs__link:focus-visible {
-  outline: 2px solid var(--imp-sage, #9bb7a5);
+  outline: 2px solid var(--imp-sage, #2f8f86);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -143,7 +193,7 @@ html[data-theme="dark"] .site-header {
   color: var(--imp-ink, var(--primary));
   font-weight: 600;
   background: transparent;
-  border-bottom-color: color-mix(in srgb, var(--imp-sage, #9bb7a5) 75%, var(--imp-ink, #1c1917));
+  border-bottom-color: color-mix(in srgb, var(--imp-sage, #2f8f86) 75%, var(--imp-ink, #1c1917));
   box-shadow: none;
 }
 

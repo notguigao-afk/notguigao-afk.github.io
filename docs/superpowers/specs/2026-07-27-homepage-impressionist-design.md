@@ -2,7 +2,10 @@
 
 **Date:** 2026-07-27  
 **Site:** Hugo + PaperMod (`notguigao-afk.github.io`)  
-**Status:** Draft for user review  
+**Status:** Superseded in parts — see `docs/brand-notes.md` (2026-08)
+
+> **What still holds:** full-bleed ambient hero + category entry after hero; no React; reduced-motion; 44px targets; content-first.  
+> **What changed since this draft:** palette → Water Lilies cyan/turquoise (not warm lilac/gold paper); type → Georgia + Noto Serif SC (not Fraunces/Source Sans); home IA → hero + 3 topic chips from `data/topics.yaml` (not full recent/topics/about sections); URLs English with Chinese labels.
 
 ## 1. Goal
 

@@ -11,10 +11,11 @@
   --tp-font-display: var(--type-display, var(--imp-font-display, Georgia, "Noto Serif SC", serif));
   --tp-font-body: var(--type-body, var(--imp-font-body, Georgia, "Noto Serif SC", serif));
   --tp-ease: var(--type-ease, var(--imp-ease-out, cubic-bezier(0.23, 1, 0.32, 1)));
-  --tp-gold: var(--imp-gold, #d4a574);
-  --tp-lilac: var(--imp-lilac, #c4b7d5);
-  --tp-sage: var(--imp-sage, #9bb7a5);
-  --tp-rose: var(--imp-rose, #e8b4b8);
+  /* Water Lilies fallbacks (not legacy warm impressionist hex) */
+  --tp-gold: var(--imp-gold, var(--imp-pad, #9ecfbc));
+  --tp-lilac: var(--imp-lilac, var(--imp-water, #5eb0aa));
+  --tp-sage: var(--imp-sage, #2f8f86);
+  --tp-rose: var(--imp-rose, var(--imp-aqua, #8ec9c0));
 
   position: relative;
   isolation: isolate;
@@ -106,7 +107,7 @@ body:has(.home-landing) .footer {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
-  transition: color 160ms var(--tp-ease);
+  transition: color 160ms var(--tp-ease), transform 160ms var(--tp-ease);
 }
 
 .tab-panel__link:hover .tab-panel__item-title {
@@ -117,6 +118,10 @@ body:has(.home-landing) .footer {
   outline: 2px solid var(--tp-sage);
   outline-offset: 4px;
   border-radius: 2px;
+}
+
+.tab-panel__link:active {
+  transform: scale(0.99);
 }
 
 .tab-panel__date {
@@ -726,24 +731,6 @@ html[data-theme="dark"] .about-ambient__grain {
   }
 }
 
-/* ---------- Home panel height ---------- */
-
-.home-landing--panel {
-  min-height: calc(100dvh - 6.5rem);
-  display: flex;
-  flex-direction: column;
-}
-
-.home-hero--panel {
-  flex: 1 1 auto;
-  min-height: min(70vh, 640px);
-  padding-block: clamp(2.5rem, 6vw, 4.5rem);
-}
-
-.home-hero--panel .home-hero__scroll {
-  display: none;
-}
-
 /* ---------- 不想上班: note stream (not magazine index) ---------- */
 
 .tab-panel--moments {
@@ -821,7 +808,7 @@ html[data-theme="dark"] .about-ambient__grain {
   line-height: 1.4;
   color: var(--tp-fg);
   text-decoration: none;
-  transition: color 160ms var(--tp-ease);
+  transition: color 160ms var(--tp-ease), transform 160ms var(--tp-ease);
 }
 
 .moments-stream__title:hover {
@@ -832,6 +819,10 @@ html[data-theme="dark"] .about-ambient__grain {
   outline: 2px solid var(--tp-sage);
   outline-offset: 3px;
   border-radius: 2px;
+}
+
+.moments-stream__title:active {
+  transform: scale(0.99);
 }
 
 .moments-stream__body {
@@ -994,7 +985,13 @@ html[data-theme="dark"] .about-ambient__grain {
 
 @media (prefers-reduced-motion: reduce) {
   .tab-panel__link,
-  .tab-panel__item-title {
+  .tab-panel__item-title,
+  .moments-stream__title {
     transition: none;
+  }
+
+  .tab-panel__link:active,
+  .moments-stream__title:active {
+    transform: none;
   }
 }

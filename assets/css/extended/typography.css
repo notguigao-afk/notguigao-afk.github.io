@@ -145,7 +145,7 @@ a:hover {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--imp-sage, #9bb7a5) 35%, transparent);
+  background: color-mix(in srgb, var(--imp-sage, #2f8f86) 35%, transparent);
   color: var(--type-ink);
 }
 
@@ -336,7 +336,7 @@ a:hover {
 .post-content blockquote {
   margin: 1.5em 0;
   padding: 0.15em 0 0.15em 1.1rem;
-  border-inline-start: 3px solid color-mix(in srgb, var(--imp-sage, #9bb7a5) 65%, var(--imp-border, #e7e0d6));
+  border-inline-start: 3px solid color-mix(in srgb, var(--imp-sage, #2f8f86) 65%, var(--imp-border, #b8d4ce));
   font-family: var(--type-display);
   font-size: 1.05em;
   font-style: italic;
