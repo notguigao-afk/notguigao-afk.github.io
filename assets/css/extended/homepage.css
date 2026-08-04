@@ -159,7 +159,6 @@ body:has(.home-landing) .footer {
   border-radius: 50%;
   filter: blur(56px);
   pointer-events: none;
-  will-change: transform;
 }
 
 .home-hero__wash--1 {

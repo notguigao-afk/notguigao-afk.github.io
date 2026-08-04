@@ -1,5 +1,5 @@
 {{- /* Homepage wayfinding — three topic chips from data/topics.yaml */ -}}
-{{- $topics := site.Data.topics | default slice -}}
+{{- $topics := hugo.Data.topics | default slice -}}
 {{- if $topics -}}
 <section class="home-entry" aria-labelledby="home-entry-label">
   <div class="home-entry__inner">

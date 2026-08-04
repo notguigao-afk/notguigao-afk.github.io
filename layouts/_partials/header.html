@@ -43,7 +43,7 @@
         {{- end -}}
       {{- else -}}
         {{- $tabs = $tabs | append (dict "name" "首页" "url" ("/" | absLangURL) "title" "首页") -}}
-        {{- range sort (site.Data.topics | default slice) "weight" "asc" -}}
+        {{- range sort (hugo.Data.topics | default slice) "weight" "asc" -}}
           {{- $name := .name | default .Name -}}
           {{- $id := .id | default ($name | urlize) -}}
           {{- $url := "" -}}

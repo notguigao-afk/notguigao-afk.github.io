@@ -1,7 +1,7 @@
 baseURL = 'https://notguigao-afk.github.io/'
 # Prefer zh so dates/meta render consistently (PaperMod uses site language)
 defaultContentLanguage = 'zh-cn'
-languageCode = 'zh-cn'
+locale = 'zh-CN'
 title = '/dev/null'
 theme = 'PaperMod'
 

@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# Hugo build output (deployed via GitHub Actions, not committed)
+public/
+resources/_gen/
+
+# Hugo cache / locks
+.hugo_build.lock
+
+# Python venv
+.venv/
+
+# Editor
+.idea/
+*.swp
