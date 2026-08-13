@@ -132,9 +132,14 @@ def check_wayfinding() -> None:
         fail("home chips must expose distinct swatch modifiers")
     if "LMArena" in about or "Elo" in about:
         fail("about colophon must not include LMArena/Elo ranking")
-    for slug in ("essays", "gleanings", "moments"):
-        if f"/categories/{slug}/" not in about:
-            fail(f"about map must link to /categories/{slug}/")
+    match = re.search(r'<ul class="about-map">(.*?)</ul>', about, re.S)
+    if not match:
+        fail("about page must include an about-map list")
+    else:
+        amap = match.group(1)
+        for slug in ("essays", "gleanings", "moments"):
+            if f"/categories/{slug}/" not in amap:
+                fail(f"about map must link to /categories/{slug}/")
 
 
 CHECKS = [
