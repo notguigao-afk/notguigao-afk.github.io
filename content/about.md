@@ -27,15 +27,14 @@ draft = false
 
 <p class="about-map-label">这里</p>
 <ul class="about-map">
-<li><strong>随笔</strong><span>生活里冒出来的想法</span></li>
-<li><strong>拾遗</strong><span>学过的、捡到的、不想再忘的</span></li>
-<li><strong>不想上班</strong><span>碎片念头，不写成随笔的那种</span></li>
+<li><a href="/categories/essays/"><strong>随笔</strong><span>生活里冒出来的想法</span></a></li>
+<li><a href="/categories/gleanings/"><strong>拾遗</strong><span>学过的、捡到的、不想再忘的</span></a></li>
+<li><a href="/categories/moments/"><strong>不想上班</strong><span>碎片念头，不写成随笔的那种</span></a></li>
 </ul>
 
 <p class="about-close">写得多慢都行。至少是自己的。</p>
 
-<aside class="about-colophon" aria-label="站点工具">
-<p class="about-colophon__brand"><strong>Grok 4.5</strong><span class="about-colophon__dot" aria-hidden="true">·</span><span class="about-colophon__org">xAI</span><span class="about-colophon__dot" aria-hidden="true">·</span><span class="about-colophon__via">Grok Build</span></p>
-<p class="about-colophon__lede">终端里的编程 agent。本站最初是和它并排搭起来的。</p>
-<p class="about-colophon__meta">LMArena / Chatbot Arena<span class="about-colophon__dot" aria-hidden="true">·</span>文本总榜约第 33 名<span class="about-colophon__dot" aria-hidden="true">·</span>Elo ~1468<span class="about-colophon__dot" aria-hidden="true">·</span>2026-07 快照</p>
+<aside class="about-colophon" aria-label="站点说明">
+<p class="about-colophon__brand">最初是在终端里搭起来的。</p>
+<p class="about-colophon__lede">写得多慢都行。至少页面是自己的。</p>
 </aside>

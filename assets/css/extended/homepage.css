@@ -463,6 +463,23 @@ html[data-theme="dark"] .home-entry__chip {
   );
 }
 
+.home-entry__swatch--split {
+  background: linear-gradient(
+    90deg,
+    var(--chip-accent) 0 46%,
+    transparent 46% 54%,
+    color-mix(in srgb, var(--chip-accent) 55%, var(--imp-mist)) 54% 100%
+  );
+}
+
+.home-entry__swatch--dash {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--chip-accent) 0 0.55rem,
+    transparent 0.55rem 0.85rem
+  );
+}
+
 .home-entry__name {
   margin: 0;
   font-family: var(--font-display);

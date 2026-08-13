@@ -122,6 +122,21 @@ def check_index_titles() -> None:
         fail("tags index must not use PaperMod terms-tags chips")
 
 
+def check_wayfinding() -> None:
+    home = public_html("index.html")
+    about = public_html("about/index.html")
+    yaml = read(ROOT / "data" / "topics.yaml")
+    if "#1f6f68" not in yaml or "#3d9a90" not in yaml or "#7eb8a8" not in yaml:
+        fail("topics.yaml must use the three locked accent hex values")
+    if "home-entry__swatch--split" not in home or "home-entry__swatch--dash" not in home:
+        fail("home chips must expose distinct swatch modifiers")
+    if "LMArena" in about or "Elo" in about:
+        fail("about colophon must not include LMArena/Elo ranking")
+    for slug in ("essays", "gleanings", "moments"):
+        if f"/categories/{slug}/" not in about:
+            fail(f"about map must link to /categories/{slug}/")
+
+
 CHECKS = [
     check_dark_token_bridge,
     check_skip_link,
@@ -129,6 +144,7 @@ CHECKS = [
     check_footer_zh,
     check_404,
     check_index_titles,
+    check_wayfinding,
 ]
 
 
