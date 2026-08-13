@@ -31,6 +31,11 @@ Cool green-white paper + pond teal ink + turquoise accents.
 
 Legacy aliases still defined: `--imp-lilac` → water, `--imp-rose` → aqua, `--imp-gold` → pad.
 
+## Implementation notes
+
+- Dark mode must re-assign PaperMod `--theme` / `--entry` / `--primary` on `html:root[data-theme="dark"]` (higher specificity than the theme's `:root[data-theme="dark"]`).
+- Index titles: `/posts/` → 文章, `/tags/` → 标签, `/categories/` → 分类. Do not put these in `menu.main`.
+
 ## Typography
 
 - **Display & body:** Georgia stack + Noto Serif SC (CJK)

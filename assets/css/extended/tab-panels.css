@@ -1000,6 +1000,31 @@ html[data-theme="dark"] .about-ambient__grain {
   color: var(--type-muted, var(--imp-ink-muted, var(--secondary)));
 }
 
+.site-prose .paginav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 1.25rem;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.site-prose .paginav a {
+  width: auto;
+  min-height: 44px;
+  padding: 0.65rem 0;
+}
+
+.site-prose .paginav .next,
+.site-prose .paginav .prev {
+  overflow-wrap: anywhere;
+}
+
+.site-prose .paginav .title {
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .tab-panel__link,
   .tab-panel__item-title,

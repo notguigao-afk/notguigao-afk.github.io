@@ -212,7 +212,7 @@ body:has(.home-landing) .footer {
     color-mix(in srgb, var(--imp-water) 55%, var(--imp-mist)),
     transparent 72%
   );
-  opacity: 0.42;
+  opacity: 0.55;
 }
 
 .home-hero__wash--4 {
@@ -225,7 +225,7 @@ body:has(.home-landing) .footer {
     color-mix(in srgb, var(--imp-sage) 40%, var(--imp-aqua)),
     transparent 72%
   );
-  opacity: 0.28;
+  opacity: 0.40;
   display: block;
 }
 

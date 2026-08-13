@@ -142,6 +142,20 @@ def check_wayfinding() -> None:
                 fail(f"about map must link to /categories/{slug}/")
 
 
+def check_polish() -> None:
+    css = read(CSS_DIR / "tab-panels.css")
+    if ".site-prose .paginav" not in css:
+        fail("override .site-prose .paginav so next/prev titles do not wrap orphan glyphs")
+    home_css = homepage_css()
+    if not re.search(r"\.home-hero__wash--3\s*\{[^}]*opacity:\s*0\.55", home_css, re.S):
+        fail("hero wash 3 opacity should be 0.55")
+    if not re.search(r"\.home-hero__wash--4\s*\{[^}]*opacity:\s*0\.40", home_css, re.S):
+        fail("hero wash 4 opacity should be 0.40")
+    notes = read(ROOT / "docs" / "brand-notes.md")
+    if "html:root" not in notes:
+        fail("brand-notes must document html:root dark bridge")
+
+
 CHECKS = [
     check_dark_token_bridge,
     check_skip_link,
@@ -150,6 +164,7 @@ CHECKS = [
     check_404,
     check_index_titles,
     check_wayfinding,
+    check_polish,
 ]
 
 
