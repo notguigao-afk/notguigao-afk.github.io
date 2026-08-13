@@ -119,6 +119,9 @@ html[data-theme="dark"] .site-header {
 }
 
 .site-header__brand-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-family: var(--type-display, var(--imp-font-display, Georgia, "Noto Serif SC", serif));
   font-size: 1.2rem;
   font-weight: 600;
@@ -257,4 +260,40 @@ body:has(.home-landing) .site-header {
   .site-tabs__link {
     transition: none;
   }
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--site-gutter, 1.25rem);
+  top: 0.75rem;
+  z-index: 100;
+  padding: 0.55rem 0.85rem;
+  min-height: 44px;
+  border-radius: 0.35rem;
+  background: var(--imp-ink, #142422);
+  color: var(--imp-canvas, #e8f2ef);
+  font-family: var(--type-body, Georgia, "Noto Serif SC", serif);
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transform: translateY(-150%);
+  transition: transform 160ms var(--imp-ease-out, ease);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 2px solid var(--imp-sage, #2f8f86);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link {
+    transition: none;
+  }
+}
+
+.top-link {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
 }

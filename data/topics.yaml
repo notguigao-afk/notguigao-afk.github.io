@@ -3,16 +3,16 @@
   name: 随笔
   description: 生活与思考
   weight: 1
-  accent: "#5a9e96"
+  accent: "#1f6f68"
 
 - id: gleanings
   name: 拾遗
   description: 学习与经验
   weight: 2
-  accent: "#5eb0aa"
+  accent: "#3d9a90"
 
 - id: moments
   name: 不想上班
   description: 碎片念头。不写成随笔的那种。
   weight: 3
-  accent: "#2f8f86"
+  accent: "#7eb8a8"

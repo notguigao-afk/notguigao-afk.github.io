@@ -54,7 +54,8 @@ body {
 }
 
 /* Dark: deep pond at dusk — cool teal, accents still readable */
-html[data-theme="dark"] {
+/* html:root beats PaperMod :root[data-theme="dark"] (0,2,1 > 0,2,0) */
+html:root[data-theme="dark"] {
   --imp-canvas: #0e1716;
   --imp-mist: #1a3330;
   --imp-water: #3d8a84;
@@ -68,10 +69,19 @@ html[data-theme="dark"] {
   --imp-ink-muted: #8fb5ae;
   --imp-surface: #152422;
   --imp-border: #2a4a45;
+
+  --theme: var(--imp-canvas);
+  --entry: var(--imp-surface);
+  --primary: var(--imp-ink);
+  --secondary: var(--imp-ink-muted);
+  --content: var(--imp-ink);
+  --border: var(--imp-border);
+  --code-bg: color-mix(in srgb, var(--imp-mist) 55%, var(--imp-surface));
+  --tertiary: color-mix(in srgb, var(--imp-border) 80%, var(--imp-mist));
 }
 
 @media (prefers-color-scheme: dark) {
-  html[data-theme="auto"] {
+  html:root[data-theme="auto"] {
     --imp-canvas: #0e1716;
     --imp-mist: #1a3330;
     --imp-water: #3d8a84;
@@ -85,6 +95,15 @@ html[data-theme="dark"] {
     --imp-ink-muted: #8fb5ae;
     --imp-surface: #152422;
     --imp-border: #2a4a45;
+
+    --theme: var(--imp-canvas);
+    --entry: var(--imp-surface);
+    --primary: var(--imp-ink);
+    --secondary: var(--imp-ink-muted);
+    --content: var(--imp-ink);
+    --border: var(--imp-border);
+    --code-bg: color-mix(in srgb, var(--imp-mist) 55%, var(--imp-surface));
+    --tertiary: color-mix(in srgb, var(--imp-border) 80%, var(--imp-mist));
   }
 }
 
@@ -193,7 +212,7 @@ body:has(.home-landing) .footer {
     color-mix(in srgb, var(--imp-water) 55%, var(--imp-mist)),
     transparent 72%
   );
-  opacity: 0.42;
+  opacity: 0.55;
 }
 
 .home-hero__wash--4 {
@@ -206,7 +225,7 @@ body:has(.home-landing) .footer {
     color-mix(in srgb, var(--imp-sage) 40%, var(--imp-aqua)),
     transparent 72%
   );
-  opacity: 0.28;
+  opacity: 0.40;
   display: block;
 }
 
@@ -365,7 +384,7 @@ html[data-theme="dark"] .home-hero__inner {
 .home-entry__label {
   margin: 0 0 1rem;
   font-family: var(--font-body);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -441,6 +460,23 @@ html[data-theme="dark"] .home-entry__chip {
     90deg,
     var(--chip-accent),
     color-mix(in srgb, var(--chip-accent) 35%, var(--imp-mist))
+  );
+}
+
+.home-entry__swatch--split {
+  background: linear-gradient(
+    90deg,
+    var(--chip-accent) 0 46%,
+    transparent 46% 54%,
+    color-mix(in srgb, var(--chip-accent) 55%, var(--imp-mist)) 54% 100%
+  );
+}
+
+.home-entry__swatch--dash {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--chip-accent) 0 0.55rem,
+    transparent 0.55rem 0.85rem
   );
 }
 

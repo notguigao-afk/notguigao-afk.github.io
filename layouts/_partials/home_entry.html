@@ -18,9 +18,12 @@
             {{- $url = .RelPermalink -}}
           {{- end -}}
         {{- end -}}
+        {{- $swatch := "solid" -}}
+        {{- if eq $id "gleanings" }}{{ $swatch = "split" }}{{ end -}}
+        {{- if eq $id "moments" }}{{ $swatch = "dash" }}{{ end -}}
       <li>
         <a class="home-entry__chip" href="{{ $url }}" style="--chip-accent: {{ $accent }}">
-          <span class="home-entry__swatch" aria-hidden="true"></span>
+          <span class="home-entry__swatch home-entry__swatch--{{ $swatch }}" aria-hidden="true"></span>
           <h2 class="home-entry__name">{{ $name }}</h2>
           {{- if $desc }}
           <p class="home-entry__desc">{{ $desc }}</p>
