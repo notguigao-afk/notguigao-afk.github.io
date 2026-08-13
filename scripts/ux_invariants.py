@@ -62,7 +62,23 @@ def check_skip_link() -> None:
         fail("<main> must have id=main")
 
 
-CHECKS = [check_dark_token_bridge, check_skip_link]
+def check_header_a11y() -> None:
+    home = public_html("index.html")
+    if 'title="切换主题 (Alt + T)"' not in home:
+        fail("theme toggle title must be 切换主题 (Alt + T)")
+    css = read(CSS_DIR / "nav-tabs.css")
+    if not re.search(
+        r"\.site-header__brand-link\s*\{[^}]*min-height:\s*44px",
+        css,
+        re.S,
+    ):
+        fail("brand link must declare min-height: 44px")
+    labels = read(CSS_DIR / "homepage.css") + read(CSS_DIR / "tab-panels.css")
+    if re.search(r"font-size:\s*0\.72rem", labels):
+        fail("UI labels must not use 0.72rem (<12px); use 0.75rem or larger")
+
+
+CHECKS = [check_dark_token_bridge, check_skip_link, check_header_a11y]
 
 
 def main() -> int:

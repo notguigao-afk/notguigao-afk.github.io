@@ -514,7 +514,7 @@ html[data-theme="dark"] .about-ambient__grain {
 .about-map-label {
   margin: 0 0 0.85rem !important;
   font-family: var(--tp-font-body);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;

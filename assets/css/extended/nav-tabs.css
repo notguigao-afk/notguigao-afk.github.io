@@ -119,6 +119,9 @@ html[data-theme="dark"] .site-header {
 }
 
 .site-header__brand-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-family: var(--type-display, var(--imp-font-display, Georgia, "Noto Serif SC", serif));
   font-size: 1.2rem;
   font-weight: 600;
