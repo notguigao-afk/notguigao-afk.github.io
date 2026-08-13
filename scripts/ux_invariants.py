@@ -78,7 +78,23 @@ def check_header_a11y() -> None:
         fail("UI labels must not use 0.72rem (<12px); use 0.75rem or larger")
 
 
-CHECKS = [check_dark_token_bridge, check_skip_link, check_header_a11y]
+def check_footer_zh() -> None:
+    home = public_html("index.html")
+    if "Powered by" in home:
+        fail("footer must not use English Powered by")
+    # Credit wraps Hugo/PaperMod in <a>; match the visible phrase.
+    visible = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", home))
+    if "用 Hugo 与 PaperMod 生成" not in visible:
+        fail("footer must use 用 Hugo 与 PaperMod 生成")
+    if 'aria-label="回到顶部"' not in home:
+        fail("top-link aria-label must be 回到顶部")
+    if "https://gohugo.io/?utm_source=papermod" not in home:
+        fail("keep official Hugo credit URL")
+    if "https://github.com/adityatelange/hugo-PaperMod/" not in home:
+        fail("keep official PaperMod credit URL")
+
+
+CHECKS = [check_dark_token_bridge, check_skip_link, check_header_a11y, check_footer_zh]
 
 
 def main() -> int:

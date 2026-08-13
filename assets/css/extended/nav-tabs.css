@@ -290,3 +290,10 @@ body:has(.home-landing) .site-header {
     transition: none;
   }
 }
+
+.top-link {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+}
