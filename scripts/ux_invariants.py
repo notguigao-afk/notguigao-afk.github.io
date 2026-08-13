@@ -106,12 +106,29 @@ def check_404() -> None:
         fail("do not ship PaperMod empty 404 numeral-only page")
 
 
+def check_index_titles() -> None:
+    tags = public_html("tags/index.html")
+    cats = public_html("categories/index.html")
+    posts = public_html("posts/index.html")
+    if "<h1" in tags and "Tags" in tags and "标签" not in tags:
+        fail("tags index still uses English Tags")
+    if "标签" not in tags:
+        fail("tags index must say 标签")
+    if "分类" not in cats:
+        fail("categories index must say 分类")
+    if "文章" not in posts:
+        fail("posts index must say 文章")
+    if "class=\"terms-tags\"" in tags:
+        fail("tags index must not use PaperMod terms-tags chips")
+
+
 CHECKS = [
     check_dark_token_bridge,
     check_skip_link,
     check_header_a11y,
     check_footer_zh,
     check_404,
+    check_index_titles,
 ]
 
 

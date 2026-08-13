@@ -1,0 +1,23 @@
+{{- define "main" }}
+<div class="tab-panel tab-panel--index">
+  <header class="tab-panel__header">
+    <h1 class="tab-panel__title">{{ .Title }}</h1>
+    {{- with .Description }}
+    <p class="tab-panel__lede">{{ . }}</p>
+    {{- end }}
+  </header>
+  <ul class="index-terms">
+    {{- $type := .Type }}
+    {{- range .Data.Terms.Alphabetical }}
+      {{- with site.GetPage (printf "/%s/%s" $type .Name) }}
+    <li>
+      <a class="index-terms__link" href="{{ .RelPermalink }}">
+        <span class="index-terms__name">{{ .LinkTitle }}</span>
+        <span class="index-terms__count">{{ .Pages | len }} 篇</span>
+      </a>
+    </li>
+      {{- end }}
+    {{- end }}
+  </ul>
+</div>
+{{- end }}

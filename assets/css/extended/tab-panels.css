@@ -996,6 +996,47 @@ html[data-theme="dark"] .about-ambient__grain {
   }
 }
 
+/* ---------- Taxonomy indexes: row list (not PaperMod chips) ---------- */
+
+.index-terms {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.index-terms__link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 1.5rem;
+  align-items: baseline;
+  min-height: 44px;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--tp-border) 90%, transparent);
+  text-decoration: none;
+  color: inherit;
+}
+
+.index-terms li:first-child .index-terms__link {
+  border-top: 1px solid color-mix(in srgb, var(--tp-border) 90%, transparent);
+}
+
+.index-terms__name {
+  font-family: var(--tp-font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.index-terms__count {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--tp-muted);
+}
+
+.index-terms__link:focus-visible {
+  outline: 2px solid var(--tp-sage);
+  outline-offset: 4px;
+}
+
 .tab-panel--missing .missing-actions {
   display: flex;
   flex-wrap: wrap;
