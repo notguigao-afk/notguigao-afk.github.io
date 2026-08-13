@@ -54,7 +54,8 @@ body {
 }
 
 /* Dark: deep pond at dusk — cool teal, accents still readable */
-html[data-theme="dark"] {
+/* html:root beats PaperMod :root[data-theme="dark"] (0,2,1 > 0,2,0) */
+html:root[data-theme="dark"] {
   --imp-canvas: #0e1716;
   --imp-mist: #1a3330;
   --imp-water: #3d8a84;
@@ -68,10 +69,19 @@ html[data-theme="dark"] {
   --imp-ink-muted: #8fb5ae;
   --imp-surface: #152422;
   --imp-border: #2a4a45;
+
+  --theme: var(--imp-canvas);
+  --entry: var(--imp-surface);
+  --primary: var(--imp-ink);
+  --secondary: var(--imp-ink-muted);
+  --content: var(--imp-ink);
+  --border: var(--imp-border);
+  --code-bg: color-mix(in srgb, var(--imp-mist) 55%, var(--imp-surface));
+  --tertiary: color-mix(in srgb, var(--imp-border) 80%, var(--imp-mist));
 }
 
 @media (prefers-color-scheme: dark) {
-  html[data-theme="auto"] {
+  html:root[data-theme="auto"] {
     --imp-canvas: #0e1716;
     --imp-mist: #1a3330;
     --imp-water: #3d8a84;
@@ -85,6 +95,15 @@ html[data-theme="dark"] {
     --imp-ink-muted: #8fb5ae;
     --imp-surface: #152422;
     --imp-border: #2a4a45;
+
+    --theme: var(--imp-canvas);
+    --entry: var(--imp-surface);
+    --primary: var(--imp-ink);
+    --secondary: var(--imp-ink-muted);
+    --content: var(--imp-ink);
+    --border: var(--imp-border);
+    --code-bg: color-mix(in srgb, var(--imp-mist) 55%, var(--imp-surface));
+    --tertiary: color-mix(in srgb, var(--imp-border) 80%, var(--imp-mist));
   }
 }
 
