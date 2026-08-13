@@ -94,7 +94,25 @@ def check_footer_zh() -> None:
         fail("keep official PaperMod credit URL")
 
 
-CHECKS = [check_dark_token_bridge, check_skip_link, check_header_a11y, check_footer_zh]
+def check_404() -> None:
+    page = public_html("404.html")
+    if "<h1" not in page:
+        fail("404 must have an h1")
+    if "没有这一页" not in page:
+        fail("404 h1/copy must include 没有这一页")
+    if 'href="/categories/essays/"' not in page and 'href="/categories/essays"' not in page:
+        fail("404 must link to essays")
+    if re.search(r'class="not-found"', page) and "没有这一页" not in page:
+        fail("do not ship PaperMod empty 404 numeral-only page")
+
+
+CHECKS = [
+    check_dark_token_bridge,
+    check_skip_link,
+    check_header_a11y,
+    check_footer_zh,
+    check_404,
+]
 
 
 def main() -> int:

@@ -995,3 +995,19 @@ html[data-theme="dark"] .about-ambient__grain {
     transform: none;
   }
 }
+
+.tab-panel--missing .missing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin: 0;
+  font-family: var(--tp-font-body);
+  font-size: 1.05rem;
+}
+
+.tab-panel--missing .missing-actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  text-underline-offset: 0.18em;
+}

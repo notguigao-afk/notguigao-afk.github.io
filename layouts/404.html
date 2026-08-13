@@ -1,0 +1,13 @@
+{{- define "main" }}
+<article class="tab-panel tab-panel--missing">
+  <header class="tab-panel__header">
+    <h1 class="tab-panel__title">没有这一页</h1>
+    <p class="tab-panel__lede">链接可能写错了，或文章已经挪走。</p>
+  </header>
+  <p class="missing-actions">
+    <a href="{{ "/" | relURL }}">回首页</a>
+    <a href="{{ "/categories/essays/" | relURL }}">随笔</a>
+    <a href="{{ "/about/" | relURL }}">关于</a>
+  </p>
+</article>
+{{- end }}
