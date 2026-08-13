@@ -46,7 +46,23 @@ def check_dark_token_bridge() -> None:
         fail("auto+prefers-dark html:root must set --theme: var(--imp-canvas)")
 
 
-CHECKS = [check_dark_token_bridge]
+def public_html(rel: str) -> str:
+    return read(PUBLIC / rel)
+
+
+def check_skip_link() -> None:
+    home = public_html("index.html")
+    if 'class="skip-link"' not in home and "class='skip-link'" not in home:
+        fail("home missing skip-link")
+    if 'href="#main"' not in home:
+        fail("skip-link must point at #main")
+    if "跳到正文" not in home:
+        fail("skip-link label must be 跳到正文")
+    if not re.search(r"<main[^>]*id=\"main\"", home):
+        fail("<main> must have id=main")
+
+
+CHECKS = [check_dark_token_bridge, check_skip_link]
 
 
 def main() -> int:
