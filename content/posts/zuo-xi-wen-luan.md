@@ -1,8 +1,9 @@
 +++
 date = '2026-08-24T19:26:00+08:00'
 draft = false
-title = '深圳是否必须留'
+title = '作息紊乱'
 categories = ['moments']
+aliases = ['/posts/shen-zhen-shi-fou-bi-xu-liu/']
 +++
 
 最近又开始作息紊乱，晚上睡不着玩手机，早上起不来，锻炼也停滞了。
