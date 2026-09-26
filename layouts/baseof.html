@@ -5,11 +5,11 @@
 <!DOCTYPE html>
 {{- $theme := site.Params.defaultTheme | default "auto" }}
 {{- if eq $theme "dark" }}
-<html lang="{{ site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}" data-theme="dark">
+<html lang="{{ site.Language }}" dir="{{ .Language.Direction | default "auto" }}" data-theme="dark">
 {{- else if eq $theme "light" }}
-<html lang="{{ site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}" data-theme="light">
+<html lang="{{ site.Language }}" dir="{{ .Language.Direction | default "auto" }}" data-theme="light">
 {{- else }}
-<html lang="{{ site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}" data-theme="auto">
+<html lang="{{ site.Language }}" dir="{{ .Language.Direction | default "auto" }}" data-theme="auto">
 {{- end }}
 
 <head>
@@ -23,11 +23,16 @@
 <body id="top">
     <a class="skip-link" href="#main">跳到正文</a>
 {{- end }}
+    <div class="site-shell">
     {{ partialCached "header.html" . .Page -}}
-    <main class="main" id="main">
+    <div class="site-layout">
+    {{ partial "site_sidebar.html" . }}
+    <main class="main" id="main" tabindex="-1">
         {{- block "main" . }}{{ end }}
     </main>
+    </div>
     {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") (.Param "ShowCodeCopyButtons") -}}
+    </div>
 </body>
 
 </html>

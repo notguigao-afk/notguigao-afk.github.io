@@ -1,6 +1,6 @@
 /* ============================================================
-   Site-wide typography — Claude-like reading serif
-   Latin: Georgia (Claude’s public fallback; Tiempos is proprietary)
+   Site-wide typography — a personal collection of essays
+   Latin: Georgia
    CJK: Noto Serif SC → Songti SC / STSong
    ============================================================ */
 
@@ -49,9 +49,9 @@
 
   --type-leading-tight: 1.2;
   --type-leading-snug: 1.35;
-  /* Body: 1.5–1.75 per ui-ux-pro-max; long-form sits at the upper end */
+  /* Chinese prose needs room between lines. */
   --type-leading-body: 1.7;
-  --type-leading-loose: 1.75;
+  --type-leading-loose: 1.85;
 
   --type-ink: var(--imp-ink, var(--primary));
   --type-muted: var(--imp-ink-muted, var(--secondary));
@@ -71,8 +71,8 @@ body {
   font-size: var(--type-base);
   font-weight: 400;
   line-height: var(--type-leading-body);
-  /* Serif Chinese reads better with slightly open tracking */
-  letter-spacing: 0.02em;
+  /* Keep conversational Chinese prose at natural tracking. */
+  letter-spacing: 0;
   color: var(--type-ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -93,8 +93,8 @@ h6,
 .archive-year-header,
 .archive-month-header {
   font-family: var(--type-display);
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-weight: 500;
+  letter-spacing: 0;
   line-height: var(--type-leading-tight);
   color: var(--type-ink);
   font-optical-sizing: auto;
@@ -128,7 +128,7 @@ h6 {
   font-family: var(--type-body);
   font-size: var(--type-meta);
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
   text-transform: none;
 }
 
@@ -219,8 +219,8 @@ a:hover {
 .post-content {
   font-family: var(--type-body);
   font-size: var(--type-base);
-  line-height: var(--type-leading-loose); /* 1.75 — skill ceiling for body */
-  letter-spacing: 0.02em;
+  line-height: var(--type-leading-loose);
+  letter-spacing: 0;
   color: var(--type-ink);
   text-wrap: pretty;
 }
@@ -339,8 +339,8 @@ a:hover {
   border-inline-start: 3px solid color-mix(in srgb, var(--imp-sage, #2f8f86) 65%, var(--imp-border, #b8d4ce));
   font-family: var(--type-display);
   font-size: 1.05em;
-  font-style: italic;
-  font-weight: 500;
+  font-style: normal;
+  font-weight: 400;
   line-height: var(--type-leading-body);
   letter-spacing: -0.01em;
   color: color-mix(in srgb, var(--type-ink) 88%, var(--type-muted));
@@ -425,14 +425,14 @@ a:hover {
 .post-tags a {
   font-size: var(--type-sm);
   font-weight: 500;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
 }
 
 .pagination a {
   font-family: var(--type-body);
   font-size: var(--type-sm);
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
 }
 
 /* ---------- Footer ---------- */
@@ -508,6 +508,6 @@ select {
   .md-content,
   .post-content {
     font-size: 1.125rem;
-    line-height: var(--type-leading-loose); /* stay ≤ 1.75 */
+    line-height: var(--type-leading-loose);
   }
 }

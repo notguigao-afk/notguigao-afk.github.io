@@ -59,15 +59,14 @@
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
-            e.preventDefault();
             var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
+            var target = document.getElementById(decodeURIComponent(id));
+            if (!target) return;
+            e.preventDefault();
+            target.scrollIntoView({
+                behavior: e.detail !== 0 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches ? "smooth" : "instant"
+            });
+            if (id === "main") target.focus({ preventScroll: true });
             if (id === "top") {
                 history.replaceState(null, null, " ");
             } else {

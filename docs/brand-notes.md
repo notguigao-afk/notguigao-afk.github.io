@@ -1,60 +1,63 @@
 # Brand notes — `/dev/null`
 
-Short source of truth for display language, palette, and type. Supersedes warm-impressionist details in the 2026-07-27 homepage spec where they conflict.
+A private journal: conversational prose, reflective essays, technical curiosity,
+and occasional deadpan humor. This design supersedes the earlier green/serif
+and impressionist directions.
 
-## Language
+## Palette and typography
 
-| Layer | Rule |
-|-------|------|
-| UI labels, posts, about | **Chinese** by default |
-| Site title | `/dev/null` (technical metaphor, intentional English) |
-| URLs | English slugs only (`essays`, `gleanings`, `moments`, tags…) |
-| Hero quote | English **epigraph** (intentional); Chinese **tagline** orients the reader |
+| Role | Light | Dark |
+| --- | --- | --- |
+| Paper | `#f7f5f0` | `#201e1b` |
+| Secondary surface | `#f0ece5` | `#29251f` |
+| Ink | `#292622` | `#e8e3d9` |
+| Secondary ink | `#746b63` | `#b7ada2` |
+| Accent | `#934c42` | `#d89e8e` |
+| Rule | `#dcd6cd` | `#494039` |
 
-Do not mix Chinese into paths or English into primary nav labels.
+Noto Serif SC for headings; Noto Sans SC for prose and controls; system mono for
+`/dev/null`. Desktop prose is 18px with 1.85 line-height, about 34–38 Chinese
+characters per line. Mobile prose is 17px. Local fonts remain fallbacks.
 
-## Palette — Water Lilies
+Keep PaperMod's variables bridged on `html:root[data-theme="dark"]` and the
+auto-dark media rule. The existing `--imp-*` variable names remain stable.
 
-Cool green-white paper + pond teal ink + turquoise accents.
+## Layout
 
-| Token | Role | Light (approx.) |
-|-------|------|-----------------|
-| `--imp-canvas` | Page ground | `#e8f2ef` |
-| `--imp-surface` | Cards / chrome | `#f4faf8` |
-| `--imp-ink` | Body text | `#142422` |
-| `--imp-ink-muted` | Meta / secondary | `#2f4a45` |
-| `--imp-sage` | Links, focus, accent | `#2f8f86` |
-| `--imp-water` | Mid water (was lilac) | `#5eb0aa` |
-| `--imp-aqua` | Shallow (was rose) | `#8ec9c0` |
-| `--imp-pad` | Pad light (was gold) | `#9ecfbc` |
-| `--imp-mist` | Haze washes | `#c5e8e4` |
+- A single masthead, followed by an 11rem contents column and a reading column.
+- The 64rem overall frame includes the gutter between the two columns.
+- At less than 800px, navigation becomes one row and content becomes one column.
+- Homepage opens directly with the newest post, then five earlier entries.
+- The author's prose is unchanged. Dates and entries are generated from Hugo content.
+- Moments show their complete text; long articles have a category return link.
+- Warm dark mode, visible keyboard focus, reduced-motion support, and a functional
+  skip link are required. No ornamental entrance animations or heavy cards.
 
-Legacy aliases still defined: `--imp-lilac` → water, `--imp-rose` → aqua, `--imp-gold` → pad.
+## AI marginalia
 
-## Implementation notes
+Each published post has a short, original comment after the body, labeled
+“AI 边批”. It is distinct from the author's prose, summaries, and RSS body.
+The moments stream also shows the same signed comment after each complete note.
 
-- Dark mode must re-assign PaperMod `--theme` / `--entry` / `--primary` on `html:root[data-theme="dark"]` (higher specificity than the theme's `:root[data-theme="dark"]`).
-- Index titles: `/posts/` → 文章, `/tags/` → 标签, `/categories/` → 分类. Do not put these in `menu.main`.
+`data/annotations.toml` stores comments by content filename and references an
+immutable author record containing name, exact model, effort, and generation date.
+The current record is **Codex / GPT-6 Astra · High**, with model and effort supplied
+by the user for the generation session. A different generation session should add
+its own author record instead of rewriting the identity on existing comments.
 
-## Typography
+When adding a post:
 
-- **Display & body:** Georgia stack + Noto Serif SC (CJK)
-- **Mono:** system ui-monospace stack
-- **Reading measure:** `--site-prose: 75ch`
-- **Body line-height:** ~1.7–1.75
+1. Read the complete article and write a specific, short comment. Favor deadpan
+   observations and comic logic; for bereavement or disaster, use a gentler response.
+2. Add the comment under `[posts.<content-filename>]` and reference its author record.
+3. Use the model/effort actually reported for that session. Ask if unavailable;
+   never infer them from a configured default or copy another generation's identity.
+4. Run the checks below. A missing comment warns during Hugo builds and fails the
+   invariant check. Comments are authored at edit time; there are no runtime API calls.
 
-Load: `layouts/_partials/extend_head.html` (Noto Serif SC via Google Fonts).
+## Validation
 
-## Page types
-
-| Page | Layout language |
-|------|-----------------|
-| Home | Hero epigraph + topic entry chips |
-| Essays / Gleanings | Magazine index rows |
-| Moments | Note stream (narrower, dashed) |
-| About | Full-frame ambient + semantic blocks |
-| Posts | Centered 75ch prose |
-
-## CSS load intent
-
-`homepage.css` (tokens) → `typography.css` → `nav-tabs.css` → `tab-panels.css` (PaperMod extended CSS order by filename).
+Run `hugo --cacheDir /tmp/my-blog-hugo-cache`, then
+`python3 scripts/ux_invariants.py` (Python 3.11+). The checks cover navigation,
+accessibility basics, taxonomy names, and complete signed annotations on all posts.
+Preview desktop/mobile widths, both themes, and article/annotation boundaries.

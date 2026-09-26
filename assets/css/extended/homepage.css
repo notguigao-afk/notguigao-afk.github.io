@@ -1,538 +1,193 @@
-/* ============================================================
-   Site color system — Water Lilies (Monet-inspired cyan / turquoise)
-   Warm paper ground + cool water accents.
-   Tokens: primitive → semantic aliases → PaperMod bridge.
-   ============================================================ */
-
-/* --- Primitive --- */
+/* Private journal: warm paper, ink, and restrained oxblood annotations. */
 :root {
-  /* Paper: cool green-white, readable but clearly not gray SaaS */
-  --imp-canvas: #e8f2ef;
-  --imp-surface: #f4faf8;
-  --imp-border: #b8d4ce;
-
-  /* Water field — cyan / turquoise family */
-  --imp-mist: #c5e8e4; /* cyan haze */
-  --imp-water: #5eb0aa; /* mid turquoise */
-  --imp-aqua: #8ec9c0; /* shallow aqua */
-  --imp-pad: #9ecfbc; /* light on lily pads */
-  --imp-sage: #2f8f86; /* accent: links, focus, chips */
-
-  /* Legacy aliases (same values) — prefer water/aqua/pad in new code */
-  --imp-lilac: var(--imp-water);
-  --imp-rose: var(--imp-aqua);
-  --imp-gold: var(--imp-pad);
-
-  /* Ink: deep pond teal */
-  --imp-ink: #142422;
-  --imp-ink-muted: #2f4a45; /* slightly deeper for contrast on canvas */
-
-  /* Claude.ai spirit: Georgia for Latin; CJK falls through to Noto Serif SC / 宋体 */
-  --imp-font-display: ui-serif, Georgia, Cambria, "Times New Roman", "Noto Serif SC",
-    "Songti SC", "STSong", "Source Han Serif SC", Times, serif;
-  --imp-font-body: ui-serif, Georgia, Cambria, "Times New Roman", "Noto Serif SC",
-    "Songti SC", "STSong", "Source Han Serif SC", Times, serif;
-
+  --imp-canvas: #f7f5f0;
+  --imp-surface: #f0ece5;
+  --imp-border: #dcd6cd;
+  --imp-ink: #292622;
+  --imp-ink-muted: #746b63;
+  --imp-sage: #934c42;
+  --imp-mist: #e9e2d9;
+  --imp-font-display: "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
+  --imp-font-body: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
   --imp-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-  --imp-dur-fast: 160ms;
-  --imp-dur: 220ms;
-
-  /* Bridge PaperMod core vars → site palette (all pages) */
   --theme: var(--imp-canvas);
   --entry: var(--imp-surface);
   --primary: var(--imp-ink);
   --secondary: var(--imp-ink-muted);
   --content: var(--imp-ink);
   --border: var(--imp-border);
-  --code-bg: color-mix(in srgb, var(--imp-mist) 55%, var(--imp-surface));
-  --tertiary: color-mix(in srgb, var(--imp-border) 80%, var(--imp-mist));
+  --code-bg: var(--imp-surface);
+  --tertiary: var(--imp-border);
 }
-
-body {
-  background: var(--imp-canvas);
-  color: var(--imp-ink);
-}
-
-/* Dark: deep pond at dusk — cool teal, accents still readable */
-/* html:root beats PaperMod :root[data-theme="dark"] (0,2,1 > 0,2,0) */
 html:root[data-theme="dark"] {
-  --imp-canvas: #0e1716;
-  --imp-mist: #1a3330;
-  --imp-water: #3d8a84;
-  --imp-aqua: #2f6b64;
-  --imp-pad: #3d7a68;
-  --imp-lilac: var(--imp-water);
-  --imp-rose: var(--imp-aqua);
-  --imp-gold: var(--imp-pad);
-  --imp-sage: #5ec4b8;
-  --imp-ink: #e6f5f2;
-  --imp-ink-muted: #8fb5ae;
-  --imp-surface: #152422;
-  --imp-border: #2a4a45;
-
+  --imp-canvas: #201e1b;
+  --imp-surface: #29251f;
+  --imp-border: #494039;
+  --imp-ink: #e8e3d9;
+  --imp-ink-muted: #b7ada2;
+  --imp-sage: #d89e8e;
+  --imp-mist: #3a3029;
   --theme: var(--imp-canvas);
   --entry: var(--imp-surface);
   --primary: var(--imp-ink);
   --secondary: var(--imp-ink-muted);
   --content: var(--imp-ink);
   --border: var(--imp-border);
-  --code-bg: color-mix(in srgb, var(--imp-mist) 55%, var(--imp-surface));
-  --tertiary: color-mix(in srgb, var(--imp-border) 80%, var(--imp-mist));
+  --code-bg: var(--imp-surface);
+  --tertiary: var(--imp-border);
 }
-
 @media (prefers-color-scheme: dark) {
   html:root[data-theme="auto"] {
-    --imp-canvas: #0e1716;
-    --imp-mist: #1a3330;
-    --imp-water: #3d8a84;
-    --imp-aqua: #2f6b64;
-    --imp-pad: #3d7a68;
-    --imp-lilac: var(--imp-water);
-    --imp-rose: var(--imp-aqua);
-    --imp-gold: var(--imp-pad);
-    --imp-sage: #5ec4b8;
-    --imp-ink: #e6f5f2;
-    --imp-ink-muted: #8fb5ae;
-    --imp-surface: #152422;
-    --imp-border: #2a4a45;
-
+    --imp-canvas: #201e1b;
+    --imp-surface: #29251f;
+    --imp-border: #494039;
+    --imp-ink: #e8e3d9;
+    --imp-ink-muted: #b7ada2;
+    --imp-sage: #d89e8e;
+    --imp-mist: #3a3029;
     --theme: var(--imp-canvas);
     --entry: var(--imp-surface);
     --primary: var(--imp-ink);
     --secondary: var(--imp-ink-muted);
     --content: var(--imp-ink);
     --border: var(--imp-border);
-    --code-bg: color-mix(in srgb, var(--imp-mist) 55%, var(--imp-surface));
-    --tertiary: color-mix(in srgb, var(--imp-border) 80%, var(--imp-mist));
+    --code-bg: var(--imp-surface);
+    --tertiary: var(--imp-border);
   }
 }
-
-/* --- Semantic (home) --- */
+body, body.list {
+  background: var(--imp-canvas);
+  color: var(--imp-ink);
+}
 .home-landing {
-  --color-background: var(--imp-canvas);
-  --color-foreground: var(--imp-ink);
-  --color-muted-foreground: var(--imp-ink-muted);
-  --color-accent: var(--imp-sage);
-  --color-chip-bg: var(--imp-surface);
-  --color-chip-border: var(--imp-border);
-  --font-display: var(--imp-font-display);
-  --font-body: var(--imp-font-body);
+  padding-bottom: 3rem;
 }
-
-/* Break out of PaperMod .main max-width on home */
-body:has(.home-landing) .main {
-  max-width: none;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-body:has(.home-landing) {
-  background: var(--imp-canvas);
-}
-
-body:has(.home-landing) .header,
-body:has(.home-landing) .footer {
-  background: color-mix(in srgb, var(--imp-surface) 82%, transparent);
-  backdrop-filter: blur(12px) saturate(140%);
-  -webkit-backdrop-filter: blur(12px) saturate(140%);
-}
-
-@media (prefers-reduced-transparency: reduce) {
-  body:has(.home-landing) .header,
-  body:has(.home-landing) .footer {
-    background: var(--imp-surface);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-  }
-}
-
-/* ============================================================
-   Hero
-   ============================================================ */
-
-.home-hero {
-  position: relative;
-  isolation: isolate;
-  min-height: min(70vh, 720px);
+.home-heading {
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  padding: clamp(2.75rem, 7vw, 5.5rem) 0 clamp(3rem, 6vw, 4.5rem);
-  color: var(--color-foreground);
-  overflow: hidden;
-  text-align: left;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+  margin-bottom: 2.75rem;
 }
-
-.home-hero__canvas {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: var(--imp-canvas);
-}
-
-/* Soft water light — same family (cyan/turquoise), enough presence to feel */
-.home-hero__wash {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(56px);
-  pointer-events: none;
-}
-
-.home-hero__wash--1 {
-  width: min(68vw, 800px);
-  height: min(68vw, 800px);
-  top: -16%;
-  left: -8%;
-  background: radial-gradient(
-    circle at 40% 40%,
-    color-mix(in srgb, var(--imp-surface) 55%, #f5f0e6),
-    transparent 70%
-  );
-  opacity: 0.7;
-}
-
-.home-hero__wash--2 {
-  width: min(58vw, 720px);
-  height: min(58vw, 720px);
-  top: 4%;
-  right: -10%;
-  background: radial-gradient(circle at 50% 50%, var(--imp-mist), transparent 70%);
-  opacity: 0.58;
-}
-
-.home-hero__wash--3 {
-  width: min(50vw, 600px);
-  height: min(50vw, 600px);
-  bottom: -10%;
-  left: 18%;
-  background: radial-gradient(
-    circle at 50% 50%,
-    color-mix(in srgb, var(--imp-water) 55%, var(--imp-mist)),
-    transparent 72%
-  );
-  opacity: 0.55;
-}
-
-.home-hero__wash--4 {
-  width: min(36vw, 440px);
-  height: min(36vw, 440px);
-  top: 36%;
-  left: 52%;
-  background: radial-gradient(
-    circle at 50% 50%,
-    color-mix(in srgb, var(--imp-sage) 40%, var(--imp-aqua)),
-    transparent 72%
-  );
-  opacity: 0.40;
-  display: block;
-}
-
-.home-hero__grain {
-  position: absolute;
-  inset: 0;
-  opacity: 0.04;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 180px 180px;
-  mix-blend-mode: multiply;
-}
-
-html[data-theme="dark"] .home-hero__grain,
-html[data-theme="auto"] .home-hero__grain {
-  opacity: 0.06;
-  mix-blend-mode: soft-light;
-}
-
-@media (prefers-color-scheme: light) {
-  html[data-theme="auto"] .home-hero__grain {
-    opacity: 0.04;
-    mix-blend-mode: multiply;
-  }
-}
-
-/* Full-bleed canvas + framed content on --site-frame */
-.home-hero__inner {
-  position: relative;
-  width: min(100%, var(--site-frame, 72rem));
-  max-width: var(--site-frame, 72rem);
-  margin-inline: auto;
-  padding: 0.25rem 0;
-  border-radius: 0;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  animation: home-hero-in var(--imp-dur) var(--imp-ease-out) both;
-  text-align: left;
-}
-
-html[data-theme="dark"] .home-hero__inner {
-  background: transparent;
-  box-shadow: none;
-}
-
-@keyframes home-hero-in {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Parallel quote lines — equal weight (intentional English epigraph) */
-.home-hero__quote {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.95rem;
-  font-family: var(--font-display);
-  font-size: clamp(1.55rem, 3.2vw, 2.65rem);
-  font-weight: 600;
-  font-style: italic;
-  line-height: 1.35;
-  letter-spacing: -0.02em;
-  color: var(--color-foreground);
-  font-optical-sizing: auto;
-}
-
-.home-hero__quote-line {
-  display: block;
-  max-width: 22em;
-}
-
-.home-hero__quote-line + .home-hero__quote-line {
-  opacity: 1;
-  font-size: 1em;
-  font-weight: inherit;
-  color: inherit;
-}
-
-.home-hero__tagline {
-  margin: 1.5rem 0 0;
-  max-width: 28ch;
-  font-family: var(--font-body);
-  font-size: clamp(1.02rem, 1.5vw, 1.2rem);
-  font-weight: 400;
-  line-height: 1.7;
-  color: var(--color-muted-foreground);
-}
-
-/* Wide: asymmetric hero — quote dominates left, tagline anchors right */
-@media (min-width: 900px) {
-  .home-hero {
-    min-height: min(78vh, 820px);
-  }
-
-  .home-hero__inner {
-    display: grid;
-    grid-template-columns: minmax(0, 1.35fr) minmax(12rem, 0.65fr);
-    column-gap: clamp(2.5rem, 5vw, 5rem);
-    align-items: end;
-  }
-
-  .home-hero__quote {
-    grid-column: 1;
-    gap: 1.1rem;
-    font-size: clamp(2.1rem, 3.4vw, 3.15rem);
-  }
-
-  .home-hero__quote-line {
-    max-width: none;
-  }
-
-  .home-hero__tagline {
-    grid-column: 2;
-    margin: 0;
-    max-width: none;
-    padding-bottom: 0.35rem;
-    border-bottom: 1px solid color-mix(in srgb, var(--imp-border) 80%, transparent);
-    font-size: clamp(1.05rem, 1.2vw, 1.2rem);
-    line-height: 1.65;
-  }
-}
-
-@media (min-width: 1200px) {
-  .home-hero__quote {
-    font-size: clamp(2.4rem, 3.2vw, 3.4rem);
-  }
-}
-
-/* ============================================================
-   Home entry — wayfinding chips (topics.yaml)
-   ============================================================ */
-
-.home-entry {
-  position: relative;
-  padding: clamp(1.75rem, 4vw, 2.75rem) var(--site-gutter, 1.5rem)
-    clamp(2.5rem, 6vw, 4rem);
-  color: var(--color-foreground);
-  background: var(--imp-canvas);
-  border-top: 1px solid color-mix(in srgb, var(--imp-border) 70%, transparent);
-}
-
-.home-entry__inner {
-  width: min(100%, var(--site-frame, 72rem));
-  max-width: var(--site-frame, 72rem);
-  margin: 0 auto;
-}
-
-.home-entry__label {
-  margin: 0 0 1rem;
-  font-family: var(--font-body);
+.home-heading h1, .home-heading > span {
+  font-family: var(--font-ui);
   font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-muted-foreground);
+  font-weight: 400;
+  color: var(--imp-ink-muted);
+  letter-spacing: 0.04em;
+  margin: 0;
 }
-
-.home-entry__list {
+.journal-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  color: var(--imp-ink-muted);
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+.journal-meta a {
+  color: var(--imp-sage);
+}
+.home-feature h2 {
+  margin: 0.8rem 0 1.4rem;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 500;
+  line-height: 1.5;
+}
+.home-feature__excerpt {
+  font-size: 1.125rem;
+  line-height: 1.9;
+  margin: 0 0 1.1rem;
+}
+.quiet-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  color: var(--imp-sage);
+  font-size: 0.8125rem;
+  text-decoration: none;
+}
+.home-archive {
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--imp-border);
+}
+.home-archive > h2 {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--imp-ink-muted);
+  margin: 1.3rem 0 0;
+}
+.recent-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
 }
-
-@media (min-width: 640px) {
-  .home-entry__list {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-  }
+.recent-entry {
+  position: relative;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--imp-border);
 }
-
-.home-entry__chip {
-  --chip-accent: var(--imp-sage);
+.recent-entry h3 {
+  margin: 0.5rem 0 0.65rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.recent-entry h3 a {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.45rem;
-  min-height: 44px;
-  height: 100%;
-  padding: 1.1rem 1.15rem 1.05rem;
-  border-radius: 0.85rem;
-  background: var(--color-chip-bg);
-  border: 1px solid var(--color-chip-border);
-  box-shadow: 0 1px 0 color-mix(in srgb, #fff 35%, transparent) inset;
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
-  transition: border-color var(--imp-dur) var(--imp-ease-out),
-    box-shadow var(--imp-dur) var(--imp-ease-out),
-    transform var(--imp-dur-fast) var(--imp-ease-out);
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
 }
-
-html[data-theme="dark"] .home-entry__chip {
-  box-shadow: none;
+.recent-entry h3 a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
 }
-
+.recent-entry h3 span {
+  color: var(--imp-ink-muted);
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+}
+.recent-entry > p {
+  color: var(--imp-ink-muted);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.home-all {
+  margin-top: 1rem;
+}
+.home-empty {
+  padding-block: 2rem;
+}
+.recent-entry:has(a:focus-visible) {
+  outline: 2px solid var(--imp-sage);
+  outline-offset: 5px;
+}
+.recent-entry h3 a:focus-visible {
+  outline: none;
+}
 @media (hover: hover) and (pointer: fine) {
-  .home-entry__chip:hover {
-    border-color: color-mix(in srgb, var(--chip-accent) 55%, var(--color-chip-border));
-    box-shadow: 0 12px 28px -18px color-mix(in srgb, var(--imp-ink) 35%, transparent);
-  }
-
-  .home-entry__chip:hover .home-entry__name {
-    color: color-mix(in srgb, var(--imp-ink) 80%, var(--chip-accent));
+  .recent-entry:hover h3, .home-feature h2 a:hover {
+    color: var(--imp-sage);
   }
 }
-
-.home-entry__chip:focus-visible {
-  outline: 2px solid var(--chip-accent);
-  outline-offset: 3px;
-}
-
-.home-entry__chip:active {
-  transform: scale(0.99);
-}
-
-.home-entry__swatch {
-  width: 2.25rem;
-  height: 0.4rem;
-  border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    var(--chip-accent),
-    color-mix(in srgb, var(--chip-accent) 35%, var(--imp-mist))
-  );
-}
-
-.home-entry__swatch--split {
-  background: linear-gradient(
-    90deg,
-    var(--chip-accent) 0 46%,
-    transparent 46% 54%,
-    color-mix(in srgb, var(--chip-accent) 55%, var(--imp-mist)) 54% 100%
-  );
-}
-
-.home-entry__swatch--dash {
-  background: repeating-linear-gradient(
-    90deg,
-    var(--chip-accent) 0 0.55rem,
-    transparent 0.55rem 0.85rem
-  );
-}
-
-.home-entry__name {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.3;
-  color: var(--color-foreground);
-  transition: color var(--imp-dur-fast) var(--imp-ease-out);
-}
-
-.home-entry__desc {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  line-height: 1.45;
-  color: var(--color-muted-foreground);
-}
-
-.home-entry__meta {
-  margin-top: auto;
-  padding-top: 0.35rem;
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--color-muted-foreground);
-}
-
-/* Home panel height (hero + entry) */
-.home-landing--panel {
-  min-height: calc(100dvh - 6.5rem);
-  display: flex;
-  flex-direction: column;
-}
-
-.home-hero--panel {
-  flex: 1 1 auto;
-  min-height: min(58vh, 560px);
-  padding-block: clamp(2.5rem, 6vw, 4.5rem);
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .home-hero__inner {
-    animation: none;
+@media (max-width: 799px) {
+  .home-heading {
+    margin-bottom: 2rem;
   }
-
-  .home-entry__chip {
-    transition: none;
+  .home-feature__excerpt {
+    font-size: 1.0625rem;
   }
-
-  .home-entry__chip:active {
-    transform: none;
+  .recent-entry h3 {
+    font-size: 1.35rem;
   }
 }

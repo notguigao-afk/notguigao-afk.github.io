@@ -5,7 +5,7 @@ locale = 'zh-CN'
 title = '/dev/null'
 theme = 'PaperMod'
 
-# Top tab navigation — each tab is a page, no scroll sections on home
+# Main navigation — category pages and about
 [[menu.main]]
   name = '首页'
   url = '/'
@@ -48,12 +48,8 @@ theme = 'PaperMod'
     favicon32x32 = "favicon-32x32.png"
     apple_touch_icon = "apple-touch-icon.png"
     safari_pinned_tab = "safari-pinned-tab.svg"
-    theme_color = "#e8f2ef"
-    msapplication_TileColor = "#142422"
+    theme_color = "#f7f5f0"
+    msapplication_TileColor = "#292622"
 
-  [params.homeHero]
-    quoteLines = [
-      "Live as if you were to die tomorrow.",
-      "Learn as if you were to live forever."
-    ]
+  [params.journal]
     tagline = "记下生活，也留下学过的。"

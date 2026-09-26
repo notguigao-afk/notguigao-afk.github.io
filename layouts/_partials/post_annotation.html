@@ -1,0 +1,14 @@
+{{- /* Annotations are separate from the author's prose and generated summaries. */ -}}
+{{- if eq .Section "posts" -}}
+  {{- $key := .File.ContentBaseName -}}
+  {{- with index hugo.Data.annotations.posts $key -}}
+    {{- $author := index hugo.Data.annotations.authors .author -}}
+<aside class="post-annotation" aria-label="AI 边批">
+  <p class="post-annotation__label"><span aria-hidden="true">＊</span> AI 边批</p>
+  <p class="post-annotation__text">{{ .text }}</p>
+  <p class="post-annotation__signature">— {{ $author.name }} <span aria-hidden="true">／</span> {{ $author.model }} <span aria-hidden="true">·</span> {{ $author.effort }}</p>
+</aside>
+  {{- else -}}
+    {{- warnf "Missing AI annotation for post %s; add a reviewed entry to data/annotations.toml" $key -}}
+  {{- end -}}
+{{- end -}}

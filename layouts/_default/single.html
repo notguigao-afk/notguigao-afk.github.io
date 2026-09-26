@@ -1,15 +1,8 @@
 {{- define "main" }}
 {{- if eq .Section "about" | or (eq .File.ContentBaseName "about") | or (eq .Title "关于") }}
 <article class="tab-panel tab-panel--about">
-  <div class="about-ambient" aria-hidden="true">
-    <span class="about-ambient__wash about-ambient__wash--1"></span>
-    <span class="about-ambient__wash about-ambient__wash--2"></span>
-    <span class="about-ambient__wash about-ambient__wash--3"></span>
-    <span class="about-ambient__wash about-ambient__wash--4"></span>
-    <span class="about-ambient__grain"></span>
-  </div>
   <div class="about-shell">
-    <h1 class="about-title-sr">{{ .Title }}</h1>
+    <h1 class="about-title">关于这里</h1>
     <div class="about-prose post-content md-content">
       {{ .Content }}
     </div>
@@ -31,6 +24,7 @@
   <div class="post-content md-content moments-body">
     {{ .Content }}
   </div>
+  {{- partial "post_annotation.html" . }}
   <footer class="post-footer moments-footer">
     <a class="moments-back" href="{{ "/categories/moments/" | relURL }}">← 不想上班</a>
   </footer>
@@ -38,6 +32,9 @@
 {{- else }}
 <article class="post-single site-prose">
   <header class="post-header">
+    {{- range first 1 (.GetTerms "categories") }}
+    <a class="post-back" href="{{ .RelPermalink }}">← {{ .LinkTitle }}</a>
+    {{- end }}
     <h1 class="post-title">{{ .Title }}</h1>
     {{- if not (.Param "hideMeta") }}
     <div class="post-meta">
@@ -52,6 +49,7 @@
       {{ .Content }}
     {{- end }}
   </div>
+  {{- partial "post_annotation.html" . }}
   <footer class="post-footer">
     {{- partial "post_nav_links.html" . }}
     {{- if (and site.Params.ShowShareButtons (ne .Params.disableShare true)) }}

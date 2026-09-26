@@ -1,8 +1,5 @@
-{{- $currentPage := . -}}
-{{- $path := $currentPage.RelPermalink -}}
 <header class="header site-header">
-  <nav class="header-nav site-header__nav" aria-label="主导航">
-    <div class="site-header__bar">
+  <div class="site-masthead">
       <div class="logo site-header__brand">
         {{- $label_text := (site.Params.label.text | default site.Title) }}
         {{- if site.Title }}
@@ -35,70 +32,6 @@
         {{- end }}
       </div>
 
-      {{- /* Build tab items: menu.main if set, else defaults from topics + home/about */ -}}
-      {{- $tabs := slice -}}
-      {{- if site.Menus.main -}}
-        {{- range site.Menus.main -}}
-          {{- $tabs = $tabs | append (dict "name" .Name "url" (.URL | absLangURL) "title" (.Title | default .Name)) -}}
-        {{- end -}}
-      {{- else -}}
-        {{- $tabs = $tabs | append (dict "name" "首页" "url" ("/" | absLangURL) "title" "首页") -}}
-        {{- range sort (hugo.Data.topics | default slice) "weight" "asc" -}}
-          {{- $name := .name | default .Name -}}
-          {{- $id := .id | default ($name | urlize) -}}
-          {{- $url := "" -}}
-          {{- with index site.Taxonomies.categories $id -}}
-            {{- $url = .Page.Permalink -}}
-          {{- end -}}
-          {{- if not $url -}}
-            {{- $url = printf "/categories/%s/" $id | absLangURL -}}
-          {{- end -}}
-          {{- $tabs = $tabs | append (dict "name" $name "url" $url "title" $name) -}}
-        {{- end -}}
-        {{- $tabs = $tabs | append (dict "name" "关于" "url" ("/#about" | absLangURL) "title" "关于") -}}
-      {{- end -}}
-
-      <ul class="site-tabs" role="list">
-        {{- range $tabs }}
-          {{- $tabName := .name -}}
-          {{- $tabURL := .url -}}
-          {{- $tabPath := strings.TrimSuffix "/" (urls.Parse $tabURL).Path -}}
-          {{- $curPath := strings.TrimSuffix "/" $path -}}
-          {{- $isAboutTab := or (in $tabURL "#about") (eq $tabName "关于") (in $tabPath "/about") (eq $tabPath "about") -}}
-          {{- $isHomeTab := and (not $isAboutTab) (or (eq $tabPath "") (eq $tabPath "/")) -}}
-          {{- $active := false -}}
-          {{- if and $isHomeTab $currentPage.IsHome -}}
-            {{- $active = true -}}
-          {{- else if $isAboutTab -}}
-            {{- if or (eq $currentPage.Title "关于") (eq $curPath "/about") (eq $curPath "about") (strings.HasSuffix $curPath "/about") -}}
-              {{- $active = true -}}
-            {{- end -}}
-          {{- else if and (not $isHomeTab) (not $isAboutTab) -}}
-            {{- /* Term/list pages: match title (avoids Chinese URL encode mismatch) */ -}}
-            {{- if or (eq $currentPage.Title $tabName) (eq $currentPage.LinkTitle $tabName) -}}
-              {{- $active = true -}}
-            {{- else if or (eq $curPath $tabPath) (strings.HasPrefix $curPath (printf "%s/" $tabPath)) -}}
-              {{- $active = true -}}
-            {{- else if $currentPage.IsPage -}}
-              {{- /* English category slug in front matter; match against tab URL */ -}}
-              {{- range ($currentPage.Params.categories | default slice) -}}
-                {{- if strings.Contains $tabPath (printf "/categories/%s" .) -}}
-                  {{- $active = true -}}
-                {{- end -}}
-              {{- end -}}
-            {{- end -}}
-          {{- end -}}
-
-          <li class="site-tabs__item">
-            <a class="site-tabs__link{{- if $active }} is-active{{ end }}"
-              href="{{ $tabURL }}"
-              title="{{ .title }}"
-              {{- if $active }} aria-current="page"{{ end }}>
-              <span class="site-tabs__label">{{ $tabName }}</span>
-            </a>
-          </li>
-        {{- end }}
-      </ul>
-    </div>
-  </nav>
+    <p class="site-edition"><span class="site-edition__kind">个人记录</span><span class="site-edition__dot" aria-hidden="true">·</span><span class="site-edition__cadence">不定期更新</span></p>
+  </div>
 </header>

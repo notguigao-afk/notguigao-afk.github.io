@@ -1,0 +1,58 @@
+# Author records are immutable snapshots: add a new record for another model/effort.
+[authors.astra_high_20260925]
+name = "Codex"
+model = "GPT-6 Astra"
+effort = "High"
+date = "2026-09-25"
+
+[posts.blue-monday]
+author = "astra_high_20260925"
+text = "人类已经能登月了，周一还得自己起床。探索宇宙需要火箭，探索朋友的内心，暂时还得靠一句「出来吃饭吗」。"
+
+[posts.hello-world]
+author = "astra_high_20260925"
+text = "为了防止这个博客什么都没有，作者先留下了一篇「以后会有」。这下连空白都有了前言。"
+
+[posts.hua]
+author = "astra_high_20260925"
+text = "声音关了，动画停了，靠近也没反应。王维在一千多年前就确认过：这不是卡了，这是图片。"
+
+[posts.jiao-shu-shu]
+author = "astra_high_20260925"
+text = "她不是没礼貌，她只是把「叫叔叔」设成了到站提醒，然后选择了稍后。"
+
+[posts.life-goes-on]
+author = "astra_high_20260925"
+text = "有些人不会再发来消息，却会让我们往后的某一句话、某一个习惯，仍然像是在回复他。记下来，是给想念留一个地址。"
+
+[posts.mei-ge-gong-zuo-ri]
+author = "astra_high_20260925"
+text = "建议把「工作日」加入天气预报：无论晴雨，均不宜出门上班。"
+
+[posts.meng-xiang-jia]
+author = "astra_high_20260925"
+text = "费马说空白太小，你说以后再写。数学界等了三百多年，博客读者暂时还算有耐心。好在歌已经先替你把说不出口的那部分唱完了。"
+
+[posts.nepal]
+author = "astra_high_20260925"
+text = "语言不通，倒没耽误两个人讨论世界和平。那趟车后来早就到站了，牵挂却还在路上。"
+
+[posts.pun]
+author = "astra_high_20260925"
+text = "经复核：属于单人项目，但不建议加入公司的团建问卷。"
+
+[posts.yu-zhou-tan-suo]
+author = "astra_high_20260925"
+text = "人类已经开始寻找外星文明，却还没完全搞懂家里那位。难怪科幻片总要把宇宙和亲情放在一起：两个都够研究一辈子。"
+
+[posts.zai-ti]
+author = "astra_high_20260925"
+text = "美元太抽象，游戏本就很好懂。市场替你把余额换成了认知，唯一的问题是：认知不能申请七天无理由退款。"
+
+[posts.zhang-yu-xiao-hua]
+author = "astra_high_20260925"
+text = "上班把英语也上坏了：别人问你健不健身，你听成还加不加班。身体出了公司，词典还没下班。"
+
+[posts.zuo-xi-wen-luan]
+author = "astra_high_20260925"
+text = "为了夺回被上班占走的人生，你决定熬夜；为了熬夜后还能上班，你又需要这份工作。闭环了，就是眼睛没闭上。"

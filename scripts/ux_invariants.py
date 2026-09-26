@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import re
 import sys
+import tomllib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -125,11 +126,9 @@ def check_index_titles() -> None:
 def check_wayfinding() -> None:
     home = public_html("index.html")
     about = public_html("about/index.html")
-    yaml = read(ROOT / "data" / "topics.yaml")
-    if "#1f6f68" not in yaml or "#3d9a90" not in yaml or "#7eb8a8" not in yaml:
-        fail("topics.yaml must use the three locked accent hex values")
-    if "home-entry__swatch--split" not in home or "home-entry__swatch--dash" not in home:
-        fail("home chips must expose distinct swatch modifiers")
+    for slug in ("essays", "gleanings", "moments"):
+        if f"/categories/{slug}/" not in home:
+            fail(f"sidebar must link to /categories/{slug}/")
     if "LMArena" in about or "Elo" in about:
         fail("about colophon must not include LMArena/Elo ranking")
     match = re.search(r'<ul class="about-map">(.*?)</ul>', about, re.S)
@@ -146,14 +145,40 @@ def check_polish() -> None:
     css = read(CSS_DIR / "tab-panels.css")
     if ".site-prose .paginav" not in css:
         fail("override .site-prose .paginav so next/prev titles do not wrap orphan glyphs")
-    home_css = homepage_css()
-    if not re.search(r"\.home-hero__wash--3\s*\{[^}]*opacity:\s*0\.55", home_css, re.S):
-        fail("hero wash 3 opacity should be 0.55")
-    if not re.search(r"\.home-hero__wash--4\s*\{[^}]*opacity:\s*0\.40", home_css, re.S):
-        fail("hero wash 4 opacity should be 0.40")
+    home = public_html("index.html")
+    if "最近写下的" not in home or 'href="/posts/"' not in home:
+        fail("homepage must expose recent writing and the full archive")
     notes = read(ROOT / "docs" / "brand-notes.md")
     if "html:root" not in notes:
         fail("brand-notes must document html:root dark bridge")
+
+
+def check_annotations() -> None:
+    data = tomllib.loads(read(ROOT / "data" / "annotations.toml"))
+    posts = data.get("posts", {})
+    authors = data.get("authors", {})
+    for path in (ROOT / "content" / "posts").glob("*.md"):
+        if path.stem == "_index":
+            continue
+        source = read(path)
+        metadata = tomllib.loads(source.split("+++", 2)[1])
+        if metadata.get("draft", False):
+            continue
+        entry = posts.get(path.stem, {})
+        if not entry.get("text", "").strip():
+            fail(f"missing reviewed annotation: {path.stem}")
+            continue
+        author = authors.get(entry.get("author"), {})
+        if not all(author.get(k) for k in ("name", "model", "effort")):
+            fail(f"incomplete annotation signature: {path.stem}")
+        # Match current flat post paths; front matter may override the filename slug.
+        slug = metadata.get("slug", path.stem)
+        page = public_html(f"posts/{slug}/index.html")
+        if page.count('aria-label="AI 边批"') != 1:
+            fail(f"post must render exactly one AI annotation: {slug}")
+        for value in (entry["text"], author.get("model", ""), author.get("effort", "")):
+            if value not in page:
+                fail(f"annotation text/signature missing from {slug}")
 
 
 CHECKS = [
@@ -165,6 +190,7 @@ CHECKS = [
     check_index_titles,
     check_wayfinding,
     check_polish,
+    check_annotations,
 ]
 
 

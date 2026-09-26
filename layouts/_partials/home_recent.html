@@ -1,0 +1,38 @@
+{{- $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse -}}
+<header class="home-heading">
+  <h1>最近写下的</h1>
+  <span>{{ len $posts }} 篇记录</span>
+</header>
+{{- with $posts }}
+  {{- range first 1 . }}
+<article class="home-feature">
+  <div class="journal-meta">
+    {{- range first 1 (.GetTerms "categories") }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+  </div>
+  <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+  <p class="home-feature__excerpt">{{ .Summary | plainify | htmlUnescape | truncate 280 }}</p>
+  <a class="quiet-link" href="{{ .RelPermalink }}">继续读 <span aria-hidden="true">↗</span></a>
+</article>
+  {{- end }}
+<section class="home-archive" aria-labelledby="home-archive-title">
+  <h2 id="home-archive-title">再翻一页</h2>
+  <ul class="recent-list" role="list">
+    {{- range first 5 (after 1 .) }}
+    <li>
+      <article class="recent-entry">
+        <div class="journal-meta">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+          {{- range first 1 (.GetTerms "categories") }}<span>{{ .LinkTitle }}</span>{{ end }}
+        </div>
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }} <span aria-hidden="true">↗</span></a></h3>
+        <p>{{ .Summary | plainify | htmlUnescape | truncate 95 }}</p>
+      </article>
+    </li>
+    {{- end }}
+  </ul>
+  <a class="quiet-link home-all" href="{{ "/posts/" | relURL }}">全部文章 <span aria-hidden="true">↗</span></a>
+</section>
+{{- else }}
+<p class="home-empty">还没写到这里。慢慢来。</p>
+{{- end }}
