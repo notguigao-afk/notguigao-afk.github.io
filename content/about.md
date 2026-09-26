@@ -4,26 +4,26 @@ date = '2026-07-27'
 draft = false
 +++
 
-<p class="about-lead">也不是每天都这样，只是最近越来越像夹在三首歌中间。</p>
+<p class="about-lead">也不是每天都这样，只是有时候觉得，自己夹在三首歌中间。</p>
 
 <ul class="about-songs">
 <li>
 <strong class="about-songs__title">《找自己》</strong>
-<span class="about-songs__body">有时像站在烈日下的沙漠，等一场大雨把自己冲干净，好再找回自己。</span>
+<span class="about-songs__body">想知道自己喜欢什么，想过什么样的生活。听起来应该不难，毕竟本人就在这里，但也没有因此方便多少。</span>
 </li>
 <li>
 <strong class="about-songs__title">《想自由》</strong>
-<span class="about-songs__body">有时像困在摩天大楼里的野兽，一路嗅着美梦往上爬，摔了也不怎么觉得痛，只觉得空。</span>
+<span class="about-songs__body">不太喜欢被安排，也还没弄明白，如果全由自己安排，会过成什么样。自由先想要，其他的慢慢想。</span>
 </li>
 <li>
 <strong class="about-songs__title">《任我行》</strong>
-<span class="about-songs__body">有时又觉得可以任我走、天空海阔，却又怕雨伞外独行——一抬头，人群还是那么像羊群。</span>
+<span class="about-songs__body">想往自己喜欢的方向走，又难免看看别人去了哪里。有时觉得一个人也挺好，有时还是希望有人同行。</span>
 </li>
 </ul>
 
-<p class="about-bridge">三股引力同时拽着，轨道就有点乱，像三体系统里的一颗行星。</p>
+<p class="about-bridge">这三首歌暂时没有哪一首占上风，可能也不用。</p>
 
-<p class="about-pause">这个站不负责把轨道算清楚，只是路过时能停一下。</p>
+<p class="about-pause">这里放一些想法、见闻，还有偶然捡到的东西。未必想清楚了才写，写下来以后也可能改主意。</p>
 
 <p class="about-map-label">这里</p>
 <ul class="about-map">
@@ -32,9 +32,4 @@ draft = false
 <li><a href="/categories/moments/"><strong>不想上班</strong><span>碎片念头，不写成随笔的那种</span></a></li>
 </ul>
 
-<p class="about-close">写得多慢都行。至少是自己的。</p>
-
-<aside class="about-colophon" aria-label="站点说明">
-<p class="about-colophon__brand">最初是在终端里搭起来的。</p>
-<p class="about-colophon__lede">写得多慢都行。至少页面是自己的。</p>
-</aside>
+<p class="about-close">至于关于我，暂时就这些。</p>
