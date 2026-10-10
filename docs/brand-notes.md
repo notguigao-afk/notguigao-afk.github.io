@@ -8,16 +8,30 @@ and impressionist directions.
 
 | Role | Light | Dark |
 | --- | --- | --- |
-| Paper | `#f7f5f0` | `#201e1b` |
+| Paper | `#ffffff` | `#201e1b` |
 | Secondary surface | `#f0ece5` | `#29251f` |
-| Ink | `#292622` | `#e8e3d9` |
+| Ink | `#000000` | `#e8e3d9` |
 | Secondary ink | `#746b63` | `#b7ada2` |
 | Accent | `#934c42` | `#d89e8e` |
 | Rule | `#dcd6cd` | `#494039` |
 
-Noto Serif SC for headings; Noto Sans SC for prose and controls; system mono for
-`/dev/null`. Desktop prose is 18px with 1.85 line-height, about 34–38 Chinese
-characters per line. Mobile prose is 17px. Local fonts remain fallbacks.
+Reading typography follows the actual `crush.pages` styles, audited on 2026-10-10:
+body Times-Roman 12 pt, title bold Times 24 pt, relative single line spacing,
+paragraph spacing 0 pt before / 12 pt after (title: 16.078125 pt after), black text.
+The font and spacing values were decoded from the document's referenced styles,
+not inferred from unused font names in its stylesheet.
+
+Use local @font-face references to Times-Roman, Times-Bold, Times-Italic, and
+Times-BoldItalic to avoid browser font-family aliases. CoreText on this Mac resolves
+Times Chinese text to STSongti-TC-Regular (ascent + descent = 1.4em); use that local
+face, then SC and Noto Serif SC fallbacks. This fallback observation is from the local
+font engine; the document itself specifies Times, not a named Chinese font.
+Web body is 16px (12pt), title 32px (24pt), natural single-line font metrics (about 1.4em for mixed Chinese text), paragraph gap
+1em, maximum reading width 40rem. Font fallback and rasterization can differ on
+other systems; this is a responsive web adaptation, not pixel-identical Pages rendering.
+The original inline italics, bold statements, and italic closing paragraphs in Crush
+must survive import. Do not replace author emphasis with invented blockquotes.
+Noto Sans SC remains the UI face. All article words and paragraph boundaries stay intact.
 
 Keep PaperMod's variables bridged on `html:root[data-theme="dark"]` and the
 auto-dark media rule. The existing `--imp-*` variable names remain stable.

@@ -1,37 +1,58 @@
 /* ============================================================
    Site-wide typography — a personal collection of essays
-   Latin: Georgia
-   CJK: Noto Serif SC → Songti SC / STSong
+   Latin: the manuscript’s local Times faces, with portable fallbacks
+   CJK: local CoreText Times fallback (Songti TC) → Songti SC / Noto Serif SC
    ============================================================ */
+
+/* Pin actual Times faces: browser aliases can otherwise substitute Times New Roman.
+   These are local font references only; no proprietary font files are distributed. */
+@font-face {
+  font-family: "Manuscript Times";
+  src: local("Times-Roman");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Manuscript Times";
+  src: local("Times-Bold");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Manuscript Times";
+  src: local("Times-Italic");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Manuscript Times";
+  src: local("Times-BoldItalic");
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Manuscript Songti";
+  src: local("STSongti-TC-Regular"), local("STSongti-SC-Regular");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Manuscript Songti";
+  src: local("STSongti-TC-Bold"), local("STSongti-SC-Bold");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
 
 /* Tokens live in homepage.css :root; hard fallbacks here for load order */
 :root {
-  --type-display: var(
-    --imp-font-display,
-    ui-serif,
-    Georgia,
-    Cambria,
-    "Times New Roman",
-    "Noto Serif SC",
-    "Songti SC",
-    "STSong",
-    "Source Han Serif SC",
-    Times,
-    serif
-  );
-  --type-body: var(
-    --imp-font-body,
-    ui-serif,
-    Georgia,
-    Cambria,
-    "Times New Roman",
-    "Noto Serif SC",
-    "Songti SC",
-    "STSong",
-    "Source Han Serif SC",
-    Times,
-    serif
-  );
+  --type-display: var(--imp-font-display, "Manuscript Times", Times, "Times New Roman", "Manuscript Songti", "Songti TC", "Songti SC", "Noto Serif SC", serif);
+  --type-body: var(--imp-font-body, "Manuscript Times", Times, "Times New Roman", "Manuscript Songti", "Songti TC", "Songti SC", "Noto Serif SC", serif);
   --type-mono: ui-monospace, "SF Mono", "Cascadia Code", "Segoe UI Mono", Menlo, Consolas,
     monospace;
 
@@ -39,23 +60,24 @@
   --type-xs: 0.8125rem; /* 13 */
   --type-sm: 0.875rem; /* 14 */
   --type-meta: 0.9375rem; /* 15 */
-  --type-base: 1.0625rem; /* 17 */
+  --type-base: 1rem; /* Pages 12 pt = 16 CSS px */
   --type-md: 1.125rem; /* 18 */
   --type-lg: 1.25rem; /* 20 */
   --type-xl: clamp(1.35rem, 1.8vw, 1.55rem);
   --type-2xl: clamp(1.65rem, 2.4vw, 2rem);
-  --type-3xl: clamp(1.9rem, 3.2vw, 2.55rem);
+  --type-3xl: 2rem; /* Pages 24 pt = 32 CSS px */
   --type-4xl: clamp(2.2rem, 4vw, 3.15rem);
 
   --type-leading-tight: 1.2;
   --type-leading-snug: 1.35;
-  /* Chinese prose needs room between lines. */
-  --type-leading-body: 1.7;
-  --type-leading-loose: 1.85;
+  /* CoreText single-line CJK metrics are 1.4em for the local Songti fallback. */
+  --type-leading-body: normal;
+  --type-leading-loose: normal;
+  --type-paragraph-gap: 1em; /* Pages 12 pt after a 12 pt paragraph */
 
   --type-ink: var(--imp-ink, var(--primary));
   --type-muted: var(--imp-ink-muted, var(--secondary));
-  /* Turquoise links — clearer accent on cool paper */
+  /* Restrained ink-colored links on warm paper. */
   --type-link: color-mix(in srgb, var(--imp-sage, #2f8f86) 42%, var(--type-ink));
   --type-ease: var(--imp-ease-out, cubic-bezier(0.23, 1, 0.32, 1));
 }
@@ -93,7 +115,7 @@ h6,
 .archive-year-header,
 .archive-month-header {
   font-family: var(--type-display);
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 0;
   line-height: var(--type-leading-tight);
   color: var(--type-ink);
@@ -104,7 +126,7 @@ h6,
 h1,
 .page-header h1 {
   font-size: var(--type-3xl);
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
 }
 
 h2 {
@@ -127,7 +149,7 @@ h5,
 h6 {
   font-family: var(--type-body);
   font-size: var(--type-meta);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0;
   text-transform: none;
 }
@@ -175,7 +197,7 @@ a:hover {
 .entry-footer,
 .post-meta,
 .breadcrumbs {
-  font-family: var(--type-body);
+  font-family: var(--font-ui);
   font-size: var(--type-sm);
   font-weight: 500;
   letter-spacing: 0.015em;
@@ -201,7 +223,7 @@ a:hover {
 
 .post-title {
   font-size: var(--type-3xl);
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   line-height: var(--type-leading-tight);
   margin: 0 0 0.65rem;
 }
@@ -222,7 +244,7 @@ a:hover {
   line-height: var(--type-leading-loose);
   letter-spacing: 0;
   color: var(--type-ink);
-  text-wrap: pretty;
+  text-wrap: wrap;
 }
 
 /* Keep figures inside the reading measure (container-width / image scaling) */
@@ -240,9 +262,9 @@ a:hover {
 .post-content h1 {
   font-family: var(--type-display);
   font-size: var(--type-3xl);
-  font-weight: 600;
+  font-weight: 700;
   margin: 1.6em 0 0.7em;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   line-height: var(--type-leading-tight);
 }
 
@@ -250,7 +272,7 @@ a:hover {
 .post-content h2 {
   font-family: var(--type-display);
   font-size: var(--type-2xl);
-  font-weight: 600;
+  font-weight: 700;
   margin: 1.75em 0 0.65em;
   letter-spacing: -0.02em;
   line-height: var(--type-leading-snug);
@@ -260,7 +282,7 @@ a:hover {
 .post-content h3 {
   font-family: var(--type-display);
   font-size: var(--type-xl);
-  font-weight: 600;
+  font-weight: 700;
   margin: 1.5em 0 0.55em;
   letter-spacing: -0.015em;
 }
@@ -269,7 +291,7 @@ a:hover {
 .post-content h4 {
   font-family: var(--type-display);
   font-size: var(--type-lg);
-  font-weight: 600;
+  font-weight: 700;
   margin: 1.35em 0 0.45em;
 }
 
@@ -279,14 +301,14 @@ a:hover {
 .post-content h6 {
   font-family: var(--type-body);
   font-size: var(--type-meta);
-  font-weight: 600;
+  font-weight: 700;
   margin: 1.25em 0 0.4em;
   letter-spacing: 0.01em;
 }
 
 .md-content p,
 .post-content p {
-  margin: 0 0 1.15em;
+  margin: 0 0 var(--type-paragraph-gap);
 }
 
 .md-content a:not(.anchor),
@@ -304,7 +326,7 @@ a:hover {
 
 .md-content strong,
 .post-content strong {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--type-ink);
 }
 
@@ -317,7 +339,7 @@ a:hover {
 .md-content ol,
 .post-content ul,
 .post-content ol {
-  margin: 0 0 1.15em;
+  margin: 0 0 var(--type-paragraph-gap);
   padding-inline-start: 1.35rem;
 }
 
@@ -412,7 +434,7 @@ a:hover {
 .md-content th,
 .post-content th {
   font-family: var(--type-body);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.01em;
 }
 
@@ -431,7 +453,7 @@ a:hover {
 .pagination a {
   font-family: var(--type-body);
   font-size: var(--type-sm);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0;
 }
 
@@ -464,7 +486,7 @@ a:hover {
 /* ---------- Terms / taxonomy chips ---------- */
 
 .terms-tags a {
-  font-family: var(--type-body);
+  font-family: var(--font-ui);
   font-size: var(--type-sm);
   font-weight: 500;
 }
@@ -482,7 +504,7 @@ input,
 button,
 textarea,
 select {
-  font-family: var(--type-body);
+  font-family: var(--font-ui);
 }
 
 #searchInput,
@@ -491,23 +513,4 @@ select {
   font-size: var(--type-base);
 }
 
-/* ---------- Widen base measure on large screens slightly ---------- */
-
-@media (min-width: 900px) {
-  body {
-    font-size: 1.075rem;
-  }
-
-  .md-content,
-  .post-content {
-    font-size: 1.1rem;
-  }
-}
-
-@media (min-width: 1200px) {
-  .md-content,
-  .post-content {
-    font-size: 1.125rem;
-    line-height: var(--type-leading-loose);
-  }
-}
+/* Manuscript scale is fixed across breakpoints; only the reading width changes. */

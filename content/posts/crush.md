@@ -10,9 +10,9 @@ tags = []
 
 最近在研究期权交易时，偶然发现了一个有趣的语言巧合。
 
-英语里的 crush，既可以指对某个人突如其来的迷恋，也保留着它「压碎、碾碎」的本义。
+英语里的 *crush*，既可以指对某个人突如其来的迷恋，也保留着它「压碎、碾碎」的本义。
 
-在期权市场中，还有一个术语叫做 IV Crush。
+在期权市场中，还有一个术语叫做 *IV Crush*。
 
 IV，即 Implied Volatility，隐含波动率。它反映了市场对标的资产未来价格波动的预期。通常，当一家公司即将发布财报时，市场充满了不确定性。投资者不知道接下来会发生什么，于是愿意为这种未知支付更高的期权溢价。
 
@@ -22,7 +22,7 @@ IV，即 Implied Volatility，隐含波动率。它反映了市场对标的资�
 
 这就叫 IV Crush。
 
-有趣的是，人与人之间的 crush 似乎也遵循着类似的定价逻辑。
+有趣的是，人与人之间的 *crush* 似乎也遵循着类似的定价逻辑。
 
 在真正了解一个人之前，我们所拥有的信息总是有限的。
 
@@ -56,7 +56,7 @@ IV，即 Implied Volatility，隐含波动率。它反映了市场对标的资�
 
 这大概就是感情世界里的 IV Crush。
 
-不过，期权定价理论还提供了另一个有意思的概念：Intrinsic Value，内在价值。
+不过，期权定价理论还提供了另一个有意思的概念：*Intrinsic Value*，内在价值。
 
 期权的市场价格不仅取决于内在价值，还包含着由时间、波动率等因素共同决定的外在价值（Extrinsic Value）。
 
@@ -82,11 +82,11 @@ IV，即 Implied Volatility，隐含波动率。它反映了市场对标的资�
 
 爱情可没有这样的风险披露。
 
-> Perhaps falling in love is just buying an option on an uncertain future.
->
-> And getting to know someone is the inevitable IV crush.
->
-> The question is whether anything of intrinsic value remains.
+*Perhaps falling in love is just buying an option on an uncertain future.*
+
+*And getting to know someone is the inevitable IV crush.*
+
+*The question is whether anything of intrinsic value remains.*
 
 ---
 

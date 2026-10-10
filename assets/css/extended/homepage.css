@@ -1,14 +1,15 @@
-/* Private journal: warm paper, ink, and restrained oxblood annotations. */
+/* Private journal: manuscript white, black ink, and restrained oxblood annotations. */
 :root {
-  --imp-canvas: #f7f5f0;
+  --imp-canvas: #ffffff;
   --imp-surface: #f0ece5;
   --imp-border: #dcd6cd;
-  --imp-ink: #292622;
+  --imp-ink: #000000;
   --imp-ink-muted: #746b63;
   --imp-sage: #934c42;
   --imp-mist: #e9e2d9;
-  --imp-font-display: "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
-  --imp-font-body: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --imp-font-display: "Manuscript Times", Times, "Times New Roman", "Manuscript Songti", "Songti TC", "Songti SC", "Noto Serif SC", serif;
+  --imp-font-body: var(--imp-font-display);
+  --imp-font-ui: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
   --imp-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --theme: var(--imp-canvas);
   --entry: var(--imp-surface);
@@ -91,16 +92,17 @@ body, body.list {
 }
 .home-feature h2 {
   margin: 0.8rem 0 1.4rem;
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  font-weight: 500;
+  font-size: 2rem;
+  font-weight: 700;
   line-height: 1.5;
 }
 .home-feature__excerpt {
-  font-size: 1.125rem;
-  line-height: 1.9;
+  font-size: 1rem;
+  line-height: 1.4;
   margin: 0 0 1.1rem;
 }
 .quiet-link {
+  font-family: var(--font-ui);
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
@@ -133,7 +135,7 @@ body, body.list {
 .recent-entry h3 {
   margin: 0.5rem 0 0.65rem;
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.5;
 }
 .recent-entry h3 a {
@@ -155,7 +157,7 @@ body, body.list {
 .recent-entry > p {
   color: var(--imp-ink-muted);
   font-size: 0.9375rem;
-  line-height: 1.85;
+  line-height: 1.4;
   margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -185,7 +187,7 @@ body, body.list {
     margin-bottom: 2rem;
   }
   .home-feature__excerpt {
-    font-size: 1.0625rem;
+    font-size: 1rem;
   }
   .recent-entry h3 {
     font-size: 1.35rem;

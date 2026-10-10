@@ -48,7 +48,7 @@ theme = 'PaperMod'
     favicon32x32 = "favicon-32x32.png"
     apple_touch_icon = "apple-touch-icon.png"
     safari_pinned_tab = "safari-pinned-tab.svg"
-    theme_color = "#f7f5f0"
+    theme_color = "#ffffff"
     msapplication_TileColor = "#292622"
 
   [params.journal]

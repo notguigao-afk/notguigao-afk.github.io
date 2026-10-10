@@ -20,8 +20,8 @@ body:has(.home-landing) .main {
 }
 .tab-panel__title {
   margin: 0;
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  font-weight: 500;
+  font-size: 2rem;
+  font-weight: 700;
   line-height: 1.4;
 }
 .tab-panel__lede {
@@ -56,13 +56,13 @@ body:has(.home-landing) .main {
 .tab-panel__item-title {
   font-family: var(--imp-font-display);
   font-size: 1.4rem;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.5;
 }
 .tab-panel__summary {
   grid-column: 2;
   font-size: 0.9375rem;
-  line-height: 1.85;
+  line-height: 1.4;
   color: var(--imp-ink-muted);
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -113,7 +113,7 @@ body:has(.home-landing) .main {
   margin: 0 0 2.75rem;
   max-width: 30em;
   font-size: clamp(1.35rem, 2.6vw, 1.85rem);
-  line-height: 1.8;
+  line-height: 1.4;
 }
 .about-prose .about-songs {
   display: grid;
@@ -146,8 +146,8 @@ body:has(.home-landing) .main {
 .about-songs__body {
   display: block;
   font-size: 1rem;
-  line-height: 1.95;
-  color: var(--imp-ink-muted);
+  line-height: 1.4;
+  color: var(--imp-ink);
 }
 .about-prose .about-bridge {
   margin: 0 0 1rem;
@@ -236,7 +236,7 @@ body:has(.home-landing) .main {
   margin-bottom: 0.8rem;
   font-size: 1.2rem;
   line-height: 1.6;
-  font-weight: 500;
+  font-weight: 700;
 }
 .moments-stream__note {
   padding-left: 1.25rem;
@@ -244,13 +244,13 @@ body:has(.home-landing) .main {
 }
 .moments-stream .moments-stream__body {
   font-size: 1rem;
-  line-height: 1.95;
+  line-height: 1.4;
 }
 .moments-stream__body > :last-child {
   margin-bottom: 0;
 }
 
-/* Long-form reading: about 37 Chinese characters per desktop line. */
+/* Manuscript-like reading: serif text and about 40 Chinese characters per line. */
 .site-prose {
   width: min(100%, var(--site-prose));
   margin: 0 auto;
@@ -258,14 +258,14 @@ body:has(.home-landing) .main {
 }
 .site-prose .post-header {
   display: block;
-  margin: 0 0 2.25rem;
-  padding-bottom: 1.75rem;
-  border-bottom: 1px solid var(--imp-border);
+  margin: 0 0 1.75rem;
+  padding-bottom: 0;
+  border-bottom: 0;
 }
 .site-prose .post-title {
   margin: 0 0 1rem;
-  font-weight: 500;
-  line-height: 1.5;
+  font-weight: 700;
+  line-height: 1.1;
   letter-spacing: 0;
 }
 .post-back {
@@ -290,7 +290,7 @@ body:has(.home-landing) .main {
   overflow-wrap: break-word;
 }
 .site-prose .post-content > p {
-  margin-bottom: 1.5em;
+  margin-bottom: var(--type-paragraph-gap);
 }
 .site-prose .post-footer {
   margin-top: 3.5rem;
@@ -503,14 +503,14 @@ body .footer {
 .post-annotation__text {
   margin: 0 0 0.9rem;
   font-size: 0.9375rem;
-  line-height: 1.9;
+  line-height: 1.4;
   color: var(--imp-ink);
 }
 .post-annotation__signature {
   margin: 0;
   font-family: var(--font-ui);
   font-size: 0.75rem;
-  line-height: 1.8;
+  line-height: 1.4;
   color: var(--imp-ink-muted);
   overflow-wrap: anywhere;
 }

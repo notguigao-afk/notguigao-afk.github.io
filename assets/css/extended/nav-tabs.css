@@ -1,10 +1,10 @@
 /* A masthead above a narrow contents column and a generous reading column. */
 :root {
   --site-frame: 64rem;
-  --site-prose: 42rem;
+  --site-prose: 40rem;
   --site-gutter: clamp(1.25rem, 4vw, 3rem);
   --site-block: 0rem;
-  --font-ui: var(--imp-font-body);
+  --font-ui: var(--imp-font-ui);
 }
 .site-shell {
   width: min(calc(100% - var(--site-gutter) * 2), var(--site-frame));
@@ -129,12 +129,14 @@
   white-space: nowrap;
 }
 .site-sidebar__note {
+  font-family: var(--font-ui);
   margin: 2.5rem 0 0.75rem;
   color: var(--imp-ink-muted);
   font-size: 0.75rem;
   line-height: 2;
 }
 .site-archive {
+  font-family: var(--font-ui);
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
