@@ -4,6 +4,11 @@ draft = false
 title = 'Present'
 categories = ['gleanings']
 tags = []
+presentation = 'epigraph'
 +++
 
-Yesterday is history, Tomorrow is a mystery, Today is a gift. That's why it's called the present.
+> Yesterday is *history*,\
+> Tomorrow is a *mystery*,\
+> Today is a *gift*.
+>
+> That's why it's called the *present*.

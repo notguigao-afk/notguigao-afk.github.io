@@ -30,7 +30,7 @@
   </footer>
 </article>
 {{- else }}
-<article class="post-single site-prose">
+<article class="post-single site-prose{{ if eq .Params.presentation "epigraph" }} site-prose--epigraph{{ end }}">
   <header class="post-header">
     {{- range first 1 (.GetTerms "categories") }}
     <a class="post-back" href="{{ .RelPermalink }}">← {{ .LinkTitle }}</a>

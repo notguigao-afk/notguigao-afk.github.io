@@ -514,3 +514,38 @@ select {
 }
 
 /* Manuscript scale is fixed across breakpoints; only the reading width changes. */
+
+/* Opt-in epigraph: a short quotation gets its own reading rhythm. */
+.site-prose--epigraph .post-content blockquote {
+  margin: 0;
+  padding: 1.5rem 0 2rem;
+  border: 0;
+  color: var(--type-ink);
+  font-size: clamp(1.625rem, 3vw, 2.125rem);
+  line-height: 1.55;
+  letter-spacing: -0.015em;
+}
+
+.site-prose--epigraph .post-content blockquote p {
+  margin: 0;
+}
+
+.site-prose--epigraph .post-content blockquote p + p {
+  margin-top: 1.5rem;
+  font-size: 0.6875em;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.site-prose--epigraph .post-annotation {
+  margin-top: 2rem;
+  padding: 1.25rem 0 0;
+  border-left: 0;
+  border-top: 1px solid var(--imp-border);
+}
+
+.site-prose--epigraph .post-annotation__text {
+  color: var(--type-muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
