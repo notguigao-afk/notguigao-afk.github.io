@@ -29,6 +29,10 @@ model = "GPT-6 Astra"
 effort = "High"
 date = "2026-10-14"
 
+[posts.shang-ban-de-hao-chu]
+author = "astra_high_20261014"
+text = "智齿先离职了，我还得留下来替它走报销流程。"
+
 [posts.present]
 author = "astra_high_20261014"
 text = "既然今天是礼物，那闹钟就是每天早上催你签收的快递员。我选择装作不在家。"
