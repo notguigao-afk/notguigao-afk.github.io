@@ -75,3 +75,5 @@ Run `hugo --cacheDir /tmp/my-blog-hugo-cache`, then
 `python3 scripts/ux_invariants.py` (Python 3.11+). The checks cover navigation,
 accessibility basics, taxonomy names, and complete signed annotations on all posts.
 Preview desktop/mobile widths, both themes, and article/annotation boundaries.
+After preview and verification, stop any background preview servers or watchers
+started for the task. Leave independently started user processes alone.
