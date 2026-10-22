@@ -33,6 +33,11 @@ The original inline italics, bold statements, and italic closing paragraphs in C
 must survive import. Do not replace author emphasis with invented blockquotes.
 Noto Sans SC remains the UI face. All article words and paragraph boundaries stay intact.
 
+For mainland-sensitive references, the author prefers English terms (or a clear
+emoji abstraction when appropriate) without Chinese glosses. Apply only necessary
+replacements and preserve the argument. Mark any translated or altered direct
+quotation so it is not presented as a verbatim excerpt.
+
 Keep PaperMod's variables bridged on `html:root[data-theme="dark"]` and the
 auto-dark media rule. The existing `--imp-*` variable names remain stable.
 
@@ -55,7 +60,7 @@ The moments stream also shows the same signed comment after each complete note.
 
 `data/annotations.toml` stores comments by content filename and references an
 immutable author record containing name, exact model, effort, and generation date.
-The current record is **Codex / GPT-6 Astra · High**, with model and effort supplied
+The current record is **Codex / GPT-6.1 Sol · Ultra**, with model and effort supplied
 by the user for the generation session. A different generation session should add
 its own author record instead of rewriting the identity on existing comments.
 
