@@ -62,7 +62,7 @@ body:has(.home-landing) .main {
 .tab-panel__summary {
   grid-column: 2;
   font-size: 0.9375rem;
-  line-height: 1.4;
+  line-height: var(--type-leading-body);
   color: var(--imp-ink-muted);
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -113,7 +113,7 @@ body:has(.home-landing) .main {
   margin: 0 0 2.75rem;
   max-width: 30em;
   font-size: clamp(1.35rem, 2.6vw, 1.85rem);
-  line-height: 1.4;
+  line-height: var(--type-leading-body);
 }
 .about-prose .about-songs {
   display: grid;
@@ -146,7 +146,7 @@ body:has(.home-landing) .main {
 .about-songs__body {
   display: block;
   font-size: 1rem;
-  line-height: 1.4;
+  line-height: var(--type-leading-body);
   color: var(--imp-ink);
 }
 .about-prose .about-bridge {
@@ -244,7 +244,7 @@ body:has(.home-landing) .main {
 }
 .moments-stream .moments-stream__body {
   font-size: 1rem;
-  line-height: 1.4;
+  line-height: var(--type-leading-body);
 }
 .moments-stream__body > :last-child {
   margin-bottom: 0;
@@ -265,7 +265,7 @@ body:has(.home-landing) .main {
 .site-prose .post-title {
   margin: 0 0 1rem;
   font-weight: 700;
-  line-height: 1.1;
+  line-height: var(--type-leading-snug);
   letter-spacing: 0;
 }
 .post-back {
@@ -503,7 +503,7 @@ body .footer {
 .post-annotation__text {
   margin: 0 0 0.9rem;
   font-size: 0.9375rem;
-  line-height: 1.4;
+  line-height: var(--type-leading-body);
   color: var(--imp-ink);
 }
 .post-annotation__signature {

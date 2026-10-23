@@ -7,7 +7,7 @@
   --imp-ink-muted: #746b63;
   --imp-sage: #934c42;
   --imp-mist: #e9e2d9;
-  --imp-font-display: "Manuscript Times", Times, "Times New Roman", "Manuscript Songti", "Songti TC", "Songti SC", "Noto Serif SC", serif;
+  --imp-font-display: "Noto Serif SC", serif;
   --imp-font-body: var(--imp-font-display);
   --imp-font-ui: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
   --imp-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -98,7 +98,7 @@ body, body.list {
 }
 .home-feature__excerpt {
   font-size: 1rem;
-  line-height: 1.4;
+  line-height: var(--type-leading-body);
   margin: 0 0 1.1rem;
 }
 .quiet-link {
@@ -153,11 +153,12 @@ body, body.list {
   color: var(--imp-ink-muted);
   font-family: var(--font-ui);
   font-size: 0.875rem;
+  font-weight: 400;
 }
 .recent-entry > p {
   color: var(--imp-ink-muted);
   font-size: 0.9375rem;
-  line-height: 1.4;
+  line-height: var(--type-leading-body);
   margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;

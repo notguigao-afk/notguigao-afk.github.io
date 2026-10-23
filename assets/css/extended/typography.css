@@ -1,58 +1,13 @@
 /* ============================================================
    Site-wide typography — a personal collection of essays
-   Latin: the manuscript’s local Times faces, with portable fallbacks
-   CJK: local CoreText Times fallback (Songti TC) → Songti SC / Noto Serif SC
+   Reading text: self-hosted Noto Serif SC for Latin and Chinese
+   Interface: self-hosted Noto Sans SC, with system fallbacks
    ============================================================ */
-
-/* Pin actual Times faces: browser aliases can otherwise substitute Times New Roman.
-   These are local font references only; no proprietary font files are distributed. */
-@font-face {
-  font-family: "Manuscript Times";
-  src: local("Times-Roman");
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Manuscript Times";
-  src: local("Times-Bold");
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Manuscript Times";
-  src: local("Times-Italic");
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Manuscript Times";
-  src: local("Times-BoldItalic");
-  font-style: italic;
-  font-weight: 700;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Manuscript Songti";
-  src: local("STSongti-TC-Regular"), local("STSongti-SC-Regular");
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Manuscript Songti";
-  src: local("STSongti-TC-Bold"), local("STSongti-SC-Bold");
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-}
 
 /* Tokens live in homepage.css :root; hard fallbacks here for load order */
 :root {
-  --type-display: var(--imp-font-display, "Manuscript Times", Times, "Times New Roman", "Manuscript Songti", "Songti TC", "Songti SC", "Noto Serif SC", serif);
-  --type-body: var(--imp-font-body, "Manuscript Times", Times, "Times New Roman", "Manuscript Songti", "Songti TC", "Songti SC", "Noto Serif SC", serif);
+  --type-display: var(--imp-font-display, "Noto Serif SC", serif);
+  --type-body: var(--imp-font-body, "Noto Serif SC", serif);
   --type-mono: ui-monospace, "SF Mono", "Cascadia Code", "Segoe UI Mono", Menlo, Consolas,
     monospace;
 
@@ -68,11 +23,11 @@
   --type-3xl: 2rem; /* Pages 24 pt = 32 CSS px */
   --type-4xl: clamp(2.2rem, 4vw, 3.15rem);
 
-  --type-leading-tight: 1.2;
+  --type-leading-tight: 1.3;
   --type-leading-snug: 1.35;
-  /* CoreText single-line CJK metrics are 1.4em for the local Songti fallback. */
-  --type-leading-body: normal;
-  --type-leading-loose: normal;
+  /* Explicit leading keeps the reading rhythm stable across platforms. */
+  --type-leading-body: 1.65;
+  --type-leading-loose: 1.65;
   --type-paragraph-gap: 1em; /* Pages 12 pt after a 12 pt paragraph */
 
   --type-ink: var(--imp-ink, var(--primary));

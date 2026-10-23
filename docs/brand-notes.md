@@ -15,23 +15,24 @@ and impressionist directions.
 | Accent | `#934c42` | `#d89e8e` |
 | Rule | `#dcd6cd` | `#494039` |
 
-Reading typography follows the actual `crush.pages` styles, audited on 2026-10-10:
-body Times-Roman 12 pt, title bold Times 24 pt, relative single line spacing,
-paragraph spacing 0 pt before / 12 pt after (title: 16.078125 pt after), black text.
-The font and spacing values were decoded from the document's referenced styles,
-not inferred from unused font names in its stylesheet.
+Reading typography retains the serif character and scale of the Pages manuscript,
+with a cross-platform font update on 2026-10-23 after Android rendering feedback.
+Noto Serif SC is the primary face for both Chinese and Latin reading text; Noto
+Sans SC is the UI face. Both are self-hosted variable WOFF2 fonts in `static/fonts/`,
+with their original Unicode subsets declared in `assets/css/extended/fonts.css`.
+The browser downloads only the subsets needed for the page. Do not reintroduce
+Mac-only local faces ahead of the web fonts or runtime Google Fonts requests.
+See `static/fonts/README.md` for sources and the SIL Open Font License files.
 
-Use local @font-face references to Times-Roman, Times-Bold, Times-Italic, and
-Times-BoldItalic to avoid browser font-family aliases. CoreText on this Mac resolves
-Times Chinese text to STSongti-TC-Regular (ascent + descent = 1.4em); use that local
-face, then SC and Noto Serif SC fallbacks. This fallback observation is from the local
-font engine; the document itself specifies Times, not a named Chinese font.
-Web body is 16px (12pt), title 32px (24pt), natural single-line font metrics (about 1.4em for mixed Chinese text), paragraph gap
-1em, maximum reading width 40rem. Font fallback and rasterization can differ on
-other systems; this is a responsive web adaptation, not pixel-identical Pages rendering.
+Web body is 16px (12pt), title 32px (24pt), explicit body line height 1.65,
+paragraph gap 1em, maximum reading width 40rem. Regular text uses real weight 400
+and headings/emphasis real weight 700; the serif font supports 400–700 and UI font
+400–600. Multiline article titles use line height 1.35. The short epigraph keeps
+its intentional 1.55 rhythm. Font rasterization can still differ across systems.
 The original inline italics, bold statements, and italic closing paragraphs in Crush
 must survive import. Do not replace author emphasis with invented blockquotes.
-Noto Sans SC remains the UI face. All article words and paragraph boundaries stay intact.
+Preserve italic emphasis, including synthesized CJK slant where no italic face
+exists. All article words and paragraph boundaries stay intact.
 
 For mainland-sensitive references, the author prefers English terms (or a clear
 emoji abstraction when appropriate) without Chinese glosses. Apply only necessary
