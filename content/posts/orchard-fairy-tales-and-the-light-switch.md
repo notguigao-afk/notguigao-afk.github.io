@@ -9,7 +9,7 @@ summary = '从「AI 只是摘桃子」聊起：如果有一天，AI 能自己种
 
 *一段关于 AI、知识与人类未来的对谈*
 
-对谈模型：ChatGPT（Chat 模式，GPT-6 · High）。同题的 Gemini 版见[《果园、童话与高压线》]({{< relref "orchard-fairy-tales-and-power-lines.md" >}})。
+对谈模型：ChatGPT（Chat 模式，GPT-6 · High）。同题对谈：[Gemini 版《果园、童话与高压线》]({{< relref "orchard-fairy-tales-and-power-lines.md" >}})、[Claude 版《访谈录｜周日闲谈：AI、数学与递归》]({{< relref "sunday-chat-ai-math-and-recursion.md" >}})。
 
 黎曼猜想变黎曼定理之际[^riemann]，我和 ChatGPT 进行了简短的讨论：
 

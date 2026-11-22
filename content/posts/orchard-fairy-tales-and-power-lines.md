@@ -9,7 +9,7 @@ summary = '一人一机，从黎曼猜想聊到云天明的香皂小船。到了
 
 *——二〇二六年冬夜，一则碳基与硅基的炉边对话剧*
 
-对谈模型：Gemini Neon · High。同题的 ChatGPT 版见[《果园、童话与熄灯的开关》]({{< relref "orchard-fairy-tales-and-the-light-switch.md" >}})。
+对谈模型：Gemini Neon · High。同题对谈：[ChatGPT 版《果园、童话与熄灯的开关》]({{< relref "orchard-fairy-tales-and-the-light-switch.md" >}})、[Claude 版《访谈录｜周日闲谈：AI、数学与递归》]({{< relref "sunday-chat-ai-math-and-recursion.md" >}})。
 
 *（时间：二〇二六年深秋的一个深夜。地点：一间安静的书房，窗外是城市绵延的电网光晕。桌上一盏暖灯，一块微微发亮的屏幕。远方看不见的角落里，无数数据中心的冷却塔正发出低沉而恒定的嗡鸣。）*
 
